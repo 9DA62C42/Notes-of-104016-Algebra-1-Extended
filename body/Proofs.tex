@@ -1,0 +1,203 @@
+\section{Proofs}
+        \subsection{Proof of the lemma in section \ref{lemma of common divisor}}
+            \hskip \parindent
+            \par We know that there exist polynomials $r(x)$ and $t(x)$ in $\mathbb{F}[x]$ s.t.:
+            \begin{equation*}
+                1 = r(x) f(x) + t(x) g(x)
+            \end{equation*}
+            \par Thus
+            \begin{equation*}
+                h(x) = h(x) (r(x) f(x) + t(x) g(x)) = r(x) f(x) h(x) + t(x) g(x) h(x)
+            \end{equation*}
+            \par But $f(x) | r(x) f(x) h(x)$ and $f(x) | t(x) g(x) h(x)$, so 
+            \begin{equation*}
+                f(x) | r(x) f(x) h(x) + t(x) g(x) h(x) = h(x)
+            \end{equation*}
+            \par Q.E.D. 
+        \subsection{Proof of the proposition in section \ref{intersection of subspaces}}
+            \hskip \parindent
+            \par To prove that $S \cap T \le V$, we need to prove the three conditions in the proposition of subspace:
+            \begin{itemize}
+                \item [i]: $0 \in S \cap T$: $S \le V$, $T \le V$. $0 \in S$ and $0 \in T \Rightarrow 0 \in S \cap T$
+                \item [ii]: $u,v \in S \cap T$: $u,v \in S$ and $u,v \in T \Rightarrow u+v \in S$ and $u+v \in T \Rightarrow u+v \in S \cap T$
+                \item [iii]: $\alpha \in \mathbb{F}, v \in S \cap T \Rightarrow \alpha v \in S$ and $\alpha v \in T \Rightarrow \alpha v \in S \cap T$
+            \end{itemize}
+            \par Therefore $S \cap T \le V$
+        \subsection{Proof of the proposition in section \ref{sec:ranka=m}}
+            \hskip \parindent
+            \par Let $R$ be the row-echelon form that is row-equivalent to $A$ by applying gauss elimination. Then $Ax=b$ has a solution for any $b \in \mathbb{F}^m$ iff $Rx=b'$ has solution for any $b' \in \mathbb{F}^m$.
+            \par Now, if $R$ has a zero row, then we can always choose $b'$ in $\mathbb{F}^m$, s.t. $Rx=b'$ is inconsistent, while if R has no zero rows then $Rx=b'$ can be solved no matter what $b'$ is.
+            \par Then $R$ has no zero rows is equivalent to say that each row has a leading entry, then $\text{rank}(A)=m$.
+            \par In this case, $\text{rank}(A)=m \leq n$, so $m\leq n$.
+            \par Q.E.D.
+        \subsection{Proof of the proposition in section \ref{sec:ranka=n}}
+            \hskip \parindent
+            \par Since $\alpha_1 v_1+\alpha_2 v_2+\cdots+\alpha_n v_n = Ax$, the set $\{v_1,v_2,\cdots,v_n\}$ is l.i. iff $Ax=0$ has only the trivial solution.
+            \par We already saw that this is the case if and only if $\text{rank}(A)=n$,the number of columns in this case $n \leq m$.
+            \par Q.E.D.
+        \subsection{Proof of the proposition in section \ref{sec:characterizationofbasis}}
+            \hskip \parindent
+            \par $v_1,v_2,\cdots,v_n$ in $\mathbb{F}^m$ are l.i. iff $\text{rank}(A)=n \leq m$.
+            \par And $\text{span}\{v_1,v_2,\cdots,v_n\}=\mathbb{F}^m$ iff $\text{rank}(A)=m \leq n$.
+            \par Therefore, $v_1,v_2,\cdots,v_n$ is a basis for $\mathbb{F}^m$ iff $n=m$ and $\text{rank}(A)=n$.
+            \par Q.E.D.
+        \subsection{Proof of the theorem in section \ref{sec:theorem_characterization_of_basis}}
+            \subsubsection{(1)$\Rightarrow$(2)}
+                \hskip \parindent
+                \par (1)$\Rightarrow$(2): By definition of basis.
+            \subsubsection{(2)$\Rightarrow$(3)}
+                \hskip \parindent
+                \par (2)$\Rightarrow$(3): If $v_1,v_2,\cdots,v_n$ are l.d., then there exist $j \in \{1,2,\cdots,n\}$ s.t. $v_j = \sum\limits_{i \neq j, i=1}^n \alpha_i v_i$ and $v_j \in \operatorname{span}\{v_i \mid i \in \{1,2,\cdots,n\}\textbackslash\{j\}\}$.
+                \par But dim($\operatorname{span}\{v_i \mid i \in \{1,2,\cdots,n\}\textbackslash\{j\}\}$)$\leq$n-1$\neq$n=dim V, so V$\neq\operatorname{span}\{v_1,v_2,\cdots,\v_n\}$.
+                \par Therefore (2)$\Rightarrow$(3).
+            \subsubsection{(3)$\Rightarrow$(1)}
+                \hskip \parindent
+                \par (3)$\Rightarrow$(1): If $v_1,v_2,\cdots,v_n$ are l.i., then the set $\{v_1,v_2,\cdots,v_n\}$ can be extended to a basis of V, but dim V=n=\#$\{v_1,v_2,\cdots,v_n\}$.
+                \par So $\{v_1,v_2,\cdots,v_n\}$ is a basis for V.
+                \par Therefore (3)$\Rightarrow$(1). 
+                \par Q.E.D.
+        \subsection{Proof of the theorem in section \ref{sec:theorem_basis_subset}}
+            \hskip \parindent
+            \par Choose a maximal subset of vectors {$w_1,w_2,\cdots,w_r$} from {$v_1,v_2,\cdots,v_n$} s.t.$w_i\notin$ span{$w_1,w_2,\cdots,w_{i-1}$}
+            \par Then {$w_1,w_2,\cdots,w_r$} is a basis of span{$v_1,v_2,\cdots,v_n$}:
+            \par if $\exists$ $i\in\{1,2,\cdots,n\}$ s.t. $v_i\notin$ span$\{w_1,w_2,\cdots,w_r\}$
+            \par then {$w_1,w_2,\cdots,w_r$} is not maximal.
+            \par Thus, span{$v_1,v_2,\cdots,v_n$} $\subseteq$ span{$w_1,w_2,\cdots,w_r$}. And {$w_1,w_2,\cdots,w_r$} is a l.i. set.
+            \par Q.E.D.
+        \subsection{Proof of the proposition in section \ref{sec:existenceofbasis}}
+            \hskip \parindent
+            \par Let $w_1,w_2,\cdots,w_n$ be the columns of $R$. Then $w_{i_1},w_{i_2},\cdots,w_{i_r}$ are the first canonical basis vectors $e_1,e_2,\cdots,e_r$ in $\mathbb{F}^m$, so they are l.i.
+            \par It's clear that $\operatorname{span}\{w_{i_1},w_{i_2},\cdots,w_{i_r}\}=\operatorname{span}\{w_1,w_2,\cdots,w_n\}$.
+            \par We prove that $\{v_{i_1},v_{i_2},\cdots,v_{i_r}\}$ is l.i. .:
+            \par Suppose that: $x_{i_1}v_1+x_{i_2}v_2+\cdots+x_{i_r}v_{i_r}=0$
+            \par Define:
+            \begin{equation*}
+                x_l = 
+                \begin{cases}
+                    0 \quad \text{if } l \notin \{i_1,i_2,\cdots,i_r\} \\
+                    x_{i_j} \quad \text{if } l = i_j
+                \end{cases}
+            \end{equation*}
+            \par Then we get the vector x $\in$ $\mathbb{F}^n$ s.t. $Ax=0$.
+            \par Then Rx=0 and Rx=$x_1 w_1 + x_2 w_2 + \cdots + x_n w_n = x_{i_1} e_1 + x_{i_2} e_2 + \cdots + x_{i_r} e_r = 0$.
+            \par And then $x_{i_1}=x_{i_2}=\cdots=x_{i_r}=0$. Thus {$v_{i_1},v_{i_2},\cdots,v_{i_r}$} is l.i. set.
+            \par Now, $\{v_{i_1},v_{i_2},\cdots,v_{i_r}\}$ is a gererating set of $\operatorname{span}\{v_1,v_2,\cdots,v_n\}$.
+            \par It's enough to show that for $l \notin \{i_1,i_2,\cdots,i_r\}$, $v_l \in \operatorname{span}\{v_{i_1},v_{i_2},\cdots,v_{i_r}\}$.
+            \par Notice that $w_l = R_{1l}w_{i_1} + R_{2l}w_{i_2} + \cdots + R_{rl}w_{i_r}$. Where $R_{ij}$ is the entry of $R$ in the i-th row and j-th column.
+            \par Let $X \in \mathbb{F}^n$ be the vector whose l-th coordinate is $1$, and whose $i_k$ coordinate is $-R_{i_k l}$. Then:
+            \begin{equation*}
+                Rx = w_l - R_{i_1 l}w_{i_1} - R_{i_2 l}w_{i_2} - \cdots - R_{i_r l}w_{i_r} = w_l - w_l =0
+            \end{equation*}
+            \par Hence Ax=0. But Ax = $v_l - R_{i_1 l}v_{i_1} - R_{i_2 l}v_{i_2} - \cdots - R_{i_r l}v_{i_r}$=0.
+            \par So {$v_{i_1},v_{i_2},\cdots,v_{i_r}$} is a basis for span{$v_1,v_2,\cdots,v_n$}.
+            \par Q.E.D.
+        \subsection{Proof of the theorem in section \ref{sec:theorem_extension_of_l.i.sets}}
+            \hskip \parindent
+            \par If $\{v_1,v_2,\cdots,v_k\}$ is a l.i. set if vectors with r<dim$_{\mathbb{F}}$V, then there exists $v_{r+1}$ in $V\textbackslash \operatorname{span}\{v_1,v_2,\cdots,v_r\}$. Then $\{v_1,v_2,\cdots,v_r,v_{r+1}\}$ is a l.i. set.
+            \par Since dim $V=n$, the process must stop and there exist $n-r$ vectors $v_{r+1},v_{r+2},\cdots,v_n$ s.t. $V\operatorname{span}\{v_1,v_2,$ $\cdots,v_r,v_{r+1},\cdots,v_n\}$.
+            \par Q.E.D.
+        \subsection{Proof of the theorem in section \ref{sec:theorem_dimension}}
+            \hskip \parindent
+            \par The vectors $w_1,w_2,\cdots,w_n$ are in span{$v_1,v_2,\cdots,v_m$}. If $n>m$ by the lemma $\{w_1,w_2,\cdots,w_n\}$ is l.d. , contradicting the fact that $\{w_1,w_2,\cdots,w_n\}$ is a basis.
+            \par Thus n$\leq$m. By symmetry, m$\leq$n. Hence $n=m$.
+            \par Q.E.D.
+        \subsection{Proof of the theorem in section \ref{sec:theorem_dimension_of_subspace}}
+            \hskip \parindent
+            \par Suppose the $W \neq \{0\}$ and let $n$ = dim$_{\mathbb{F}}V$.
+            \par By the fundamental lemma of linear independence, any l.i. set of vectors in $W$ has at most $n$ vectors.
+            \par Since $W \neq \{0\}$, there exists $w_i \in W \textbackslash \{0\}$, then choose elements $w_1,w_2,\cdots,w_k$ in $W$ s.t. $w_i \notin span\{w_1,w_2,\cdots,w_{i-1} \} \subseteq W$ and define $\beta_i = \{ w_1, w_2, \cdots, w_i \}$.
+            \par Notice that $\beta_i$ is a l.i. set of vectors in $W$ and $1 \leq i \leq n$. Therefore, the process must stop after many steps, say after $w_1,w_2,\cdots,w_d$ with $d \leq n$ and $dim_\mathbb{F}W = d$. If there exists $w \in W \textbackslash span\{w_1,w_2,\cdots,w_d\}$, then $\{w_1,w_2,\cdots,w_d,w\}$ is a l.i. set of vectors in W with d+1 vectors, contradicting the maximality of d.
+            \par Q.E.D.
+        \subsection{Proof of proposition of the sum of subspaces is a subspace in section \ref{sec:prop_sum_subspaces}}
+            \subsubsection{Property i}
+                \hskip \parindent
+                \par Since $W_i$ is a subspace, $0 \in W_i \quad \forall i \in \{1,2,\cdots,k\}$, then $0+0+0+0+\cdots+0=0\in W$.
+            \subsubsection{Property ii}
+                \hskip \parindent
+                \par If $w$ and $w'$ are in $W$, there exist $w_i, w'_i \in W_i$ s.t. $w=\sum w_i$ and $w'=\sum w_i'$.
+                \par Thus $w+w' = \sum\limits_{i=1}^k w_i + \sum\limits_{i=1}^k w_i' = \sum\limits_{i=1}^k (w_i + w_i')$. Since $W_i$ is a subspace, $w_i + w_i' \in W_i$, so $w+w' \in W$.
+            \subsubsection{Property iii}
+                \hskip \parindent
+                \par $\alpha \in \mathbb{F}$ and $w \in W$, $\alpha w = \alpha \sum\limits_{i=1}^k w_i = \sum\limits_{i=1}^k \alpha w_i$. Since $W_i$ is a subspace, $\alpha w_i \in W_i$, so $\alpha w \in W$.
+                \par Therefore, $W$ is a subspace of $V$. Q.E.D.
+        \subsection{Proof of the Rank-Nullity Theorem in section \ref{sec:theorem_rank_plus_dimker}}
+            \hskip \parindent
+            \par rank$(A)$=$r$=\#non-zero rows of R=\#pivot columns
+            \par dim Ker $A$=$n-r$=\#free variables=\#non-pivot columns
+            \par Therefore, rank$(A)$+dim Ker $A$=$r+(n-r)=n$.
+            \par Q.E.D.
+        \subsection{Proof of theorem unique transformation in section \ref{sec:theorem_unique_transformation}}
+            \hskip \parindent
+            \par Define T($v_i$)=$w_i$ $\forall i=1,2,\cdots,n$.
+            \par Since $\{v_1,v_2,\cdots,v_n\}$ is a basis for V, for each v $\in$ V, there exist unique scalars $\alpha_1,\alpha_2,\cdots,\alpha_n$ s.t.:
+            \begin{equation*}
+                v = \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n
+            \end{equation*}
+            \par Thus, define:
+            \begin{equation*}
+                T(v) = \alpha_1 w_1 + \alpha_2 w_2 + \cdots + \alpha_n w_n
+            \end{equation*}
+            \par T is a l.t.: if $v=\sum\limits_{i=1}^n \alpha_i v_i$ and $u=\sum\limits_{i=1}^n \beta_i v_i$,
+            \par T(u+v)=T($\sum\limits_{i=1}^n (\alpha_i + \beta_i) v_i$)=$\sum\limits_{i=1}^n (\alpha_i + \beta_i) w_i$=$\sum\limits_{i=1}^n \alpha_i w_i + \sum\limits_{i=1}^n \beta_i w_i$=T(u)+T(v).
+            \par T($\alpha v$)=T($\sum\limits_{i=1}^n \alpha \alpha_i v_i$)=$\sum\limits_{i=1}^n \alpha \alpha_i w_i$=$\alpha \sum\limits_{i=1}^n \alpha_i w_i$=$\alpha$T(v).
+            \par Therefore, T is a l.t.
+            \par Now, if T' is a l.t. s.t. T'($v_i$)=$w_i$ $\forall i=1,2,\cdots,n$, then T'(v)=T'($\sum\limits_{i=1}^n \alpha_i v_i$)=$\sum\limits_{i=1}^n \alpha_i T'(v_i)$=$\sum\limits_{i=1}^n \alpha_i w_i$=T(v).
+            \par Therefore T'=T.
+            \par Q.E.D.
+        \subsection{Proof of theorem of the algebra of linear transformations in section \ref{sec:theorem_linear_transformation_addition_scalar_multiplication}}
+            \hskip \parindent
+            \subsubsection{Addition}
+                \hskip \parindent
+                \par For $u,v \in V$, 
+                \begin{align*}
+                    (T_1 + T_2)(\alpha u+v) &= T_1(\alpha u+v) + T_2(\alpha u+v)\\
+                    &= (T_1(\alpha u) + T_1(v)) + (T_2(\alpha u) + T_2(v))\\
+                    &= (T_1(\alpha u) + T_2(\alpha u)) + (T_1(v) + T_2(v))\\
+                    &= (T_1 + T_2)(\alpha u) + (T_1 + T_2)(v)
+                \end{align*}
+            \subsubsection{Scalar multiplication}
+                \hskip \parindent
+                \par For $\alpha \in \mathbb{F}$ and $v \in V$,
+                \begin{align*}
+                    (\alpha T_1)(\beta v+v') &= \alpha (T_1(\beta v+v'))\\
+                    &= \alpha (T_1(\beta v) + T_1(v'))\\
+                    &= \alpha T_1(\beta v) + \alpha T_1(v')\\
+                    &=\beta  (\alpha T_1)(v) + (\alpha T_1)(v')
+                \end{align*}
+                \par Q.E.D.
+        \subsection{Proof of proposition of composition of linear transformations in section \ref{sec:proposition_composition_linear_transformation}}
+            \hskip \parindent
+            \begin{align*}
+                (T_2 \circ T_1)(\alpha u + v) &= T_2(T_1(\alpha u + v))\\
+                &= T_2(\alpha T_1(u) + T_1(v))\\
+                &= \alpha T_2(T_1(u)) + T_2(T_1(v))\\
+                &= \alpha (T_2 \circ T_1)(u) + (T_2 \circ T_1)(v)
+            \end{align*}
+            \par Q.E.D
+        \subsection{Proof of proposition of basis transformed by isomorphism in section \ref{sec:proposition_basis_transformed_by_isomorphism}}
+            \subsubsection{i}
+                \hskip \parindent
+                \par $0=\alpha_1v_1+ \cdots + \alpha_nv_n \Leftrightarrow 0=T(\alpha_1v_1+ \cdots + \alpha_nv_n)=\alpha_1T(v_1)+ \cdots + \alpha_nT(v_n)$
+            \subsubsection{ii \& iii}
+                \hskip \parindent
+                \par ($\Rightarrow$)
+                \par $w\in W$, $\exists v\in V$ s.t. $T(v)=w$. $v=\sum\limits_{i=1}^n \alpha_i v_i$, then $w=\sum\limits_{i=1}^n \alpha_i T(v_i)$. So $W=\operatorname{Span}\{T(v_1),T(v_2),\cdots,$ $T(v_n)\}$.
+                \\
+                \par ($\Leftarrow$)
+                \par $v\in V$. Then $T(v)=w\in W$, $\exists \alpha_1, \alpha_2, \cdots, \alpha_n \in \mathbb{F}$
+                \par s.t. $w=\sum\limits_{i=1}^n \alpha_i T(v_i)=T(\sum\limits_{i=1}^n \alpha_i v_i)$=$T(\alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n)$.
+                \par but $w=T(v)$, thus $T(v)-T(\alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n)=0$, $T(v-\sum\limits_{i=1}^n \alpha_i v_i)=0$.
+                \par then $v=\sum\limits_{i=1}^n \alpha_i v_i$. So $V=\operatorname{Span}\{v_1,v_2,\cdots,v_n\}$.
+                \par Q.E.D.
+        \subsection{Proof of proposition dimension of isomorphic spaces in section \ref{sec:proposition_dimension_isomorphic_spaces}}
+            \hskip \parindent
+            \par Using (iii) in the former proposition, $\dim_\mathbb{F}(V) = \dim_\mathbb{F}(W)$.
+            \par Q.E.D.
+        \subsection{Proof of the theorem in section \ref{sec:theorem_same_dimension_spaces_are_isomorphic}}
+            \hskip \parindent
+            \par $\dim_{\mathbb{F}}(V)=\dim_{\mathbb{F}}(W)=n$, then $V\cong_{\mathbb{F}} \mathbb{F}^n$ and $\mathbb{F}^n \cong_{\mathbb{F}} W$, and $V \cong_{\mathbb{F}} W$.
+            \par Q.E.D.
+        \subsection{Proof of lemma of invertible matrices in section \ref{sec:lemma_invertible_matrices}}
+            \hskip \parindent
+            \par Suppose $BA=I$ and $AC=I$, then $B=BI=B(AC)=(BA)C=IC=C$, so $B=C$.
+            \par Q.E.D.

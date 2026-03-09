@@ -1,0 +1,211 @@
+    \section{Linear transformation}
+        \subsection{Definition of linear transformation}
+            \hskip \parindent
+            \par Let $V$ and $W$ be vector spaces over a field $\mathbb{F}$. A linear transformation(l.t.) from $V$ into $W$ is a function $T$ s.t.
+            \begin{equation}
+                T(u+v)=T(u)+T(v) \quad \forall u,v \in V
+            \end{equation}
+            \begin{equation}
+                T(\alpha v)=\alpha T(v) \quad \forall \alpha \in \mathbb{F}, v \in V
+            \end{equation}
+            \begin{equation}
+                T(\alpha u + v) = \alpha T(u) + T(v) \quad \forall \alpha,\in \mathbb{F}, u,v \in V
+            \end{equation}
+        \subsection{Remark: linear transformation of zero is always zero}
+            \hskip \parindent
+            \par If $T:V\rightarrow W$ is a l.t., then $T(0_V)=0_W$.
+            \par $0_w = T(0_v) = T(0_v + 0_v) = T(0_v) + T(0_v) \Rightarrow T(0_v)=0_W$.
+        \subsection{Remark: linear transformation represented by matrix}
+            \hskip \parindent
+            \par If V is a l.c. of vectors $v_1,v_2,\cdots,v_n$ in V.
+            \par Then v=$\alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n$, and if T is a l.t. from V into W, then
+            \begin{equation}
+                T(v) = \alpha_1 T(v_1) + \alpha_2 T(v_2) + \cdots + \alpha_n T(v_n)
+            \end{equation}
+            \par In particular, if V=$\mathbb{F}^n$, $W=\mathbb{F}^m$ and T($e_1$)=$\begin{bmatrix}a_{11} \\a_{21} \\\cdots \\a_{m1}\end{bmatrix}$, T($e_2$)=$\begin{bmatrix}a_{12} \\a_{22} \\\cdots \\a_{m2}\end{bmatrix}$, $\cdots$, T($e_n$)=$\begin{bmatrix}a_{1n} \\a_{2n} \\\cdots \\a_{mn}\end{bmatrix}$
+            \par Then, for any vector V in $\mathbb{F}^n$
+            \begin{equation}
+                v= x_1 e_1 + x_2 e_2 + \cdots + x_n e_n
+            \end{equation}
+            \par We have 
+            \begin{align}
+                T(v) &= x_1 T(e_1) + x_2 T(e_2) + \cdots + x_n T(e_n) \\ &= x_1 \begin{bmatrix}a_{11} \\a_{21} \\\cdots \\a_{m1}\end{bmatrix} + x_2 \begin{bmatrix}a_{12} \\a_{22} \\\cdots \\a_{m2}\end{bmatrix} + \cdots + x_n \begin{bmatrix}a_{1n} \\a_{2n} \\\cdots \\a_{mn}\end{bmatrix} \\ &= \begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}
+            \end{align}
+        \subsection{Proposition: linear transformation relative to standard bases}
+            \hskip \parindent
+            \par If $T:\mathbb{F}^n \rightarrow \mathbb{F}^m$ is a l.t., then there exists a matrix $A$ in $M_{m\times n}(\mathbb{F})$ s.t. $T(x)=Ax$ with $A=[T(e_1)|T(e_2)|\cdots|T(e_n)]$.
+            \par The matrix $A$ is called the matrix of $T$ relative to the standard bases.
+        \subsection{Example: linear transformation represented by matrix}
+            \hskip \parindent
+            \par A counterclockwise rotation by an angle $\theta$ on $\mathbb{R}^2$ is a l.t. T:$\mathbb{R}^2 \rightarrow \mathbb{R}^2$
+            \par T($e_1$)= $\begin{pmatrix}\cos \theta\\\sin\theta\end{pmatrix}$, T($e_2$)= $\begin{pmatrix}-\sin \theta\\\cos\theta\end{pmatrix}$, then T(x,y)= $\begin{bmatrix}\cos \theta & -\sin \theta \\ \sin \theta & \cos \theta\end{bmatrix} \begin{bmatrix}x\\y\end{bmatrix}$
+        \subsection{Theorem of unique transformation\label{sec:theorem_unique_transformation}}
+            \hskip \parindent
+            \par Let $V$ be a f.d.v.s. over $\mathbb{F}$ and let $\{v_1,v_2,\cdots,v_n\}$ be an ordered basis for $V$. Let $W$ be an v.s. over $\mathbb{F}$ and let $w_1,w_2,\cdots,w_n$ be any vecotrs in $W$. Then there is a unique linear transformation $T$ from $V$ into $W$, s.t. T($v_i$)=$w_i$ $\forall i=1,2,\cdots,n$.
+            \par 
+        \subsection{Theorem of the algebra of linear transformations\label{sec:theorem_linear_transformation_addition_scalar_multiplication}}
+            \hskip \parindent
+            \par Let $V$ and $W$ be two $\mathbb{F}-v.s.$ and let $T_1$ and $T_2$ be l.t. from $v$ into $W$. The function ($T_1 + T_2$)($v$)=$T_1$(v)+$T_2$(v) and ($\alpha T_1$)($v$)=$\alpha T_1$(v) are l.t. from $V$ into $W$. 
+            \par The proof see section "Proofs".
+        \subsection{Example of the algebra of linear transformations}
+            \hskip \parindent
+            \par Let A=[$v_1\mid v_2\mid \cdots \mid v_n$], B=[$w_1\mid w_2\mid \cdots \mid w_n$] be in $\mathbb{F}^{m\times n}$.
+            \par Then A+B=[$v_1+w_1\mid v_2+w_2\mid \cdots \mid v_n+w_n$].
+            \par Consider $T_A:\mathbb{F}^n\rightarrow \mathbb{F}^m$ and $T_B:\mathbb{F}^n\rightarrow \mathbb{F}^m$ defined by $T_A(x)=Ax$ and $T_B(x)=Bx$ for $x\in \mathbb{F}^n$.
+            \par Then $T_A + T_B: \mathbb{F}^n\rightarrow \mathbb{F}^m$ is defined by $x \mapsto (T_A+T_B)(x)$ for $x\in \mathbb{F}^n$.
+            \begin{align*}
+                (T_A + T_B)(x) &= T_A(x) + T_B(x)\\
+                &= Ax + Bx\\
+                &=[v_1\mid v_2\mid \cdots \mid v_n]x + [w_1\mid w_2\mid \cdots \mid w_n]x\\
+                &= (x_1 v_1 + x_2 v_2 + \cdots + x_n v_n) + (x_1 w_1 + x_2 w_2 + \cdots + x_n w_n)\\
+                &= x_1 (v_1 + w_1) + x_2 (v_2 + w_2) + \cdots + x_n (v_n + w_n)\\
+                &= [v_1 + w_1\mid v_2 + w_2\mid \cdots \mid v_n + w_n]x\\
+                &=(A+B)x\\
+                &=T_{A+B}(x)
+            \end{align*}
+            \par $\alpha \in \mathbb{F}$
+            \begin{align*}
+                ( \alpha T_A)(x) &= \alpha T_A(x)=\alpha Ax=\alpha [v_1\mid v_2\mid \cdots \mid v_n]x\\
+                &=\alpha (x_1 v_1 + x_2 v_2 + \cdots + x_n v_n)\\
+                &=x_1 (\alpha v_1) + x_2 (\alpha v_2) + \cdots + x_n (\alpha v_n)\\
+                &=[\alpha v_1\mid \alpha v_2\mid \cdots \mid \alpha v_n]x\\
+                &=(\alpha A)x\\
+                &=T_{\alpha A}(x)
+            \end{align*}
+        \subsection{Remark: zero linear transformation}
+            \hskip \parindent
+            \par The zero vector is the zero l.t. from $V$ into $W$. O(v)=$0_w$
+        \subsection{Proposition: composition of linear transformations\label{sec:proposition_composition_linear_transformation}}
+            \hskip \parindent
+            \par Let $V$,$W$ and $Z$ be three $\mathbb{F}-v.s.$. Let $T_1: V\rightarrow W$ and $T_2: W\rightarrow Z$ be two l.t.. 
+            \par Then the composition $T_2 \circ T_1: V\rightarrow Z$ is a l.t.. $(T_2 \circ T_1)(v)=T_2(T_1(v))$ for $v\in V$.
+            \par Proof see section "Proofs".
+        \subsection{Remark: powers of linear transformation}
+            \hskip \parindent
+            \par $T:V\rightarrow V$, $T^2=T\circ T$, $T^3=T\circ T\circ T$, etc.
+            \par $T^0=id.$ for $T\neq O$.
+        \subsection{Homomorphism} 
+            \subsubsection{Definition of homomorphism}
+                \hskip \parindent
+                \par Let $V$ and $W$ be two $\mathbb{F}-v.s.$. The set of all l.t. from $V$ into $W$ is denoted by
+                \begin{equation}
+                    \mathcal{L}(V,W)=Hom_{\mathbb{F}}(V,W)=\{T:V\rightarrow W\mid T\text{ is a l.t.}\}
+                \end{equation}
+            \subsubsection{Proposition: homomorphism is a vector space}
+                \hskip \parindent
+                \par $(Hom_{\mathbb{F}}(V,W),+,\cdot)$ is an $\mathbb{F}-v.s.$.
+        \subsection{Monomorphism, epimorphism, isomorphism and endomorphism}
+            \subsubsection{Definition of monomorphism, epimorphism, isomorphism and endomorphism}
+                \hskip \parindent
+                \par Let $V$ and $W$ be two v.s. over $\mathbb{F}$ and let $T$ be a l.t. from $V$ into $W$.
+                \begin{itemize}
+                    \item[i] $T$ is said to be a \textbf{monomorphism} if $T$ is injective.
+                    \item[ii] $T$ is said to be an \textbf{epimorphism} if $T$ is onto.
+                    \item[iii] $T$ is said to be an \textbf{isomorphism} if $T$ is bijective.
+                    \item[iv] $T$ is said to be an \textbf{endomorphism} (of a linear operator) if $W=V$ ($T: V \rightarrow V$).
+                \end{itemize}
+                \par We say that $V$ and $W$ are isomorphic (or $W$ is isomorphic to $V$) if there exists an isomorphism from $V$ into $W$. We denote $T \in \text{End}(V)$ if $T: V \rightarrow V$ is an endomorphism.
+            \subsubsection{Examples of monomorphism, epimorphism and isomorphism}
+                \hskip \parindent
+                \begin{itemize}
+                    \item [i] $T:\mathbb{F}^m \rightarrow \mathbb{F}^{m+1}$ defined by $x\mapsto T(x)=(x,0)$. T is monomorphic.
+                    \item [ii] $T:\mathbb{F}^m \rightarrow \mathbb{F}^{m-1}$ defined by $x\mapsto T(x)=(x_1,x_2,\cdots,x_{m-1})$. T is epimorphic.
+                    \item [iii] $T:\mathbb{F}_n[x] \rightarrow \mathbb{F}^{n+1}$ defined by $p(x)\mapsto T(p(x))=(a_0,a_1,a_2,\cdots,a_n)$. T is isomorphic.
+                \end{itemize}
+            \subsubsection{Proposition: basis transformed by isomorphism\label{sec:proposition_basis_transformed_by_isomorphism}}
+                \hskip \parindent
+                \par Let $T:V\rightarrow W$ be an isomorphism of $\mathbb{F}-v.s.$ and let $v_1,v_2,\cdots,v_n$ be vectors in $V$.
+                \begin{itemize}
+                    \item [i] $v_1,v_2,\cdots,v_n$ are l.i. iff $T(v_1),T(v_2),\cdots,T(v_n)$ are l.i..
+                    \item [ii] $\operatorname{Span}\{v_1,v_2,\cdots,v_n\}$=$V$ iff $\operatorname{Span}\{T(v_1),T(v_2),\cdots,T(v_n)\}$=$W$.
+                    \item [iii] $\{v_1,v_2,\cdots,v_n\}$ is a basis of $V$ iff $\{T(v_1),T(v_2),\cdots,T(v_n)\}$ is a basis of $W$.
+                \end{itemize}
+                \par The proof see section "Proofs".
+            \subsubsection{Proposition: dimension of ispmorphic spaces\label{sec:proposition_dimension_isomorphic_spaces}}
+                \hskip \parindent
+                \par If $V$ and $W$ are isomorphic $(\cong)$ finite dimensional v.s. over $\mathbb{F}$, then $\dim_\mathbb{F}(V)=\dim_\mathbb{F}(W)$.
+                \par The proof see section "Proofs".
+            \subsubsection{Corollary: of the proposition dimension of isomorphic spaces}
+                \hskip \parindent
+                \par If $m\ne n$, then $\mathbb{F}^m \ncong \mathbb{F}^n$.
+        \subsection{Theorem of isomorphism}
+            \subsubsection{Statement of the theorem}
+                \hskip \parindent
+                \par Let $V$ be a vector space of dimension $n$ over $\mathbb{F}$. Then $V \cong \mathbb{F}^n$.
+            \subsubsection{Example of the theorem of isomorphism}
+                \hskip \parindent
+                \begin{itemize}
+                    \item [i] $\mathbb{R}_n[x] \cong \mathbb{F}^{n+1}$
+                    \item [ii] $\mathbb{F}^{n \times m} \cong \mathbb{F}^{nm}$
+                \end{itemize}
+            \subsubsection{Proposition: properties of isomorphisms}
+                \hskip \parindent
+                \par Let $U$, $V$, $W$ be vector space over $\mathbb{F}$.
+                \begin{itemize}
+                    \item [i] The identity function id:$V \rightarrow V$ is a isomorphism.
+                    \item [ii] If $T: V \rightarrow W$ is an isomorphism, then its inverse $T^{-1}: W \rightarrow V$ is also an isomorphism.
+                    \item [iii] If $T_1: U \rightarrow V$ and $T_2: V \rightarrow W$ are isomorphisms, then the composition $T_2 \circ T_1: U \rightarrow W$ is also an isomorphism.
+                \end{itemize}
+        \subsection{Theorem: same dimension spaces are isomorphic}
+            \subsubsection{Statement of the theorem\label{sec:theorem_same_dimension_spaces_are_isomorphic}}
+                \hskip \parindent
+                \par Two vector spaces with same dimension over the field $\mathbb{F}$ are isomorphic.
+                \par The proof is in the "Proofs" section.
+            \subsubsection{Remark: construction of isomorphism between same dimension spaces}
+                \hskip \parindent
+                \par If $B=\{v_1,v_2,\cdots,v_n\}$ is a basis for $V$ and $B'=\{w_1,w_2,\cdots,w_n\}$ is a basis for $W$. Define $T: V \rightarrow W$ by $T(v_i)=w_i$, $\forall i\in \{1,2,\cdots,n\}$, and $T$ is an isomorphism.
+
+        \subsection{Kernel of the linear transformation}
+            \subsubsection{Definition of the kernel of the linear transformation}
+                \hskip \parindent
+                \par Let $V$,$W$ be two $\mathbb{F}$-v.s.. Let $T:V\rightarrow W$ be a l.t..
+                \begin{itemize}
+                    \item The null space (or kernel) of $T$ is the set of all vectors $v$ in $V$ s.t. $T(v)=0_W$. 
+                        \begin{equation}(\operatorname{null } T) \operatorname{ Ker} T = \{v \in V \mid T(v) = 0\}\end{equation}
+                    \item The nullity is the dimension of the null space of T.
+                    \item The range (or Image) of $T$ is the set of vectors $w$ in $W$ s.t. $T(v) = w$ for some $v$ in $V$.
+                        \begin{equation}(\operatorname{range } T) \operatorname{ Im} T = \{w \in W \mid T(v) = w \text{ for some } v \in V\}\end{equation}
+                    \item The rank of T is the dimension of the range of T.
+                        \begin{equation}
+                            (\operatorname{rank } T) = \operatorname{dim} (\operatorname{Im} T) \quad (= \operatorname{dim} (\operatorname{range } T))
+                        \end{equation}
+                \end{itemize}
+            \subsubsection{Example of the kernel}
+                \hskip \parindent
+                \par $T:\mathbb{R}^3 \rightarrow \mathbb{R}^2$ s.t. $T(x_1,x_2,x_3) = (x_1,x_2)$.
+                \par $\operatorname*{Ker} T = \{(x_1,x_2,x_3)\in \mathbb{R}^3 \mid T(x_1,x_2,x_3) = (0,0)\} = \{(0,0,x_3)\mid x_3 \in \mathbb{R}\} = \operatorname*{span}\{e_3\}$
+                \par $\operatorname*{dim}(\operatorname*{Ker} T) = \operatorname*{dim}(\operatorname*{span}\{e_3\}) = 1$
+                \par $\cdot$ $\operatorname{Im}T = \{(x,y)\in \mathbb{R}^2 \mid \exists (x_1,x_2,x_3) \in \mathbb{R}^3 \text{ s.t. } T(x_1,x_2,x_3) = (x,y)\} = \mathbb{R}^2$
+                \par $\operatorname*{rank} T= \operatorname*{dim}(\operatorname*{Im} T)= 2$
+                \par Notice that $\operatorname*{dim}(\operatorname*{Ker} T) + \operatorname*{dim}(\operatorname*{Im} T) = 1 + 2 = 3 = \operatorname*{dim}(\mathbb{R}^3)$
+        \subsection{The rank-nullity theorem over linear transformations}
+            \subsubsection{Statement of the theorem}
+                \hskip \parindent
+                \par Let $V$ and $W$ be two f.d.v.s. over $\mathbb{F}$, and let $T:V \rightarrow W$ be a l.t.. Then:
+                \begin{equation}
+                    \operatorname*{dim}(V) = \operatorname*{dim}(\operatorname*{Ker} T) + \operatorname*{dim}(\operatorname*{Im} T)= \operatorname*{null} T + \operatorname*{rank} T
+                \end{equation}
+                \par Proof see [104016 L-251201]-P15
+            \subsubsection{Corollary of the rank-nullity theorem}
+                \hskip \parindent
+                \par Let $V$ and $W$ be two n-dimensional v.s. over $\mathbb{F}$, and let $T:V \rightarrow W$ be a l.t.. Then the following statements are equivalent:
+                \begin{itemize}
+                    \item [i] T is isomorphism (bijective).
+                    \item [ii] T is monomorphism (injective).
+                    \item [iii] T is epimorphism (onto).
+                \end{itemize}
+                \par Proof see [104016 L-251201]-P20
+        \subsection{Remark: images and inverse images of functions}
+            \hskip \parindent
+            \par Let $f:A \rightarrow B$ be a function. If $A' \subseteq A$, then $f(A') = \{ b\in B \mid f(a) = b \text{ for some } a \in A' \}$. (Image of $A'$, Im($f \mid _{A'}$))
+            \par In particular, if $A = A'$, $f(A) = Im(f) = \{ b \in B \mid f(a) = b \text{ for some } a \in A \}$
+            \par If $B' \subseteq B$, then $f^{-1}(B') = \{ a \in A \mid f(a)=b \text{ for some } b \in B' \}$ This is the inverse image of $B'$.
+            \par When $B' = \{b\}$, we write $f^{-1}(b)$.
+        \subsection{Proposition: images and inverse images of linear transformations}
+            \hskip \parindent
+            \par Let $T:V \rightarrow W$ be a l.t. Then:
+            \begin{itemize}
+                \item [i] If S is a subsapce of V, then $T(S)$ is a subspace of $W$. Moreover, if $S=\operatorname{span}\{v_1,v_2,\cdots,v_n\}$, then $T(S) = \operatorname{span}\{T(v_1),T(v_2),\cdots,T(v_n)\}$
+                \item [ii] If $U$ is a subspace of $W$, then $T^{-1}(U)$ is a subsapce of $V$.
+            \end{itemize}
+            \par Proof see [104016 L-251201]-P5.

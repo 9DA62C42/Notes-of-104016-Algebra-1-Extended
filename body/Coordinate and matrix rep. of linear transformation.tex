@@ -1,0 +1,174 @@
+\section{Coordinate and matrix rep. of linear transformation}
+    \subsection{Coordinate}
+        \subsubsection{Coordinate in $\mathbb{R}^3$}
+            \hskip \parindent
+            \par $\mathbb{R}^3: \varepsilon=\{e_1,e_2,e_3\}$, $(x,y,z) = xe_1 + ye_2 + ze_3$, $[ (x,y,z) ]_{\varepsilon} = \begin{bmatrix} x \\ y \\ z \end{bmatrix}$
+        \subsubsection{Definition of coordinate}
+            \hskip \parindent
+            \par If $V$ is f.d.v.s. over $\mathbb{F}$, an ordered basis $B$ for $V$ is a finite sequence of vectors which is l.i. and spans $V$.
+            \par Suppose the $V$ is a f.d.v.s. over $\mathbb{F}$, and let $B=\{v_1,v_2,\cdots,v_n\}$ be an ordered basis for $V$. Then for each $v \in V$, there are scalars $\alpha_1,\alpha_2,\cdots,\alpha_n \in \mathbb{F}$ s.t.
+            \begin{equation}
+                v = \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n
+            \end{equation}
+            \par We define $[-]_B: V\rightarrow\mathbb{F}^n$, $v\mapsto [v]_B = \begin{bmatrix} \alpha_1 \\ \alpha_2 \\ \vdots \\ \alpha_n \end{bmatrix}$ as the coordinate vector of $v$ relative to the basis $B$.
+            \par We can prove that $[v]_B + [w]_B = [v+w]_B$ and $c[v]_B = [cv]_B$.
+            \par Proof see [104016 L-251203]-P3.
+        \subsubsection{Definition of coordinate matrix}
+            \hskip \parindent
+            \par $[v]_B= \begin{bmatrix} \alpha_1 \\ \alpha_2 \\ \vdots \\ \alpha_n \end{bmatrix}$ is the coordinate matrix of $V$ relative to the ordered basis $B$.
+        \subsubsection{Proposition: coordinate is l.t. and isomorphism}
+            \hskip \parindent
+            \par The function $[-]_B: V \rightarrow \mathbb{F}^n$ is a l.t.. Moreover, $[-]_B$ is an isomorphism.
+            \par Proof see [104016 L-251203]-P4.
+        \subsubsection{Example of coordinate matrix}
+            \hskip \parindent
+            \begin{itemize}
+                \item Let $V = \mathbb{R}^n$, $\varepsilon = \{e_1,e_2,\cdots,e_n\}$. $x \in \mathbb{R}^n, [x]_{\varepsilon} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}$.
+                \item $V=\mathbb{R}_n[x]$, $\varepsilon = \{1,x,x^2,\cdots,x^n\}$. $p(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_n x^n$, $[p(x)]_{\varepsilon} = \begin{bmatrix} a_0 \\ a_1 \\ a_2 \\ \vdots \\ a_n \end{bmatrix}$.
+                \item $V=\mathbb{R}^3$, $B=\{(1,1,1),(1,1,0),(1,0,0)\}$ an ordered basis of $\mathbb{R}^3$.
+                \item $(x,y,z) = (\alpha_1 + \alpha_2 + \alpha_3, \alpha_1 + \alpha_2, \alpha_1).$ Thus $[(x,y,z)]_B = \begin{bmatrix} \alpha_1 \\ \alpha_2 \\ \alpha_3 \end{bmatrix} = \begin{bmatrix} z \\ y - z \\ x - y \end{bmatrix}$
+            \end{itemize}
+    \subsection{Representation of l.t. by Matrix}
+        \subsubsection{Flow chart of the process}
+            \hskip \parindent
+            \par The chart of the process is shown below:
+            \begin{center}
+                \begin{tikzcd}[row sep=huge, column sep=huge]
+                    v \arrow[r, , "{[\,-\,]_B}"] \arrow[d, , "T"'] 
+                    & {[v]_B} \arrow[d, "{[T]_{B'}^B}"] \\
+                    T(v) \arrow[r, , "{[\,-\,]_{B'}}"'] 
+                    & {[T(v)]_{B'}} 
+                \end{tikzcd}
+                \par Notice that $[T(v)]_{B'}= [T]_{B'}^B [v]_B$ 
+            \end{center}
+            \par The process of derivation see [104016 L-251203]-P7.
+            \par At last we have: $A=[[T(v_1)]_{B_2}\mid [T(v_2)]_{B_2} \mid \cdots \mid [T(v_n)]_{B_2}]]$.
+        \subsubsection{Definition of matrix representation of l.t.}
+            \hskip \parindent
+            \par The matrix $A=[[T(v_1)]_{B_2}\mid [T(v_2)]_{B_2} \mid \cdots \mid [T(v_n)]_{B_2}]]$ is called the matrix of $T$ relative to the pair of ordered basis $B_1$ and $B_2$.
+            \par Notation: We write $A$ as $[T]_{B_2}^{B_1}$ or $[T]_{B_1 B_2}$
+        \subsubsection{Example}
+            \hskip \parindent
+            \par Example see [104016 L-251203]-P12.
+        \subsubsection{Theorem: each l.t. corresponds to a unique matrix}
+            \hskip \parindent
+            \par Let $V$ be an n-dim v.s. over $\mathbb{F}$ and $W$ be an m-dim v.s. over $\mathbb{F}$. Let $B$ be an ordered basis for $V$ and let $B'$ be an ordered basis for $W$. For each l.t. $T: V \rightarrow W$, there is an $m \times n$ matrix $A$ over which entries in $\mathbb{F}$ s.t.
+            \begin{equation}
+                [T(v)]_{B'} = A [v]_B
+            \end{equation}
+            \par For every vector $v$ in $V$. Furthermore, $T \rightarrow A$ is a one to one correspondence between the set of all l.t. from $V$ to $W$ and the set of matrices of size $m \times n$, which entries in $\mathbb{F}$.
+            \par Proof see [104016 L-251203]-P18.
+        \subsubsection{Corollary: kernel and image over matrix representation}
+            \hskip \parindent
+            \begin{itemize}
+                \item [i] $\operatorname*{Ker} T = \{v \in V \mid [v]_B \in \operatorname*{Ker}[T]_{B'}^B \}$ 
+                \par In particular, $\{u_1,u_2,\cdots,u_r\}$ is a basis of $\operatorname*{Ker} T$ iff $\{[u_1]_B,[u_2]_B,\cdots,[u_r]_B\}$ is a basis of $\operatorname*{Ker} [T]_{B'}^B$
+                \item [ii] $\operatorname*{Im} T = \{w \in W \mid [w]_{B'} \in \operatorname*{Im} [T]_{B'}^B \}=\{w\in W\mid [w]_{B'} \in \operatorname*{Col}([T]_{B'}^B)\}$
+                \par In particular, $\{u_1,u_2,\cdots,u_s\}$ is a basis for $\operatorname*{Im}T$ iff $\{[u_1]_{B'},[u_2]_{B'}$,$\cdots$,$[u_s]_{B'}\}$ is a basis for $\operatorname*{Col}([T]_{B'}^B)$
+            \end{itemize}
+        \subsubsection{Remark: addition and scalar multiplication of l.t.}
+            \hskip \parindent
+            \par If $T,T': V \rightarrow W$ and $\alpha \in \mathbb{F}$, then
+            \par $[\alpha T + T'] _{B'}^B(v) = [(\alpha T+T')(v)]_{B'} = [\alpha T + T']^B_{B'}[v]_B=[\alpha T (v) + T'(v)]_{B'} = \alpha [T(v)]_{B'} + [T'(v)]_{B'}=\alpha[T]^B_{B'}[v]_B + [T']^B_{B'}[v]_B=(\alpha[T]^B_{B'}+ [T']^B_{B'})[v]_B$
+            \par $[\alpha T +T']^B_{B'} = (\alpha[T]^B_{B'} + [T']^B_{B'})[v]_B$ $\forall v \in V \Rightarrow [\alpha T + T']^B_{B'} = \alpha[T]^B_{B'} + [T']^B_{B'}$
+        \subsubsection{Theorem: martix representation is isomorphism}
+            \hskip \parindent
+            \par Let $V$ be an n-d.v.s. over $\mathbb{F}$ and let $W$ be an m-d.v.s. over $\mathbb{F}$. For each pair of ordered basis $B$, $B'$ for $V$ and $W$, representation
+            \begin{equation}
+                \text{The function } [-]^B_{B'} =  \mathcal{F}_{B B'}: \operatorname*{Hom}_{\mathbb{F}}(V,W) \rightarrow \mathbb{F}^{m \times n}, T \mapsto [T]^B_{B'}
+            \end{equation}
+            \par is an isomorphism.
+        \subsubsection{Corollary: the dimension of Hom($V,W$)}
+            \hskip \parindent
+            \par If $\operatorname*{dim}_{\mathbb{F}} V =n $, $\operatorname*{dim}_{\mathbb{F}} W = m$, then $\operatorname*{dim}_{\mathbb{F}} (\operatorname*{Hom}_{\mathbb{F}}(V,W)) = mn$.
+
+    \subsection{The compostition of linear transformation and matrix representation}
+        \subsubsection{Theorem: composition corresponds to matrix multiplication}
+            \hskip \parindent
+            \par Let $V$, $W$ and $Z$ be f.d. vector space over $\mathbb{F}$, let $T_1$ be a l.t. from $V$ into $W$ and $T_2$ be a l.t. from $W$ into $Z$. If $\mathcal{B}_1,\mathcal{B}_2,\mathcal{B}_3$ are ord. bases for $V,W,Z$ representation.
+            \par Then $[T_2 \circ T_1]$ = $[T_2]^{\mathcal{B}_2}_{\mathcal{B}_3} [T_1]^{\mathcal{B}_1}_{\mathcal{B}_2}$.
+            \par Proof see [104016 L-251208]-P3.
+        \subsubsection{Corollary: invertible l.t. corresponds to invertible matrix}
+            \hskip \parindent
+            \par Let $V$ and $W$ be two f.d.v.s. over $\mathbb{F}$. Let $T:V \rightarrow W$ be an invertible l.t.. If $\mathcal{B}_1$ and $\mathcal{B}_2$ are ordered bases for $V$ and $W$ respectively. Then $[T^{-1}]^{\mathcal{B}_2}_{\mathcal{B}_1} = ([T]^{\mathcal{B}_1}_{\mathcal{B}_2})^{-1}$.
+            \par Proof see [104016 L-251208]-P4.
+    \subsection{Change of Basis}
+        \subsubsection{Introduction of change of basis}
+            \hskip \parindent
+            \par Suppose that $V$ is a n-dimensional v.s. and $\mathcal{B}_1=\{v_1,v_2,\cdots,v_n\}$ and $\mathcal{B}_2=\{w_1,w_2,\cdots,w_n\}$ are two ordered bases for $V$.
+            \par There are unique scalars $P_{ij}$ s.t. $w_j = P_{1j}v_1 + P_{2j}v_2 + \cdots + P_{nj}v_n$ for each $j=1,2,\cdots,n$.
+            \par Thus, if $v\in V$ and $v=\alpha_1 w_1 + \alpha_2 w_2 + \cdots + \alpha_n w_n$, ($\alpha_i \in \mathbb{F}$)
+            \begin{align*}
+                \text{Then} v&=\alpha_1 (\sum\limits_{i=1}^n P_{i1} v_i) + \alpha_2 (\sum\limits_{i=1}^n P_{i2} v_i) + \cdots + \alpha_n (\sum\limits_{i=1}^n P_{in} v_i)
+                \\ &=\sum\limits_{j=1}^n (\alpha_j \sum\limits_{i=1}^n P_{ij} v_i)
+                \\ &=\sum\limits_{i=1}^n \sum\limits_{j=1}^n\alpha_j P_{ij} v_i
+            \end{align*}
+            \par Therefore $V=\sum\limits_{i=1}^n (\sum\limits_{j=1}^n(P_{ij}\alpha_j)) v_i$ = $\sum\limits_{i=1}^n \alpha'_i v_i$ where $\alpha'_i = \sum\limits_{j=1}^n P_{ij}\alpha_j$ for each $i=1,2,\cdots,n$.
+            \begin{equation}
+                \begin{bmatrix} P_{11}&P_{12}&\cdots&P_{1n} \\ P_{21}&P_{22}&\cdots&P_{2n} \\\vdots&\vdots&\ddots&\vdots \\P_{n1}&P_{n2}&\cdots&P_{nn}\end{bmatrix}
+                \begin{bmatrix}\alpha_1 \\ \alpha_2 \\ \vdots \\ \alpha_n \end{bmatrix}
+                =
+                \begin{bmatrix}\alpha'_1 \\ \alpha'_2 \\ \vdots \\ \alpha'_n \end{bmatrix}
+            \end{equation}
+            \begin{equation}
+                \begin{bmatrix}[w_1]_{\mathcal{B}_1} \mid [w_2]_{\mathcal{B}_1} \mid \cdots \mid [w_n]_{\mathcal{B}_1}\end{bmatrix}
+                [v]_{\mathcal{B}_2} = [v]_{\mathcal{B}_1}[v]_{\mathcal{B}_2} = [v]_{\mathcal{B}_1}
+            \end{equation}
+            \begin{equation}
+                [id]^{\mathcal{B}_2}_{\mathcal{B}_1}[v]_{\mathcal{B}_2} = [v]_{\mathcal{B}_1}
+            \end{equation}
+            \par $[id]^{\mathcal{B}_2}_{\mathcal{B}_1}$ can also weritten as $C(\mathcal{B}_2,\mathcal{B}_1)$.
+        \subsubsection{Definition of change of basis matrix}
+            \hskip \parindent
+            \par The matrix $C(\mathcal{B}_2,\mathcal{B}_1)=[id]^{\mathcal{B}_2}_{\mathcal{B}_1}$ is called the change of basis matrix from $\mathcal{B}_2$ to $\mathcal{B}_1$.
+            \par \textbf{Notice that $C(\mathcal{B}_2,\mathcal{B}_1)$ is invertible:} $(C(\mathcal{B}_2,\mathcal{B}_1))^{-1} = C(\mathcal{B}_1,\mathcal{B}_2)$. That is $([id]^{\mathcal{B}_2}_{\mathcal{B}_1})^{-1} = [id]^{\mathcal{B}_1}_{\mathcal{B}_2}$.
+       \subsubsection{Theorem of change of basis (unique invertible matrix)}
+            \hskip \parindent
+            \par Let $V$ be an n-d.v.s. over $\mathbb{F}$ and let $\mathcal{B}_1$ and $\mathcal{B}_2$ be two bases for $V$. There exists a unique necessary invertible $n\times n$ matrix $A$ with entries in $\mathbb{F}$ s.t.
+            \begin{itemize}
+                \item $[v]_{\mathcal{B}_1} = A [v]_{\mathcal{B}_2}$
+                \item $[v]_{\mathcal{B}_2} = A^{-1} [v]_{\mathcal{B}_1}$
+                \item [] $\forall v \in V$ ($A = C (\mathcal{B}_2,\mathcal{B}_1)=[id]^{\mathcal{B}_2}_{\mathcal{B}_1}$)
+            \end{itemize}
+        \subsubsection{Theorem of change of basis (unique basis)}
+            \hskip \parindent
+            \par Suppose $A$ is an invertible matrix in $\mathbb{F}^{n\times n}$. Let $V$ be an n-d.v.s. over $\mathbb{F}$, and let $\mathcal{B}_1$ be an ordered basis for $V$. Then there is a unique basis $\mathcal{B}_2$ of $V$ s.t.
+            \begin{itemize}
+                \item $[v]_{\mathcal{B}_1} = A [v]_{\mathcal{B}_2}$
+                \item $[v]_{\mathcal{B}_2} = A^{-1} [v]_{\mathcal{B}_1}$
+            \end{itemize}
+        \subsubsection{Proposition: composition of change of basis matrix}
+            \hskip \parindent
+            \par Let $V$ be an n-d.v.s. over $\mathbb{F}$. Let $\mathcal{B}_1$, $\mathcal{B}_2$, $\mathcal{B}_3$ be three ordered bases for $V$. Then
+            \begin{equation}
+                [id]^{\mathcal{B}_1}_{\mathcal{B}_3} = [id]^{\mathcal{B}_2}_{\mathcal{B}_3} [id]^{\mathcal{B}_1}_{\mathcal{B}_2} \equiv C(\mathcal{B}_1,\mathcal{B}_3) = C(\mathcal{B}_2,\mathcal{B}_3)C(\mathcal{B}_1,\mathcal{B}_2)
+            \end{equation}
+        \subsubsection{Theorem: change of basis for matrix representation of l.t.}
+            \hskip \parindent
+            \par Let $V$ and $W$ be two f.d.v.s. over $\mathbb{F}$. Let $B_1$ and $B_2$ be two ordered bases for $V$ and, let $B'_1$ and $B'_2$ be two ordered bases for $W$. If $T:V \rightarrow W$ is a l.t., then
+            \begin{equation}
+                [T]^{B_2}_{B'_2} = [id]^{B'_1}_{B'_2} [T]^{B_1}_{B'_1} [id]^{B_2}_{B_1} \equiv [T]^{B_2}_{B'_2} = C(B'_1,B'_2) [T]^{B_1}_{B'_1} C(B_2,B_1)
+            \end{equation}
+            \par Proof see [104016 L-251208]-P17.
+        \subsubsection{Corollary: change of basis for matrix representation of endomorphism}
+            \hskip \parindent
+            \par Let $V$ be a f.d.v.s. over $\mathbb{F}$, and let $B_1$ and $B_2$ be two ordered bases for $V$. If $T$ is an endomorphism (or linear operator $\equiv T:V \rightarrow V$ l.t.)
+            \par Then $[T]_{B_2} = [id]^{B_1}_{B_2} [T]_{B_1} [id]^{B_2}_{B_1} \equiv [T]_{B_2} = C^{-1}(B_2,B_1) [T]_{B_1} C(B_2,B_1)$.
+        \subsubsection{Explaination of change of basis for matrix representation}
+            \hskip \parindent
+            \par Two matrices are similar if they represent the same linear transformation but with respect to different coordinate systems (bases). Geometrically, the transformation itself does not change—only the way we describe it in coordinates does.
+    \subsection{Similar Matrices}
+        \subsubsection{Definition of similar matrices}
+            \hskip \parindent
+            \par Let $A$ and $B$ be $n \times n$ matrices with entries in $\mathbb{F}$. We say that $B$ is similar to $A$ if there exists an invertible matrix $C$ s.t. $B = C^{-1} A C$.
+        \subsubsection{Extension: similarity is a equivalence relation}
+            \hskip \parindent
+            \par Similarity is an equivalence relation.
+            \begin{itemize}
+                \item [i] Reflexive: $A \sim_{sim} A$.
+                \item [ii] Symmetric: If $A \sim_{sim} B$, then $B \sim_{sim} A$.
+                \item [iii] Transitive: If $A \sim_{sim} B$ and $B \sim_{sim} C$, then $A \sim_{sim} C$.
+            \end{itemize}
+        \subsubsection{Example}
+            \hskip \parindent
+            \par Example see [104016 L-251208]-P21.

@@ -1,0 +1,52 @@
+\section{Span and generating system}
+        \subsection{Definition of span}
+            \hskip \parindent
+            \par A vector $v$ in $V$ is said to be a linear combination of the vectors $v_1, v_2, \ldots, v_n$ in $V$ if there exist scalars $\alpha_1, \alpha_2, \ldots, \alpha_n$ in $\mathbb{F}$ such that
+            \begin{equation}
+                v = \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n = \sum_{i=1}^n \alpha_i v_i.
+            \end{equation}
+            \par The set of all linear combinations of $v_1, v_2, \ldots, v_n$ is denoted by $\operatorname{span}\{ v_1, v_2, \ldots, v_n \}$ and it's called the subspace spanned by the vectors $v_1, v_2, \ldots, v_n$. The set $\{v_1, v_2, \ldots, v_n\}$ is called a \textbf{generating system} of the subspace $\operatorname{span}\{ v_1, v_2, \ldots, v_n \}$.
+            \par Notice that $\operatorname{span}\{ v_1, v_2, \ldots, v_n \}$ is a subspace of $V$:
+            \begin{itemize}
+                \item [i]: $0 \in \operatorname{span}\{ v_1, v_2, \ldots, v_n \}, \text{ since } 0 = 0v_1 + 0v_2 + \cdots + 0v_n$
+                \item [ii]: $v,w \in \operatorname{span}\{ v_1, v_2, \ldots, v_n \}, \text{ then } v+w \in \operatorname{span}\{ v_1, v_2, \ldots, v_n \}$
+                \item [iii]: if $v \in \operatorname{span}\{ v_1, v_2, \ldots, v_n \}, \text{ then } \alpha v \in \operatorname{span}\{ v_1, v_2, \ldots, v_n \}$
+            \end{itemize}
+            \par Thus, $\operatorname{span}\{ v_1, v_2, \ldots, v_n \}$ is a subspace of V.
+            \par In particular, if $V = \mathbb{F}^m$, then $\operatorname{span}\{ v_1, v_2, \ldots, v_n \} = \{ b \in \mathbb{F}^m \mid Ax=b \}$ where $A = [v_1 \mid v_2 \mid \cdots \mid v_n]$.
+        \subsection{Example of span}
+            \subsubsection{$\mathbb{R}^2$}
+                \hskip \parindent
+                \par $\mathbb{F}=\mathbb{R}$, $V=\mathbb{R}^2$, $S=\{(1,0),(0,1)\}$, $\forall (x,y)\in \mathbb{R}^2,\ (x,y)=x(1,0)+y(0,1)$ then $\mathbb{R}^2=\operatorname{span}\{(1,0),(0,1)\}$.
+            \subsubsection{$\mathbb{F}^n$}
+                \hskip \parindent
+                \par $V=\mathbb{F}^n, S=\{e_1,e_2,\cdots,e_n\}$ where $e_i$ is the vector whose $i$-th component is 1 and all other components are 0. Then $\mathbb{F}^n=\operatorname{span}\{e_1,e_2,\cdots,e_n\}$.
+            \subsubsection{$\mathbb{F}^{m\times n}$}
+                \hskip \parindent
+                \par In general, $M_{m\times n}(\mathbb{F})=\operatorname{span}\{E^{ij}\mid 1\leq i \leq m, 1\leq j \leq n\}$ where $E^{ij}$ is the matrix whose $(i,j)$-th entry is 1 and all other entries are 0.
+            \subsubsection{$\mathbb{F}[x]$}
+                \hskip \parindent
+                \par V=$\mathbb{F}[x]$, then:
+                \begin{equation*}
+                    \mathbb{F}[x] = \operatorname{span}\{ x^i \mid i \in \mathbb{N}_0 \}
+                \end{equation*}
+        \subsection{Extension: smallest subspace containing given vectors}
+            \hskip \parindent
+            \par $\operatorname{span}\{v_1, v_2, \cdots ,v_n\}$ is the smallest subspace of V containing $v_1, v_2, \cdots ,v_n$.
+        \subsection{Proposition: intersection of subspaces\label{intersection of subspaces}}
+            \hskip \parindent
+            \par Let $V$ be a vector space over a field $\mathbb{F}$ and let $S$ and $T$ be two subspaces, then $S \cap T$ is also a subspace of $V$.
+            \par Proof see section "Proofs".
+        \subsection{Remark: union of subspaces is not a subspace}
+            \hskip \parindent
+            \par If $V$ is a vector space and $S,T \le V$. In general $S \cup T$ is not a subspace of $V$.
+        \subsection{Example of the remark}
+            \hskip \parindent
+            \par $V = \mathbb{R}^2$, $S = \{ (x,0) \mid x \in \mathbb{R} \}$, $T = \{ (0,y) \mid y \in \mathbb{R} \}$
+            \par $S \cup T = \{ (x,0) \mid x \in \mathbb{R} \} \cup \{ (0,y) \mid y \in \mathbb{R} \}$
+            \par $(1,0) \in S \cup T$, $(0,1) \in S \cup T$, but $(1,0)+(0,1) = (1,1) \notin S \cup T$
+            \par So $S \cup T$ is not a subspace of $V$.
+        \subsection{Proposition: rank and generating system\label{sec:ranka=m}}
+             \hskip \parindent 
+             \par A collection of vectors $v_1,v_2,\cdots,v_n\in \mathbb{F}^m$ is a generating set of V iff the matrix A=[$v_1|v_2|\cdots|v_n$] has rank m. In this case m $\leq$ n.
+             \par Proof see section "Proofs".

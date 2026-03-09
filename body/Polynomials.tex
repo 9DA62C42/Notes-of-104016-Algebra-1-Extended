@@ -1,0 +1,121 @@
+    \section{Polynomials}
+        \subsection{Definition of polynomials}
+            \hskip \parindent
+            \par Let $\mathbb{F}$ be a field and consider a indeterminate $x$. A polynomial in the variable $x$ with cofficients in $\mathbb{F}$ (or a polynomial in $\mathbb{F}[x]$) is an expression of the form:
+            \begin{equation}
+                p(x) = a_n x^n + a_{n-1} x^{n-1} + \ldots + a_1 x + a_0
+            \end{equation}
+            \par Where $a_0, a_1, \ldots, a_n$ $\in\mathbb{F}$ are the cofficients, and $n$ is in $\mathbb{N}_0$. The set of all such polynomials is denoted by $\mathbb{F}[x]$.
+        \subsection{Notations and definitions over polynomials}
+            \hskip \parindent
+            \par In the polynomial $p(x) = a_ n x^n + a_{n-1} x^{n-1} + \ldots + a_1 x + a_0$, the following notations and definitions are used:
+            \begin{itemize}
+                \item Degree: The degree of a non-zero polynomial $p(x)$, denoted by $\text{deg}(p)$, is the largest integer $n$ s.t. $a_n \neq 0$.
+                \item Leading term: The leading term is the term $a_n x^n$ where $n=\text{deg}(p)$.
+                \item Leading coefficient: The leading coefficient is the coefficient $a_n$ of the leading term.
+                \item Costant coefficient: The constant coeff. $a_0$.
+                \item Monic polynomial: A polynomial is called \underline{monic} if the leading coeff. is 1.
+                \item Zero polynomial: $\text{deg}(0) = -\infty$.
+                \item Constant polynomial: A polynomial $p(x)$ is called constant if $\text{deg}(p) = 0$, and $p(x) = a_0$.
+                \item By convention, $x^0=1$.
+            \end{itemize}
+        \subsection{Polynomial division}
+            \subsubsection{Dividible polynomials}
+                \hskip \parindent
+                \par Let $p(x), d(x) \in \mathbb{F}[x]$ be two polynomials, with $d(x) \neq 0$. We say that $d(x)$ divides $p(x)$ (denoted by $d(x) | p(x)$) if there exists a polynomial $q(x) \in \mathbb{F}[x]$ such that:
+                \begin{equation}
+                    p(x) = d(x) q(x)
+                \end{equation}
+                \par In this case, $q(x)$ is called the quotient polynomial.
+            \subsubsection{Some properties of divisibility}
+                \hskip \parindent
+                \par Let $f(x)$, $g(x)$, $h(x) \in \mathbb{F}[x]$ and $c \in \mathbb{F} \backslash \{0\}$. Then we have the following properties:
+                \begin{itemize}
+                    \item $ f(x) | 0$
+                    \item $ c | f(x) $
+                    \item $ c f(x) | f(x) $
+                    \item if $ f(x) | g(x) $ and $ g(x) | h(x) $, then $ f(x) | h(x) $
+                    \item if $ f(x) | g(x) $, then $ f(x) | g(x) h(x) $
+                    \item if $ f(x) | g(x) $ and $ f(x) | h(x) $, then $ f(x) | (g(x) + h(x)) $
+                    \item if $ f(x) | c $, then $\text{deg}(f(x)) = 0$
+                    \item if $f(x) | g(x)$ and $g(x) | f(x)$, then $\exists d \in \mathbb{F} \backslash \{0\}$ s.t. $f(x) = d g(x)$
+                    \item $f(x) | g(x)$ iff $c f(x) | g(x) $ iff $ f(x) | c g(x)$
+                \end{itemize}
+        \subsection{Theorem of common divisor}
+            \subsubsection{Statement of the theorem}
+                \hskip \parindent
+                \par Let $f(x)$ and $g(x)$ be polynomials in $\mathbb{F}[x]$, not both zero. Then there exists a unique monic polynomial $h(x)$ of highest degree dividing both $f(x)$ and $g(x)$. Moreover, any polynomial that divides $f(x)$ and $g(x)$ also divides $h(x)$.
+                \par Furthermore, there exist polynomials $r(x)$ and $t(x)$ s.t.:
+                \begin{equation}
+                    h(x) = r(x) f(x) + t(x) g(x)
+                \end{equation}
+                \par The polynomial $h(x)$ is called the greatest common divisor (gcd) of $f(x)$ and $g(x)$:
+                \begin{equation}
+                    \text{g.c.d.}(f(x),g(x)) = h(x)
+                \end{equation}
+                \par We say that $f(x)$ and $g(x)$ are coprime if $\text{g.c.d.}(f(x),g(x)) = 1$.
+            \subsubsection{Lemma of this theorem\label{lemma of common divisor}}
+                \hskip \parindent 
+                \par If $f(x)$, $g(x)$, $h(x) \in \mathbb{F}[x]$ and $f(x)|g(x)h(x)$ with $\text{g.c.d.}(f(x),g(x))=1$, then $f(x)|h(x)$. 
+                \par Proof see section "Proofs".
+            \subsubsection{Extension of this theorem}
+                \hskip \parindent
+                \par If $f(x) | h(x)$ and $g(x) | h(x)$ where $\text{g.c.d.}(f(x),g(x)) = 1$, then $f(x) g(x) | h(x)$.
+        \subsection{Fundamental theorem of arithmetics}
+            \subsubsection{Statement of the theorem}
+                \hskip \parindent
+                \par Given $f(x)\in\mathbb{F}[x]$, $f(x) \neq 0$ and $\text{deg}(f(x)) \geq 1$. Then there exist $p_1(x), p_2(x), \cdots, p_r(x) \in \mathbb{F}[x]$ irreducible and monic, $c \in \mathbb{F} \backslash \{0\}$ s.t.:
+                \begin{equation}
+                    f(x) = c (p_1(x))^{n_1} (p_2(x))^{n_2} \cdots (p_r(x))^{n_r} = \prod\limits_{i=1}^r (p_i(x))^{n_i}
+                \end{equation}
+            \subsubsection{Remark}
+                \hskip \parindent
+                \par $p_1(x), p_2(x), \cdots, p_r(x)$ are unique up to permutation.
+                \par $n_1, n_2, \cdots, n_r$ are unique up to permutation.
+                \par $c$ is unique.
+        \subsection{Fundamental theorem of algebra}
+            \subsubsection{Statement of the theorem}
+                \hskip \parindent
+                \par $\mathbb{C}$ is algebraically closed $\equiv$ every non-constant polynomial in $\mathbb{C}[x]$ has at least one root in $\mathbb{C}$.
+        \subsection{Theorems and algorithms about polynomial division and roots}
+            \subsubsection{Long division of polynomials}
+                \hskip \parindent
+                \par Let $p(x)$, $q(x) \in \mathbb{F}[x]$, then $\exists c(x)$, $r(x) \in \mathbb{F}[x]$ s.t.:
+                \begin{equation}
+                    p(x) = c(x) q(x) + r(x)
+                \end{equation}
+                \par Where $\text{deg}(r(x)) < \text{deg}(q(x))$ or $r(x) = 0$.
+            \subsubsection{Remainder theorem}
+                \hskip \parindent
+                \par Let $p(x) \in \mathbb{F}[x]$, and $\text{deg}(p(x)) \geq 1$. Let $\alpha \in \mathbb{F}$, then $\exists c(x) \in \mathbb{F}[x]$ s.t.:
+                \begin{equation}
+                    p(x) = (x - \alpha) c(x) + p(\alpha)
+                \end{equation}
+            \subsubsection{Factor theorem}
+                \hskip \parindent
+                \par Let $p(x) \in \mathbb{F}[x] \backslash \{0\}$, and $\text{deg}(p(x)) \geq 1$. Let $\alpha \in \mathbb{F}$, then $(x - \alpha) | p(x)$ iff $p(\alpha) = 0$.
+            \subsubsection{Gauss' criterion}
+                \hskip \parindent
+                \par Given $f(x) \in \mathbb{Z}[x]$, $f(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_n x^n$, $a_n \neq 0$ of degree $n$. Let $r \in \mathbb{Z}$, $s \in \mathbb{N}$ s.t. $\text{g.c.d.}(r,s) = 1$ and $\frac{r}{s}$ is a root of $f(x)$ in $\mathbb{Q}$. Then $s | a_n$ and $r | a_0$.
+            \subsubsection{Eisentein's criterion}
+                \hskip \parindent
+                \par Let $f(x) = x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0$ be a monic polynomial in $\mathbb{Z}[x]$. If $p$ is a prime number s.t.: $p| a_0$, $a_1$, $\cdots$, $a_{n-1}$, but $p^2 \nmid a_0$, then $f(x)$ is irreducible in $\mathbb{Q}[x]$.
+            \subsubsection{Vieta's formular}
+                \hskip \parindent
+                \par Let $p(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0 = a_n (x-x_1) (x - x_2) \cdots (x-x_n)$
+                \par Then we have:
+                \begin{equation}
+                    \sum\limits_{i=1}^n x_i = -\frac{a_{n-1}}{a_n}
+                \end{equation}
+                \begin{equation}
+                    \sum\limits_{1 \leq i < j \leq n} x_i x_j = \frac{a_{n-2}}{a_n}
+                \end{equation}
+                \begin{equation}
+                    \sum\limits_{1 \leq i < j < k \leq n} x_i x_j x_k = -\frac{a_{n-3}}{a_n}
+                \end{equation}
+                \begin{equation*}
+                    \cdots
+                \end{equation*}
+                \begin{equation}
+                    \prod\limits_{i=1}^n x_i = (-1)^n \frac{a_0}{a_n}
+                \end{equation}  

@@ -1,0 +1,133 @@
+\section{Diagonalization and eigenvalues}
+        \subsection{Aim of diagonalization}
+            \hskip \parindent
+            \par Aim: Given a n-dimensional v.s. $V$ over $\mathbb{F}$ and a l.op. $f:V\rightarrow V$, find a ordered basis $B$ for $V$ s.t. $[f]_B = \operatorname*{diag}(\lambda_1,\lambda_2,\cdots,\lambda_n)$.
+        \subsection{Definition of diagonalizable linear transformation}
+            \hskip \parindent
+            \par A linear transformation $f:V \rightarrow V$ is called diagonalizable if there exists an ordered basis $B$ for $V$ s.t. $[f]_B= \operatorname*{diag}(\lambda_1,\lambda_2,\cdots,\lambda_n)=\begin{bmatrix}
+                \lambda_1 & 0 & 0 & 0 \\
+                0 & \lambda_2 & 0 & 0 \\
+                0 & 0 & \ddots & 0 \\
+                0 & 0 & 0 & \lambda_n
+            \end{bmatrix}$.
+        \subsection{Definition of eigenvector}
+            \hskip \parindent
+            \par We say that a nonzero vector $v$ in $V$ is an eigenvector if there exists a scalar $\lambda \in \mathbb{F}$ s.t. 
+            \begin{equation}
+                f(v) = \lambda v
+            \end{equation}
+        \subsection{Definition of eigenvalue and eigenspace}
+            \hskip \parindent
+            \par A scalar $\lambda \in \mathbb{F}$ is called an eigenvalue of $f$ if $\operatorname*{Ker}(f-\lambda \operatorname*{id}) \neq \{0\} \equiv \exists v \in V \backslash \{0\} \text{ s.t. } (f-\lambda \operatorname*{id})(v) = 0$
+            \par $\equiv \exists v \in V \backslash \{0\} s.t. f(v) = \lambda v$
+            \par The set $V_{\lambda} = \{v \in V \mid f(v) = \lambda v\}$ is called the eigenspace of $f$ associated with $\lambda$ (or relative to $\lambda$).
+            \par The elements $(\neq 0)$ are called eigenvectors of $f$ corresponding to $\lambda$.
+        \subsection{Remark: eigenspace is a subspace}
+            \hskip \parindent
+            \par Given a scalar $\lambda$ in $\mathbb{F}$ and $f :V \rightarrow V$ a l.t. $V_{\lambda} = \{ v \in V \mid f(v) = \lambda v \}$ is a subspace of $V$.
+        \subsection{Remark: eigenspace as kernel}
+            \hskip \parindent
+            \par $f(v) = \lambda v \equiv f(v) - \lambda v = 0 \equiv f(v) - \lambda \operatorname*{id}(v) = 0 \equiv (f - \lambda \operatorname*{id})(v) = 0 \equiv v \in \operatorname*{Ker}(f - \lambda \operatorname*{id})$.
+            \begin{equation}
+                V_{\lambda} = \{ v \in V \mid f(v) = \lambda v \} = \operatorname*{Ker}(f - \lambda \operatorname*{id})
+            \end{equation}
+        \subsection{Theorem: equivalent conditions for eigenvalue}
+            \hskip \parindent
+            \par The following are equivalent:
+            \begin{itemize}
+                \item $\lambda$ is an eigenvalue
+                \item $f-\lambda \operatorname*{id}$ is not a monomorphism
+                \item $\operatorname*{det}(f - \lambda \operatorname*{id}) = 0$
+            \end{itemize}
+            \par Proof see [104016 L-251217]-P13 and P15.
+    \subsection{Characteristic polynomial}
+        \subsubsection{Definition of characteristic polynomial}
+            \hskip \parindent
+            \par Let $f:V \rightarrow V$ be a l.op. on a v.s. $V$ over $\mathbb{F}$, and let $B$ be an oredered basis for $V$. The monic polynomial $\operatorname*{det}(x \operatorname*{id}-[f]_B)$ is called the characteristic polynomial of $f$.
+            \begin{equation}
+                \chi_f(x) = \operatorname*{det}(x \operatorname*{id} - [f]_B)
+            \end{equation}
+        \subsubsection{Corollary: eigenvalues are the root of characteristic polynomial}
+            \hskip \parindent
+            \par $f:V \rightarrow V$ a l.op. on a f.d.v.s. $V$ over $\mathbb{F}$. A scalar $\lambda$ in $\mathbb{F}$ is an eigenvalue of $f$ iff $\lambda$ is a root of $\chi (x)$.
+            \par Proof see [104016 L-251217]-P16.
+        \subsubsection{Remark: characteristic polynomial doesn't depend on basis}
+            \hskip \parindent
+            \par $\chi_f (x)$ doesn't depend on the choice of basis.
+            \par Proof see [104016 L-251217]-P17.
+        \subsubsection{Example of characteristic polynomial and eigenvalues}
+            \hskip \parindent
+            \par Let $B = \{ v_1 ,v_2\}$ be an oredered basis for $\mathbb{R}^2$ and let $f:\mathbb{R}^2 \rightarrow \mathbb{R}^2$ be a l.op. given by $f(v_1) = 2v_1 + 2v_2$ and $f(v_2) = 3v_1 +v_2$.
+            \par $[f]_B = \begin{pmatrix}
+                2&3\\2&1
+            \end{pmatrix}$
+            \par Thus, $\chi_f(x) = \operatorname*{det}\begin{pmatrix}
+                x-2 & -3 \\ -2 & x-1
+            \end{pmatrix} = (x-2)(x-1) - 6 = x^2 - 3x -4 = (x-4)(x+1)$
+            \par The characteristic polynomial of $f$ is $\chi _f (x) = x^2 -3x -4 = (x-4)(x+1)$.
+            \par The eigenvalue are $\lambda_1 = 4$, $\lambda_2 = -1$.
+            \par $V_4=\{v \in \mathbb{R}^2 \mid f(v) = 4v\} = \operatorname*{Ker} (f - 4 \operatorname*{id})$
+            \par $\operatorname*{Ker}(\begin{pmatrix}
+                2&3\\2&1
+            \end{pmatrix} - \begin{pmatrix}4&0\\0&4
+            \end{pmatrix})= \operatorname*{Ker} \begin{pmatrix}
+                -2 & 3 \\ 2 & -3
+            \end{pmatrix} = \operatorname*{Ker} \begin{pmatrix}
+                -2 &3 \\ 0& 0
+            \end{pmatrix} = \operatorname*{span} \{(3,2)\}$.
+            \par So, $V_4 = \operatorname*{span}\{3v_1 + 2v_2\}$.
+            \par Similarly, $V_{-1} = \operatorname*{span}\{v_1 - v_2\}$.
+            \par \textbf{Conclusion:} $\mathbb{R}^2 = V_4 \oplus V_{-1}$, and $B' = \{3v_1 + 2v_2, v_1 - v_2\}$ is an oredered basis for $\mathbb{R}^2$ s.t. $[f]_{B'} = \begin{pmatrix}
+                4 & 0 \\ 0 & -1
+            \end{pmatrix}$
+            \par $[f]_B = C(B',B) [f]_{B'} C(B,B')$
+            \par Where $C(B',B) = \begin{pmatrix}3&1\\2&-1\end{pmatrix}$ and $C(B,B') = C(B',B)^{-1}$.
+        \subsection{Proposition: intersection of eigenspaces}
+            \hskip \parindent
+            \par Let $f:V \rightarrow V$ be a l.op. on a f.d.v.s. $V$ over $\mathbb{F}$. Let $\lambda_1 and \lambda_2$ be different eigenvalues of $f$. Then:
+            \begin{equation}
+                V_{\lambda_1} \cap V_{\lambda_2} = \{0\}
+            \end{equation}
+            \par Proof see [104016 L-251222]-P15.
+        \subsection{Corollary: sum of two eigenspaces is direct}
+            \hskip \parindent
+            \par Let $f:V \rightarrow V$ be a l.op. on a f.d.v.s. $V$ over $\mathbb{F}$. Let $\lambda_1, \lambda_2$ be different eigenvalues of $f$. Then: $V_{\lambda_1} + V_{\lambda_2} = V_{\lambda_1} \oplus V_{\lambda_2}$.
+        \subsection{Theorem: sum of eigenspaces is direct}
+            \hskip \parindent
+            \par Let $f:V \rightarrow V$ be a l.op. on a f.d.v.s. $V$ over $\mathbb{F}$.
+            \par Let $\lambda_1, \lambda_2, \cdots, \lambda_k$ be different eigenvalues for $f$. Then:
+            \par $V_{\lambda_1} + V_{\lambda_2} + \cdots + V_{\lambda_k} = V_{\lambda_1} \oplus V_{\lambda_2} \oplus \cdots \oplus V_{\lambda_k}$
+        \subsection{Theorem: equivalent conditions for diagonalizability}
+            \hskip \parindent
+            \par Let $f:V \rightarrow V$ be a l.op. on a f.d.v.s. $V$ over $\mathbb{F}$. Let $\lambda_1, \lambda_2, \cdots, \lambda_k$ be different eigenvalues for $f$ and let $V_{\lambda_i}$ be the eigenspace relative to the eigenvalue $\lambda_i$ for $i = 1, 2, \cdots, k$. Then the following are equivalent
+            \begin{itemize}
+                \item [(i)] $f$ is diagonalizable.
+                \item [(ii)] The characteristic polynomial for $f$ is \begin{equation}
+                    \chi_f(x) = \prod_{i=1}^k (x-\lambda_i)^{d_i} \end{equation}
+                    and $\operatorname*{dim}V_{\lambda_i} = d_i$ for $i = 1, 2, \cdots, k$.
+                \item [(iii)] \begin{equation} \operatorname*{dim}V = \sum \limits _{i=1}^k \operatorname*{dim}V_{\lambda_i} \end{equation}
+            \end{itemize}
+            \par Note: $d_i$ is the algebraic multiplicity of the eigenvalue $\lambda_i$. $d_i= \operatorname*{mult}(\lambda_i, \chi_f(x))$. $\operatorname*{dim}_{\mathbb{F}}V_{\lambda_i}$ is the geometric multiplicity of the eigenvalue $\lambda_i$.
+            \par Proof see [104016 L-251224]-P3.
+        \subsection{Definition of geometric and algebraic multiplicity}
+            \hskip \parindent
+            \begin{itemize}
+                \item [(a)] The number $k = \operatorname{dim}V_{\lambda}$ is called the geometric multiplicity.
+                \item [(b)] The multiplicity of $\lambda$ in $\chi_f(x)$ is called the algebraic multiplicity.
+            \end{itemize}
+        \subsection{Proposition: relation between geometric and algebraic multiplicity}
+            \hskip \parindent
+            \par Let $f$ be a l.op. on a f.d.v.s. $V$ over $\mathbb{F}$ and let $\lambda$ be an eigenvalue of $f$. Then 
+            \begin{equation}
+                1 \leq \operatorname{dim}V_{\lambda} \leq \operatorname{mult}(\lambda,\chi_f(x))
+            \end{equation}
+            \par Proof see [104016 L-251229]-P1.
+        \subsection{Proposition: diagonalizability with n different eigenvalues}
+            \hskip \parindent
+            \par Let $V$ be a n-d.v.s. over $\mathbb{F}$ and let $f$ be a l.op. on $V$. If $\chi_f(x)$ has $n$ different eigenvalues, then $f$ is diagonalizable.
+            \par Proof see [104016 L-251229]-P4.
+        \subsection{Examples of diagonalizable linear transformations and matrices}
+            \hskip \parindent
+            \par See [104016 L-251224]-P5. \textbf{Please review them.}
+            \par $f$ is diagonalizable if $\exists$ a basis for $V$ s.t. $[f]_{\mathcal{B}}$ is a diagonal matrix.
+            \par $A \in \mathbb{F}^{n \times n}$ is diagonalizable if $\exists$ an invertible matrix $P \in \mathbb{F}^{n \times n}$ s.t. $A=PDP^{-1}$ with D diagonal.

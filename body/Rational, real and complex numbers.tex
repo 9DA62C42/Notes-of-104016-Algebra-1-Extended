@@ -1,0 +1,65 @@
+\section{Rational, real and complex numbers}
+        \subsection{Rational numbers}
+            \subsubsection{Definition of rational numbers}
+                \hskip \parindent
+                \par A rational number is any number that can be expressed as the quotient or fraction $\frac{p}{q}$ of two integers, where the numerator $p$ is an integer and the denominator $q$ is a non-zero integer. The set of all rational numbers is denoted by $\mathbb{Q}$.
+        \subsection{Real numbers}
+            \subsubsection{Definition of real numbers}
+                \hskip \parindent
+                \par Real numbers include all the rational numbers, such as integers and fractions, as well as all the irrational numbers, which cannot be expressed as fractions. The set of real numbers is denoted by $\mathbb{R}$.
+        \subsection{Complex numbers}
+            \subsubsection{Definition of complex numbers}
+                \hskip \parindent
+                \par A complex number is a number that can be expressed in the form $a + bi$, where $a$ and $b$ are real numbers, and $i$ is the imaginary unit, which satisfies the equation $i^2 = -1$. The set of all complex numbers is denoted by $\mathbb{C}$.
+                \par $a$ is called the real part of the complex number, and $b$ is called the imaginary part. The notation is $a=\text{Re}$, $b=\text{Im}$.
+            \subsubsection{Notations}
+                \hskip \parindent
+                \par The conjugate of a complex number $z = a + bi$ is denoted by $\overline{z}$ and is defined as:
+                \begin{equation}\overline{z} = a - bi\end{equation}
+                \par The modulus (or absolute value) of a complex number $z = a + bi$ is denoted by $|z|$ and is defined as:
+                \begin{equation}|z| = \sqrt{a^2 + b^2}\end{equation}
+            \subsubsection{Operations and properties}
+                \hskip \parindent
+                \par Denote two complex numbers as $z_1 = a + bi$ and $z_2 = c + di$, where $a, b, c, d$ are real numbers. The basic operations on complex numbers are defined as follows:
+                \begin{itemize}
+                    \item Addition: $z_1 + z_2 = (a + c) + (b + d)i$
+                    \item Subtraction: $z_1 - z_2 = (a - c) + (b - d)i$
+                    \item Multiplication: $z_1 \cdot z_2 = (ac - bd) + (ad + bc)i$
+                    \item Division: $\frac{z_1}{z_2} = \frac{(ac + bd) + (bc - ad)i}{c^2 + d^2}$, provided that $z_2 \neq 0$
+                \end{itemize}
+                \par Therefore, we have the following properties:
+                \begin{itemize}
+                    \item Conjugate of a sum: $\overline{z_1 + z_2} = \overline{z_1} + \overline{z_2}$
+                    \item Conjugate of a product: $\overline{z_1 \cdot z_2} = \overline{z_1} \cdot \overline{z_2}$
+                    \item Modulus of a product: $|z_1 \cdot z_2| = |z_1| \cdot |z_2|$
+                    \item Modulus of a quotient: $\left|\frac{z_1}{z_2}\right| = \frac{|z_1|}{|z_2|}$, provided that $z_2 \neq 0$
+                \end{itemize}
+        \subsection{Euler's formula and De Moivre's Theorem}
+            \subsubsection{Statement of Euler's Formula}
+                \hskip \parindent
+                \par Euler's formula states that for any real number $\theta$:
+                \begin{equation}
+                    e^{i\theta} = \cos(\theta) + i\sin(\theta)
+                \end{equation}
+                \par Or, we can denote $e^{i\theta}$ as $\text{cis}(\theta)$:
+                \begin{equation}
+                    \text{cis}(\theta) = \cos(\theta) + i\sin
+                \end{equation}
+                \par Where $\theta$ is the argument of the complex number, denoted as $\text{arg}(z)$.
+            \subsubsection{Statement of De Moivre's Theorem}
+                \hskip \parindent
+                \par De Moivre's Theorem states that for any real number $\theta$ and integer $n$:
+                \begin{equation}
+                    (\cos(\theta) + i\sin(\theta))^n = \cos(n\theta) + i\sin(n\theta)
+                \end{equation}
+                \par This theorem is useful for finding powers and roots of complex numbers.
+            \subsubsection{Applications}
+                \hskip \parindent
+                \par Denote two complex number $z_1$ and $z_2$ in polar form: $z_1 = r_1 \text{cis}(\theta_1)$ and $z_2 = r_2 \text{cis}(\theta_2)$, where $r_1, r_2$ are the moduli and $\theta_1, \theta_2$ are the arguments of $z_1$ and $z_2$ respectively. Then we have:
+                \begin{itemize}
+                    \item Multiplication: $z_1 \cdot z_2 = r_1 r_2 \text{cis}(\theta_1 + \theta_2)$
+                    \item Division: $\frac{z_1}{z_2} = \frac{r_1}{r_2} \text{cis}(\theta_1 - \theta_2)$, provided that $z_2 \neq 0$
+                    \item Power: $z_1^n = r_1^n \text{cis}(n\theta_1)$
+                    \item Inverse: $z_1^{-1} = \frac{1}{r_1} \text{cis}(-\theta_1)$, provided that $z_1 \neq 0$
+                    \item Conjugate: $\overline{z_1} = r_1 \text{cis}(-\theta_1)$
+                \end{itemize}

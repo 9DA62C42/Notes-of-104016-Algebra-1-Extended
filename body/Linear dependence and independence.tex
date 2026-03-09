@@ -1,0 +1,57 @@
+\section{Linear dependence and independence}
+        \subsection{Definition of linear dependence}
+            \hskip \parindent
+            \par Let $V$ be a vector space over a field $\mathbb{F}$. A subset $S$ of $V$ is said to be linearly dependent (or l.d.) if there exist vectors $v_1,v_2,\cdots,v_n \in S$ and scalars $\alpha_1,\alpha_2,\cdots,\alpha_n \in \mathbb{F}$, not all of which are zero, such that
+            \begin{equation}
+                \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n = 0.
+            \end{equation}
+            \par A set which is not linearly dependent (l.d.) is called linearly independent (l.i.).
+            \par We sometimes say that the vectors are dependent (or independent).
+        \subsection{Remark: linear dependence with finite set}
+            \hskip \parindent
+            \par For a set $S$, with $n$ elements, $S$ is l.i. if
+            \begin{equation}
+            \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n =0 \text{ iff } \alpha_1=\alpha_2=\cdots=\alpha_n=0.
+            \end{equation}
+        \subsection{Example of linear dependence and independence}
+            \subsubsection{$V= \mathbb{R}^2$}
+                \hskip \parindent
+                \par $V= \mathbb{R}^2$ The vectors (1,2) and (-1,2) are l.i..
+            \subsubsection{$\mathbb{R}^n$}
+                \hskip \parindent
+                \par In $\mathbb{R}^n$, the set $\{e_1,e_2,\cdots,e_n\}$ is l.i..
+            \subsubsection{$\mathbb{F}_n[x]$}
+                \hskip \parindent
+                \par In $\mathbb{F}_n[x]$, the set $\{1,x,x^2,\cdots,x^n\}$ is l.i..
+        \subsection{Another way to prove linear independent}
+            \hskip \parindent
+            \par We can write all the vectors as rows of a matrix, then use row operations to convert the matrix to its row echelon form. If we obtain a zeros row, then the vectors are linear dependent, otherwise they are linear independent.
+        \subsection{Proposition: properties of linear dependence and independence}
+            \hskip \parindent
+            \begin{itemize}
+                \item Any set which contains the zero vector is l.d..
+                \item Let $S$ be a l.d. set. If $T$ is a subset of $V$ such that $S \subseteq T$, then $T$ is l.d..
+                \item If $S=\{v_1,v_2,\cdots,v_n\}$ is a l.d. set with $n \ge 2$, there exists $i\in\{1,2,\ldots,n\}$ such that $v_i$ is a linear combination of the other vectors.
+                \item Let $S$ be a l.i. set, if $S' \subseteq S$, then $S'$ is l.i..
+                \item A set $S$ is l.i. iff each finite subset of $S$ is l.i..
+                \item $\mathbb{F}[x] = \operatorname{span}\{1,x,x^2,\cdots,x^i,\cdots\} = \operatorname{span}\{x^i\mid i \in \mathbb{N}_0 \}$, S is l.i..
+            \end{itemize}
+        \subsection{Examples of the proposition}
+            \subsubsection{$v \neq \alpha u$}
+                \hskip \parindent
+                \par Let $S = \{u,v\}$, $S$ is l.i. iff $u$ $\ne$ $0$ and $v$ $\ne \alpha$$u$ $\quad \forall \alpha \in \mathbb{F}$
+            \subsubsection{$w \notin \operatorname{span}\{u,v\}$}
+                \hskip \parindent
+                \par Let $S = \{u,v,w\}$. $S$ is l.i. iff $\{u,v\}$ is a l.i. set and $w \notin \operatorname{span}\{u,v\}$
+        \subsection{Proposition: a criterion for linear independence}
+            \hskip \parindent
+            \par Let $v_1, v_2,\cdots, v_r$ be vectors such that
+            \begin{itemize}
+                \item $v_1 \neq 0$,
+                \item $v_i \notin \operatorname{span}\{v_1,v_2,\cdots,v_{i-1}\}$ for all $i=2,\ldots,r$.
+            \end{itemize}
+            \par Then $\{v_1,v_2,\cdots,v_r\}$ is a linearly independent set.
+        \subsection{Proposition: rank and linear independence\label{sec:ranka=n}}
+            \hskip \parindent
+            \par A set of vectors $v_1, v_2, \cdots, v_n$ in $\mathbb{F}^m$ is l.i. if and only if the matrix $A=[v_1|v_2|\cdots|v_n]$ has rank $n$.
+            \par Proof see section "Proofs".

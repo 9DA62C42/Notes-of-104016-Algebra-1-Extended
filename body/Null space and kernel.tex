@@ -1,0 +1,28 @@
+\section{Null space and kernel}
+        \subsection{Definition of null space or kernel}
+            \hskip \parindent
+            \par Let $A$ be in $M_{m\times n}(\mathbb{F})$. The null space or kernel of $A$ is the set of vectors $v$ in $\mathbb{F}^n$ such that $Av=0_m$. We denote it by ker$(A)$.
+            \begin{equation}
+                \text{Ker}(A)=\{v \in \mathbb{F}^n \mid Av=0_m\}
+            \end{equation}
+            \par Ker$(A)$ = solution set of $Ax=0$
+        \subsection{Examples of kernel}
+            \subsubsection{Example of a square matrix}
+                \hskip \parindent
+                \par $A=\begin{bmatrix}1&0&0&-1\\0&1&0&3\\0&0&1&2\\0&0&0&0\end{bmatrix}$
+                \par ($x_1,x_2,x_3,x_4$)$ \in$ Ker A iff A$\begin{bmatrix}x_1\\x_2\\x_3\\x_4\end{bmatrix}=\begin{bmatrix}0\\0\\0\\0\end{bmatrix}$
+                \par $\left\{\begin{matrix}x_1=x_4\\x_2=-3x_4\\ x_3=-2x_4\end{matrix}\right.$
+                \par Therefore ($x_1,x_2,x_3,x_4$) = $x_4$(1,-3,-2,1), Ker $(A)$ = span$\{(1,-3,-2,1)\}$
+            \subsubsection{Example of a non-square matrix}
+                \hskip \parindent
+                \par $A= \begin{bmatrix}1&3&0&1\\0&0&1&2\\0&0&0&0\end{bmatrix}$
+                \par ($x_1,x_2,x_3,x_4$)$ \in$ Ker A iff A$\begin{bmatrix}x_1\\x_2\\x_3\\x_4\end{bmatrix}=\begin{bmatrix}0\\0\\0\end{bmatrix}$
+                \par $\left\{\begin{matrix}x_1=-3x_2 - x_4\\x_3=-2x_4\end{matrix}\right.$
+                \par Therefore ($x_1,x_2,x_3,x_4$)=$x_2$(-3,1,0,0)+$x_4$(-1,0,-2,1), Ker$(A)$ = span$\{(-3,1,0,0),(-1,0,-2,1)\}$
+        \subsection{Rank-Nullity Theorem\label{sec:theorem_rank_plus_dimker}}
+            \hskip \parindent
+            \par Let A be in $M_{m\times n}(\mathbb{F})$. Then
+            \begin{equation}
+                \text{rank}(A) + \text{dim}_{\mathbb{F}}(\text{Ker}(A)) = n
+            \end{equation}
+            \par The proof see section "Proofs".

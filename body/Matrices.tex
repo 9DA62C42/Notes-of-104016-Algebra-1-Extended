@@ -1,0 +1,279 @@
+\section{Matrices}
+        \subsection{Definition of matrices}
+            \hskip \parindent
+            \par An $m \times n$ matrix $A$ with coefficients in $\mathbb{F}$ is a rectangular array witm $m$ rows, $n$ columns and $mn$ elements in $\mathbb{F}$.
+            \begin{equation}
+                A = \begin{bmatrix}
+                    a_{11} & a_{12} & \cdots & a_{1n} \\
+                    a_{21} & a_{22} & \cdots & a_{2n} \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    a_{m1} & a_{m2} & \cdots & a_{mn}
+                \end{bmatrix}
+            \end{equation}
+            \par The set of $m \times n$ matrices over $\mathbb{F}$ is denoted by $\mathbb{F}^{m \times n}$ or $M_{m \times n}(\mathbb{F})$.
+            \par If $m=n$, we say that $\mathbb{F}^{n \times n}$ is the set of square matrices with size $n$.
+            \par We can say that a matrix $A$ in $\mathbb{F}^{m \times n}$ is a collection of $n$ column vectors $u_1$, $u_2$, $\cdots$, $u_n$ in $\mathbb{F}^m$. That we usually write:
+            \begin{equation}
+                A = [u_1 | u_2 | \cdots | u_n]
+            \end{equation}
+        \subsection{Matrices addition, scalar multiplication and matrix times a vector}
+            \subsubsection{Definition of addition}
+                \hskip \parindent
+                \par Let $A=[a_{ij}]$ and $B=[b_{ij}]$ be two matrices in $\mathbb{F}^{m \times n}$. The sum $A+B$ is the $m \times n$ matrix $C=[c_{ij}]$ whose $i,j$ entry is:
+                \begin{equation}
+                    \begin{bmatrix}
+                        c_11 & c_{12} & \cdots & c_{1n} \\
+                        c_21 & c_{22} & \cdots & c_{2n} \\
+                        \vdots & \vdots & \ddots & \vdots \\
+                        c_{m1} & c_{m2} & \cdots & c_{mn}
+                    \end{bmatrix}
+                    =
+                    \begin{bmatrix}
+                        a_{11} + b_{11} & a_{12} + b_{12} & \cdots & a_{1n} + b_{1n} \\
+                        a_{21} + b_{21} & a_{22} + b_{22} & \cdots & a_{2n} + b_{2n} \\
+                        \vdots & \vdots & \ddots & \vdots \\
+                        a_{m1} + b_{m1} & a_{m2} + b_{m2} & \cdots & a_{mn} + b_{mn}
+                    \end{bmatrix}
+                \end{equation}
+            \subsubsection{Definition of scalar multiplication}
+                \hskip \parindent
+                \par Let $A=[a_{ij}]$ be a matrix in $\mathbb{F}^{m \times n}$ and let $c \in \mathbb{F}$. The product $cA$ is the $m \times n$ matrix $D=[d_{ij}]$ whose $i,j$ entry is:
+                \begin{equation}
+                    \begin{bmatrix}
+                        d_{11} & d_{12} & \cdots & d_{1n} \\
+                        d_{21} & d_{22} & \cdots & d_{2n} \\
+                        \vdots & \vdots & \ddots & \vdots \\
+                        d_{m1} & d_{m2} & \cdots & d_{mn}
+                    \end{bmatrix}
+                    =
+                    \begin{bmatrix}
+                        c a_{11} & c a_{12} & \cdots & c a_{1n} \\
+                        c a_{21} & c a_{22} & \cdots & c a_{2n} \\
+                        \vdots & \vdots & \ddots & \vdots \\
+                        c a_{m1} & c a_{m2} & \cdots & c a_{mn}
+                    \end{bmatrix}
+                \end{equation}
+            \subsubsection{Definition of matrix times a vector}
+                \hskip \parindent
+                \par Let $A=[a_{ij}]$ be a matrix in $\mathbb{F}^{m \times n}$ and let $v=\begin{bmatrix} v_1 \\ v_2 \\ \cdots \\ v_n \end{bmatrix}$ be a vector in $\mathbb{F}^n$. The product $Av$ is the vector $u=\begin{bmatrix} u_1 \\ u_2 \\ \cdots \\ u_m \end{bmatrix}$ in $\mathbb{F}^m$ whose $i$-th entry is:
+                \begin{equation}
+                    \begin{bmatrix}
+                        u_1 \\
+                        u_2 \\
+                        \vdots \\
+                        u_m
+                    \end{bmatrix}
+                    =
+                    \begin{bmatrix}
+                        a_{11} v_1 + a_{12} v_2 + \cdots + a_{1n} v_n \\
+                        a_{21} v_1 + a_{22} v_2 + \cdots + a_{2n} v_n \\
+                        \vdots \\
+                        a_{m1} v_1 + a_{m2} v_2 + \cdots + a_{mn} v_n
+                    \end{bmatrix}
+                \end{equation}
+                \par $Av = [A e_1 | A e_2 | \cdots | A e_n] \begin{bmatrix} v_1 \\ v_2 \\ \cdots \\ v_n \end{bmatrix} = v_1 (A e_1) + v_2 (A e_2) + \cdots + v_n (A e_n)$
+        \subsection{Properties of addition, scalar multiplication and matrix times a vector}
+            \subsubsection{Properties of addition}
+                \hskip \parindent
+                \par Let $A$, $B$ and $C$ be three matrices in $\mathbb{F}^{m \times n}$. Then
+                \begin{equation}
+                    A + B = B + A
+                \end{equation}
+                \begin{equation}
+                    (A + B) + C = A + (B + C)
+                \end{equation}
+                \par There exists a unique matrix $O$ in $\mathbb{F}^{m \times n}$ s.t.:
+                \begin{equation}
+                    A + O = A
+                \end{equation}
+                \par For each matrix $A$ in $\mathbb{F}^{m \times n}$, there exists a unique matrix $-A$ in $\mathbb{F}^{m \times n}$ s.t.:
+                \begin{equation}
+                    A + (-A) = O
+                \end{equation}
+            \subsubsection{Properties of scalar multiplication}
+                \hskip \parindent
+                \par Let $A$, $B$ be two matrices in $\mathbb{F}^{m \times n}$ and let $c$, $d$ be two elements in $\mathbb{F}$. Then
+                \begin{equation}
+                    c (d A) = (cd) A
+                \end{equation}
+                \begin{equation}
+                    1 A = A
+                \end{equation}
+                \begin{equation}
+                    c (A + B) = c A + c B
+                \end{equation}
+                \begin{equation}
+                    (c + d) A = c A + d A
+                \end{equation}
+            \subsubsection{Properties of matrix times a vector}
+                \hskip \parindent
+                \par Let $A$ be a matrix in $\mathbb{F}^{m \times n}$, let $v$, $w$ be two vectors in $\mathbb{F}^n$ and let $c$ be an element in $\mathbb{F}$. Then
+                \begin{equation}
+                    A (v + w) = A v + A w
+                \end{equation}
+                \begin{equation}
+                    A (c v) = c (A v)
+                \end{equation}
+        \subsection{Matrices multiplication}
+            \subsubsection{Definition}
+                \hskip \parindent
+                \par Let $A\in \mathbb{F}^{m\times n}$ and $B\in \mathbb{F}^{n\times p}$. The product $AB$ is the $m\times p$ matrix $C$ whose $i,j$ entry is
+                \begin{equation}
+                    c_{ij}=\sum\limits_{r=1}^n=a_{ic}b_{rj} = a_{i1}b_{1j} + a_{i2}b_{2j} + \cdots + a_{in}b_{nj}
+                \end{equation}
+                \par $AB=[A(Be_1)\mid A(Be_2) \mid \cdots \mid A(Be_p)]$
+            \subsubsection{Example}
+                \hskip \parindent
+                \par $A=\begin{bmatrix}1&2&3\\-2&-1&-1\end{bmatrix}$, $B=\begin{bmatrix}0&1&-1&1\\-1&0&1&-1\\1&0&-1&1\end{bmatrix}$
+                \par $AB=\begin{bmatrix}1&1&-2&2\\0&-2&2&-2\end{bmatrix}$
+            \subsubsection{Remark}
+                \hskip \parindent
+                \par Let $A$ be a $m\times n$ matrix on $\mathbb{F}$, then
+                \begin{itemize}
+                    \item $I_{m\times m}A=A$
+                    \item $AI_{n\times n}=A$
+                    \item $O_{m\times n}A=O_{m\times p}$
+                    \item $AO_{n\times p}=O_{m\times p}$
+                \end{itemize}
+            \subsubsection{Properties}
+                \hskip \parindent
+                \par Those properties of matrix multiplication can also shift to linear transformations.
+                \par \noindent \textbf{Associative Law}
+                \par Let three matrices $A$, $B$ and $C$ such that the products are defined. Then
+                \begin{equation}
+                    A(BC)=(AB)C=ABC
+                \end{equation}
+                \par \noindent \textbf{Distributive Law}
+                \par Let $A$, $B$ and $C$ be three matrices such that the products are defined. Then
+                \begin{equation}
+                    A(B+C)=AB + AC
+                \end{equation}
+                \begin{equation}
+                    (A+B)C=AC + BC
+                \end{equation}
+                \par \noindent \textbf{Power of a Matrix}
+                \par Let $A\in \mathbb{F}^{n\times n}$. Define $A^0=I_n$ and for $k\geq 1$, define $A^k=AA^{k-1}$.
+                \par \noindent \textbf{Not Commutative}
+                \par The matrix multiplication is not commutative in general. i.e., $AB\neq BA$ in general.
+                \par \noindent \textbf{Multiplication with Transpose}
+                \par Let $A\in \mathbb{F}^{m\times n}$ and $B\in \mathbb{F}^{n\times p}$. Then
+                \begin{equation}
+                    (AB)^T=B^T A^T
+                \end{equation}
+        \subsection{Elementary row operations}
+            \subsubsection{Types of elementary row operations}
+                \hskip \parindent
+                \par We have three types of elementary row operations:
+                \begin{itemize}
+                    \item Type 1: Multiply a row by a nonzero scalar.
+                    \item Type 2: Add to one row a scalar multiple of another row.
+                    \item Type 3: Interchange two rows.
+                \end{itemize}
+                \par Two matrices are row-equivalent if one can be obtained from the other by a sequence of elementary row operations.
+            \subsubsection{Theorem of existence of inverse operation}
+                \par The inverse operation (function) of an elementary row operation exists and is an elementary row operation of the same type.
+        \subsection{Row-echelon and row-reduced echelon forms}
+            \subsubsection{Definition of row-echelon form}
+                \hskip \parindent
+                \par A matrix is in row-echelon form if:
+                \begin{itemize}
+                    \item All nonzero rows are above any rows of all zeros.
+                    \item The leading coefficient of a nonzero row is always strictly to the right of the leading coefficient of the previous row.
+                \end{itemize}
+            \subsubsection{Definition of row-reduced echelon form}
+                \hskip \parindent
+                \par A matrix is in row-reduced echelon form if:
+                \begin{itemize}
+                    \item It is in row-echelon form.
+                    \item The leading coefficient in each nonzero row is 1.
+                    \item Each leading 1 is the only nonzero entry in its column.
+                \end{itemize}
+            \subsubsection{Remark}
+                \hskip \parindent
+                \par Every matrix is row-equivalent to one and only one row-reduced echelon matrix.
+        \subsection{System of linear equations}
+            \subsubsection{Definition of argumented matrix}
+                \hskip \parindent
+                \par Given a system of linear equations, its argumented matrix is the matrix obtained by writing the coefficients of the variables and the constants in a rectangular array.
+                \begin{equation}
+                    Ax = b:
+                    \begin{bNiceArray}{cccc|c}[baseline=line-3]
+                        a_{11} & a_{12} & \cdots & a_{1n} & b_1 \\
+                        a_{21} & a_{22} & \cdots & a_{2n} & b_2 \\
+                        \vdots & \vdots & \ddots & \vdots & \vdots \\
+                        a_{m1} & a_{m2} & \cdots & a_{mn} & b_m
+                    \end{bNiceArray}
+                \end{equation}
+                \par We call it homogeneous if $b=0$.
+            \subsubsection{Remark}
+                \hskip \parindent
+                \par Two systems of linear equations are equivalent if each equation in each system is a linear combination of the equations in the other system.
+            \subsubsection{Definition of augmented matrix}
+                \hskip \parindent
+                \par Let $Ax = b$ be a linear system with $m$ equations and $n$ unknowns. Let $M = [A|b]$ be its augmented matrix.
+        \subsection{Equivalent}
+            \subsubsection{Definition of equivalent}
+                \hskip \parindent
+                \par For systems of linear equations, two systems of linear equations are equivalent if each equation in one system is a linear combination of the equations in the other system, and vice versa.
+                \par If $A$ and $B$ are $m \times n$ matrices, we sat that $B$ is row equivalent to $A$ if $B$ can be obtained from $A$ by a sequence of elementary row operations. In this case, we also say that $A$ is equivalent to $B$.
+                \par We also have a theorem that, equivalent systems of linear equations have exactly the same solutions.
+            \subsubsection{Remark}
+                \hskip \parindent
+                \par The equivalence of matrices is an equivalence relation. They have the following properties:
+                \begin{itemize}
+                    \item Reflexive: $A$ is equivalent to $A$.
+                    \item Symmetric: If $A$ is equivalent to $B$, then $B$ is equivalent to $A$.
+                    \item Transitive: If $A$ is equivalent to $B$ and $B$ is equivalent to $C$, then $A$ is equivalent to $C$.
+                \end{itemize}
+        \subsection{Consistency of a linear system}
+            \subsubsection{Definition of consistent}
+                \hskip \parindent
+                \par Let $Ax = b$ be a l.s. and let $[R|b']$ be the row-reduced echelon form from $[A|b]$. If there's a zero row $r_i$ in $R$ s.t. $b'_i \neq 0$. Thus $Ax=b$ has no solution, and it's inconsistent.
+                \par Otherwise, $Ax=b$ has at least one solution, and it's consistent.
+        \subsection{Determined}
+            \hskip \parindent
+            \par If the system is consistent and if every column of $R$ is a pivot column. We say that the system is determined, and it has a unique solution.
+        \subsection{independent variables}
+            \hskip \parindent
+            \par If the system is consistent and there exists a column without leading 1's, then the variable given by that column is called an independent variable and the variables given by the pivots columns are called dependent variables.
+        
+    \subsection{Invertible matrices}
+        \subsubsection{Definition of invertible matrices}
+            \hskip \parindent
+            \par Let $A \in \mathbb{F}^{n\times n}$. An $n\times n$ matrix $B$ s.t. $BA=I$ is called a left-inverse of $A$. An $n \times n$ matrix $B$ s.t. $AB=I$ is called a right-inverse.
+            \par If $AB=BA=I$, then $B$ is called a two-sided inverse of $A$ and $A$ is said to be invertible.
+        \subsubsection{Lemma: invertible matrices\label{sec:lemma_invertible_matrices}}
+            \hskip \parindent
+            \par If $A$ has a left-inverse $B$ and a right-inverse $C$, then $B=C$.
+            \par The proof is in the "Proofs" section.
+        \subsubsection{Notation of inverse matrix}
+            \hskip \parindent
+            \par If $A$ is invertible, $A^{-1}$ denotes its inverse.
+        \subsubsection{Theorem inverse of inverse matrix is itself}
+            \hskip \parindent
+            \par Let $A\in \mathbb{F}^{n \times n}$. If $A$ is invertible, then $(A^{-1})^{-1}=A$
+        \subsubsection{Proposition: a invertible matrix is an isomorphism}
+            \hskip \parindent
+            \par A square matrix $A\in \mathbb{F}^{n\times n}$ is invertible iff $T_A:\mathbb{F}^n \rightarrow \mathbb{F}^n$ is an isomorphism.
+            \par Given $A$ in $\mathbb{F}^{n\times n}$, $T_A$ is an isomorphism iff rank A = n.
+        \subsubsection{Theorem: invertiblility and the rank}
+            \hskip \parindent
+            \par A square matrix $A$ in $\mathbb{F}^{n\times n}$ is invertible iff rank$A = n$.
+        \subsubsection{Remark: find the inverse of a matrix}
+            \hskip \parindent
+            \par $A$ is invertible, then there exists unique $B$ s.t. $AB=BA=I$.
+            \par To find $A^{-1}$, we can write $[A \mid I]$ and try to write as $[I \mid B]$ by row operations. Then $B=A^{-1}$.
+    
+    \subsection{Diagonal matrix}
+        \subsubsection{Definition of diagonal matrix}
+            \hskip \parindent
+            \par A matrix $A \in \mathbb{F}^{n \times n}$ is called a diagonal matrix if $a_{ij} = 0$ for all $i\neq j$.
+        \subsubsection{Notation}
+            \hskip \parindent
+            \par A diagonal matrix $A$ is usually denoted by diag$(d_1, d_2, \cdots, d_n)$ where $d_i = a_{ii}$ for $i=1, 2, \cdots, n$.
+        \subsubsection{Proposition: invertibility of diagonal matrix}
+            \hskip \parindent
+            \par A diagonal matrix diag$(d_1, d_2, \cdots, d_n)$ is invertible iff $d_i \neq 0$ for all $i=1, 2, \cdots, n$. In this case,
+            \begin{equation}
+                \text{diag}(d_1, d_2, \cdots, d_n)^{-1} = \text{diag}\left(\frac{1}{d_1}, \frac{1}{d_2}, \cdots, \frac{1}{d_n}\right)
+            \end{equation}

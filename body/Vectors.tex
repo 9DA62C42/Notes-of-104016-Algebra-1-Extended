@@ -1,0 +1,116 @@
+\section{Vectors}
+        \subsection{Vectors in $\mathbb{R}^2$}
+            \subsubsection{Definition of vectors in $\mathbb{R}^2$}
+                \hskip \parindent
+                \par We define $\mathbb{R}^2$ as the set of pairs $(a,b)$ with $a,b \in \mathbb{R}$. $\mathbb{R}^2 = \{(a,b)|a,b\in\mathbb{R}\}$
+                \par A vector in the plane is a directed segment $\overrightarrow{PQ}$ from an initial point $P$ to a final point $Q$.
+                \par Each vector has: 
+                \begin{itemize}
+                    \item A line action, the line passing through $P$ and $Q$.
+                    \item An direction, from $P$ to $Q$.
+                    \item A magnitude (or length), denoted by $|\overrightarrow{PQ}|$.
+                \end{itemize}
+            \subsubsection{Equivalent vectors}
+                \hskip \parindent
+                \par Two vectors are equivalent if
+                \begin{itemize}
+                    \item [i] They are parallel.
+                    \item [ii] They have the same direction.
+                    \item [iii] They have the same magnitude.
+                \end{itemize}
+                \par Notice that any vector is equivalent to a unique vector whose initial point is $(0,0)=O$.
+            \subsubsection{Vector operation}
+                \hskip \parindent
+                \par Consider $\overrightarrow{v}=(a,b)$ and $\overrightarrow{w}=(c,d)$ in $\mathbb{R}^2$, we define:
+                \begin{itemize}
+                    \item Addition: $\overrightarrow{v} + \overrightarrow{w} = (a+c,b+d)$
+                    \item Scalar multiplication: For any $k \in \mathbb{R}$, $k \overrightarrow{v} = (ka,kb)$
+                \end{itemize}
+            \subsubsection{Line through a certain point}
+                \hskip \parindent
+                \par In general, given $v_0$ and $v$ in $\mathbb{R}^2$, $l = \{v_0 + t V \mid t \in \mathbb{R} \}$ is the line through point $v_0$ in the direction of vector $v$.
+        \subsection{Vectors in $\mathbb{R}^3$}
+            \subsubsection{A line in $\mathbb{R}^3$}
+                \hskip \parindent
+                \par A line in $\mathbb{R}^3$ is the set $\{(x,y,z)\in \mathbb{R}^3 \mid (x,y,z) = \overrightarrow{v} + t \overrightarrow{w},t \in \mathbb{R}\}$
+                \par Normally, we write: $l:(x,y,z) = (a,b,c) + t(\alpha,\beta,\gamma)$, $t \in \mathbb{R}$, this is called the parametric rep. of the line.
+                \par Another rep. is $l:(x,y,z) = (a + t \alpha, b + t \beta, c + t \gamma)$, $t \in \mathbb{R}$ $\Rightarrow$ $t=\frac{x-a}{\alpha}=\frac{y-b}{\beta}=\frac{z-c}{\gamma}$. This is called the algebraic rep. of the line.
+            \subsubsection{Mutual relations of two lines in $\mathbb{R}^3$}
+                \hskip \parindent
+                \par Given two lines $l_1$ and $l_2$ in $\mathbb{R}^3$:
+                \begin{itemize}
+                    \item [i] intersect (incident): $l_1 \cap l_2 \neq \emptyset$ and $\overrightarrow{v_1} \nparallel \overrightarrow{v_2}$
+                    \item [ii] parallel: $l_1 \cap l_2 = \emptyset$ and $\overrightarrow{v_1} \parallel \overrightarrow{v_2}$
+                    \item [iii] coincide: $l_1 = l_2$
+                    \item [iv] skew: $l_1 \cap l_2 = \emptyset$ and $\overrightarrow{v_1} \nparallel \overrightarrow{v_2}$
+                \end{itemize}
+            \subsubsection{Plane's equation}
+                \hskip \parindent
+                \par Let $(a,b,c)$ be a point in space and let $\overrightarrow{N}=(A,B,C)$ be a vector. The set of all points $(x,y,z)\in \mathbb{R}^3$ s.t. $((x,y,z)-(a,b,c)) \perp \overrightarrow{N}$ is called a "plane".
+                \par Mathematically speaking, 
+                \begin{align*}
+                    \text{plane} & = \{(x,y,z) \in \mathbb{R}^3 \mid ((x,y,z)-(a,b,c)) \cdot \overrightarrow{N} = 0\}
+                    \\ & = \{(x,y,z) \in \mathbb{R}^3 \mid A(x-a) + B(y-b) + C(z-c) = 0\}
+                    \\ & = \{(x,y,z) \in \mathbb{R}^3 \mid Ax + By + Cz + (-aA -bB -cC ) = 0\} 
+                \end{align*} 
+                \par Therefore, normally we write the plane's equation as:
+                \begin{equation}
+                    \pi: Ax + By + Cz + D = 0
+                \end{equation}
+                \par Where $D = -aA - bB - cC$.
+        \subsection{Vectors in general $\mathbb{F}^n$}
+            \subsubsection{Definition of vectors in $\mathbb{F}^n$}
+                \hskip \parindent
+                \par Let $\mathbb{F}$ be a field and $n$ a natural number. We define $\mathbb{F}^n$ as the set of n-tuples $(a_1,a_2,\cdots,a_n)$ with elements in $\mathbb{F}$. That is: $\mathbb{F}^n = \{(a_1,a_2,\cdots,a_n) \mid a_i \in \mathbb{F}, i=1,2,\cdots,n\}$. And we call it's elements vectors.
+                \par Notation: for linear equations, we use $\begin{bmatrix} a_1 \\ a_2 \\ \cdots \\ a_n \end{bmatrix}$ for the vector $(a_1,a_2,\cdots,a_n)$.
+            \subsubsection{Vector operations in $\mathbb{F}^n$}
+                \hskip \parindent
+                \par Consider $v=(a_1,a_2,\cdots,a_n)$ and $w=(b_1,b_2,\cdots,b_n)$ in $\mathbb{F}^n$, we define:
+                \begin{itemize}
+                    \item Addition: $v + w = (a_1 + b_1, a_2 + b_2, \cdots, a_n + b_n)$
+                    \item Scalar multiplication: For any $c \in \mathbb{F}$, $c v = (c a_1, c a_2, \cdots, c a_n)$
+                    \item Zero vector: $0 = (0,0,\cdots,0)$
+                    \item Inverse vector: For any $v=(a_1,a_2,\cdots,a_n)$, $-v = (-a_1,-a_2,\cdots,-a_n)$
+                \end{itemize}
+            \subsubsection{Linear combination}
+                \hskip \parindent
+                \par $v$ in $\mathbb{R}^n$ is a linear combination of $v_1$, $v_2$, $\cdots$, $v_k$ in $\mathbb{R}^n$ if there exist $c_1$, $c_2$, $\cdots$, $c_k$ in $\mathbb{R}$ s.t.:
+                \begin{equation}
+                    v = c_1 v_1 + c_2 v_2 + \cdots + c_k v_k
+                \end{equation}
+            \subsubsection{Vector space axioms}
+                \hskip \parindent
+                \par $(\mathbb{F}^n,+,\cdot)$ satisfies the following axioms:
+                \begin{itemize}
+                    \item [A1] Commutativity of addition: $\overrightarrow{u} + \overrightarrow{v} = \overrightarrow{v} + \overrightarrow{u}$
+                    \item [A2] Associativity of addition: $(\overrightarrow{u} + \overrightarrow{v}) + \overrightarrow{w} = \overrightarrow{u} + (\overrightarrow{v} + \overrightarrow{w})$
+                    \item [A3] Existence of additive identity: There exists a vector $\overrightarrow{0}$ s.t. $\overrightarrow{v} + \overrightarrow{0} = \overrightarrow{v}$ for all $\overrightarrow{v}$
+                    \item [A4] Existence of additive inverse: For each vector $\overrightarrow{v}$, there exists a vector $-\overrightarrow{v}$ s.t. $\overrightarrow{v} + (-\overrightarrow{v}) = \overrightarrow{0}$
+                    \item [P1] Compatibility of scalar multiplication with field multiplication: $a(b\overrightarrow{v}) = (ab)\overrightarrow{v}$ for all $a,b \in \mathbb{R}$ and all vectors $\overrightarrow{v}$
+                    \item [P2] Identity element of scalar multiplication: $1\overrightarrow{v} = \overrightarrow{v}$ for all vectors $\overrightarrow{v}$
+                    \item [P3] Distributivity of scalar multiplication with respect to vector addition: $a(\overrightarrow{u} + \overrightarrow{v}) = a\overrightarrow{u} + a\overrightarrow{v}$ for all $a \in \mathbb{R}$ and all vectors $\overrightarrow{u},\overrightarrow{v}$
+                    \item [P4] Distributivity of scalar multiplication with respect to field addition: $(a+b)\overrightarrow{v} = a\overrightarrow{v} + b\overrightarrow{v}$ for all $a,b \in \mathbb{R}$ and all vectors $\overrightarrow{v}$
+                \end{itemize}
+        \subsection{Remark}
+            \subsubsection{0 is in the span}
+                \hskip \parindent
+                \par $0\in \text{span}\{v_1,v_2,\cdots,v_k\}$ since $0 = 0 v_1 + 0 v_2 + \cdots + 0 v_k$.
+            \subsubsection{$v_i$ is in the span}
+                \hskip \parindent
+                \par $v_i \in \text{span}\{v_1,v_2,\cdots,v_k\}$ since $v_i = 0 v_1 + 0 v_2 + \cdots + 1 v_i + \cdots + 0 v_k$.
+            \subsubsection{Affine line}
+                \hskip \parindent
+                \par Given $v \in \mathbb{F}^n \backslash \{0\}$, the set $\text{span}\{v\} = \{tv| t\in \mathbb{F}\}$ is called a line through O.
+                \par In general, given $v_0$, and $v$ in $\mathbb{F}^n$ with $v \neq 0$, $\{v_0 + tv | t \in \mathbb{F}\}$ is called a line through $v_0$ with direction $v$ or affine line.
+            \subsubsection{Affine plane}
+                \hskip \parindent
+                \par Given $v$, $w$ in $\mathbb{F}^n \backslash \{0\}$ s.t. $v \neq \alpha w$ for any $\alpha \in \mathbb{F}$, the set $\text{span}\{v,w\} = \{av + bw | a,b \in \mathbb{F}\}$ is called a plane through O generated by $v$ and $w$.
+                \par In general, given $v_0$, $v$ and $w$ in $\mathbb{F}^n$ with $v \neq \alpha w$ for any $\alpha \in \mathbb{F}$. The set $\{v_0 + av + bw | a,b \in \mathbb{F}\}$ is called affine plane.
+            \subsubsection{Canonical vector}
+                \hskip \parindent
+                \par Consider the vector $v=\begin{bmatrix} a_1 \\ a_2 \\ \cdots \\ a_n \end{bmatrix}$ in $\mathbb{F}^n$. We can write $v$ as a linear combination of the canonical vectors:
+                \begin{equation}
+                    v = a_1 e_1 + a_2 e_2 + \cdots + a_n e_n
+                \end{equation}
+                \par Where $e_i$ is the vector whose $i$-th component is 1 and all other components are 0.
+                \par We call $e_1, e_2, \cdots, e_n$ the canonical vectors.

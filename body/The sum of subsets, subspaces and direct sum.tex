@@ -1,0 +1,66 @@
+    \section{The sum of subsets, subspaces and direct sum}
+        \subsection{Definition of the sum of subsets}
+            \hskip \parindent
+            \par Let $V$ be a vector space over a field $\mathbb{F}$ and let $S$ and $T$ be two subsets of $V$. The sum of $S$ and $T$ is the set:
+            \begin{equation}
+                S + T = \{ s + t \mid s \in S, t \in T \}
+            \end{equation}
+        \subsection{Definition of the sum of subspaces}
+            \hskip \parindent
+            \par Let $W_1$ and $W_2$ be two subspaces in a vecotr space $V$. We define the sum $W_1+W_2$ as
+            \begin{equation}
+                W_1 + W_2 = \{w_1 + w_2 \mid w_1 \in W_1 \text{ and } w_2 \in W_2\}
+            \end{equation}
+            \par Notice that $W_1 \subseteq W_1 + W_2$, $W_2 \subseteq W_1 + W_2$, and $W_1 \cup W_2 \subseteq W_1 + W_2$.
+            \par In general, if $W_1$, $W_2$, $\cdots$, $W_k$ are subspaces of a vector space $V$ over $\mathbb{F}$, then
+            \begin{equation}
+                \sum \limits ^k _{i=1} W_i = W_1 + W_2 + \cdots + W_k = \{w_1 + w_2 + \cdots + w_k \mid w_i \in W_i \text{ for } i = 1, 2, \cdots, k\}
+            \end{equation}
+        \subsection{Proposition: the sum of subspaces is a subspace\label{sec:prop_sum_subspaces}}
+            \hskip \parindent
+            \par If $W_1, W_2, \cdots, W_k$ are subspaces of a vector space $V$ over a field $\mathbb{F}$, then the sum $W_1 + W_2 + \cdots + W_k$ is a subspace of $V$ over $\mathbb{F}$.
+            \par Proof see section "Proofs".
+        \subsection{Remark: sum of subsapces is the span of their bases' union}
+            \hskip \parindent
+            \par $B_U$ = $\{u_1,u_2,\cdots,u_n\}$, $B_W$=$\{w_1,w_2,\cdots,w_m\}$ = $\{u_{n+1},u_{n+2},\cdots,u_{n+m}\}$. And $U = \text{span}\{B_U\}$, $W = \text{span}\{B_W\}$. Then, a general element in $U+W$ is of the form:
+            \begin{equation}
+                \sum\limits_{i=1}^{n+m} \gamma_i u_i = \sum\limits_{i=1}^n \alpha_i u_i + \sum\limits_{j=1}^m \beta_j w_j
+            \end{equation}
+            \par $\Rightarrow$ $U+W$ = $\operatorname{span}\{B_U \cup B_W\}$.
+        \subsection{Theorem: the dimension of the sum of subspaces}
+            \hskip \parindent
+            \par If $W_1$ and $W_2$ are subsapces of a f.d.v.s. $V$ over $\mathbb{F}$, then 
+            \begin{equation}
+                \operatorname*{dim}(W_1+W_2) = \operatorname*{dim}W_1 + \operatorname*{dim}W_2 - \operatorname*{dim}(W_1 \cap W_2)
+            \end{equation}
+            \par Proof see [104016 L-251222]-P14.
+            \par Also, we can know that $\operatorname*{dim}_{\mathbb{F}}(\sum \limits _{i=1}^k W_i) \leq \sum \limits _{i=1}^k \operatorname*{dim}_{\mathbb{F}}(W_i)$
+        \subsection{Definition of direct sum}
+            \hskip \parindent
+            \par Let $W_1$, $W_2$, $\cdots$, $W_k$ be subspaces of a vector space $V$ over a field $\mathbb{F}$. Then $\sum \limits ^k _{i=1} W_i$ is called a direct sum if the following condition holds.
+            \begin{equation}
+                w_1+w_2+\cdots+w_k = 0 \text{ with } w_i \in W_i \Rightarrow w_i = 0 \text{, } \forall 1 \leq i \leq k
+            \end{equation}
+            \par In this case, we write $W_1 \oplus W_2 \oplus \cdots \oplus W_k$
+        \subsection{Proposition: equivalent statements for direct sum}
+            \hskip \parindent
+            \par Let $W_1$, $W_2$, $\cdots$, $W_k$ be subspaces of a vector space $V$ over a field $\mathbb{F}$. Then the following statements are equivalent.
+            \begin{itemize}
+                \item [(i)] $W_1 + W_2 + \cdots + W_k$ is a direct sum ($\bigoplus \limits _{i=1} ^k W_i$).
+                \item [(ii)] If $\mathcal{B}_i$ is a basis for $W_i$, then $\bigcup \limits _{i=1}^k \mathcal{B}_i$ is a basis for $\sum\limits _{i=1} ^k W_i$.
+                \item [(iii)] $\operatorname*{dim}_{\mathbb{F}}(\sum \limits _{i=1}^k W_i) = \sum \limits _{i=1}^k \operatorname*{dim}_{\mathbb{F}}(W_i)$
+            \end{itemize}
+            \par Proof see [104016 L-251222]-P7.
+        \subsection{Proposition: a criterion for direct sum of two subspaces}
+            \hskip \parindent
+            \par If $W_1$, $W_2$ are subspaces of a vector space $V$ over a field $\mathbb{F}$, then $W_1 \oplus W_2$ if and only if $W_1 \cap W_2 = \{0\}$.
+            \par Proof see [104016 L-251222]-P10.
+        \subsection{Definition of complement}
+            \hskip \parindent
+            \par Let $W$ be a subsapce of a v.s. $V$ over $\mathbb{F}$. A subspace $W'$ is called a \textbf{complement} of $W$ in $V$ if $V = W \oplus W'$. That is, $V=W'+W$ and $W' \cap W = \{0\}$.
+        \subsection{Remark: dimension of the complement}
+            \hskip \parindent
+            \par If $V$ is a f.d.v.s. over $\mathbb{F}$ and $W'$ is the complement of $W$ in $V$, then
+            \begin{equation}
+                \operatorname*{dim}W' = \operatorname*{dim}V - \operatorname*{dim}W
+            \end{equation}

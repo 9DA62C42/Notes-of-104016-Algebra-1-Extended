@@ -1,0 +1,68 @@
+\section{Fields, finite fields and modular arithmetic}
+        \subsection{Fields}
+            \subsubsection{Definition of a field}
+                \hskip \parindent
+                \par Formally, a field is a set $\mathbb{F}$ together with two binary operations on $\mathbb{F}$ called addition and multiplication. And it satisfies the following axioms (for all $x,y,z \in \mathbb{F}$):
+                \\
+                \par \noindent For additive operation:
+                \begin{itemize}
+                    \item [\textbf{A1}] Commutativity: $x+y=y+x$
+                    \item [\textbf{A2}] Associativity: $x+(y+z)=(x+y)+z$
+                    \item [\textbf{A3}] Identity: There is a unique element $0$ (zero) in $\mathbb{F}$ such that $x + 0 = x$, for every $x$ in $\mathbb{F}$.
+                    \item [\textbf{A4}] Inverse: To each $x$ in $\mathbb{F}$, there corresponds a unique element $-x$ in $\mathbb{F}$ such that $x + (-x) = 0$.
+                \end{itemize}
+                \par \noindent For multiplicative operation:
+                \begin{itemize}
+                    \item [\textbf{M1}] Commutativity: $xy=yx$
+                    \item [\textbf{M2}] Associativity: $x(yz)=(xy)z$
+                    \item [\textbf{M3}] Identity: There is a unique non-zero element $1$ (one) in $\mathbb{F}$ such that $x1 = x$, for every $x$ in $\mathbb{F}$.
+                    \item [\textbf{M4}] Inverse: To each non-zero $x$ in $\mathbb{F}$ there corresponds a unique element $x^{-1}$ in $\mathbb{F}$ such that $xx^{-1} = 1$.
+                \end{itemize}
+                \par \noindent Also, we have multiplication distributes over addition:
+                \begin{itemize}
+                    \item [\textbf{D}] Distributivity: $x(y+z)=xy+xz$
+                \end{itemize}
+        \subsection{Finite fields}
+            \subsubsection{Definition of finite fields}
+                \hskip \parindent
+                \par A finite field (or Galois field) is a field that has a finite number of elements. As with any field, a finite field is a set on which the operations of addition and multiplication are defined and satisfy certain basic rules. The most common examples of finite fields are the integers mod $p$ when $p$ is a prime number.    
+            \subsubsection{A example of finite field}
+                \hskip \parindent
+                \par \noindent \textbf{Question:}
+                \par Let $\mathbb{F}_3$ be the set ${0,1,2}$ furnished with the following binary operations: $"+":=+$(mod 3) and $"\cdot":=\cdot$(mod 3)
+                \par 1. Write the addition and multiplication tables for $\mathbb{F}_3$.
+                \par 2. Prove that $\mathbb{F}_3$ is a field.
+                \par \noindent \textbf{Solution:}
+                \par 1. Addition table:
+                \begin{center}\begin{tabular}{c|c c c}
+                        + & 0 & 1 & 2 \\ \hline 0 & 0 & 1 & 2 \\ 1 & 1 & 2 & 0 \\ 2 & 2 & 0 & 1 \\
+                \end{tabular}\end{center}
+                \par Multiplication table:
+                \begin{center}\begin{tabular}{c|c c c}
+                        $\cdot$ & 0 & 1 & 2 \\ \hline 0 & 0 & 0 & 0 \\ 1 & 0 & 1 & 2 \\ 2 & 0 & 2 & 1 \\
+                \end{tabular}\end{center}
+                \par 2. It's easy to prove that all the field axioms are satisfied by checking the addition and multiplication tables above. So the proof will be omitted here.
+            \subsubsection{The finite fields $Z_p$}
+                \hskip \parindent
+                \par For any prime number $p$, the set of integers modulo $p$, denoted by $\mathbb{Z}_p$ or $\mathbb{F}_p$, forms a finite field with $p$ elements under addition and multiplication modulo $p$. The elements of $\mathbb{Z}_p$ are $\{0, 1, 2, \ldots, p-1\}$.
+                \par In $\mathbb{Z}_p$, addition and multiplication are defined as follows:
+                \begin{itemize}
+                    \item Addition: For any two elements $a, b \in \mathbb{Z}_p$, their sum is given by $(a + b) \mod p$.
+                    \item Multiplication: For any two elements $a, b \in \mathbb{Z}_p$, their product is given by $(a \cdot b) \mod p$.
+                \end{itemize}
+                \par The field axioms can be verified for $\mathbb{Z}_p$, making it a valid finite field.
+        \subsection{Modular arithmetic}
+            \subsubsection{Definition of modular arithmetic}
+                \hskip \parindent
+                \par Modular arithmetic is a system of arithmetic operations for integers, other than the usual ones from elementary arithmetic, where numbers "wrap around" when reaching a certain value, called the modulus.
+            \subsubsection{Notation of modular arithmetic}
+                \hskip \parindent
+                \par In modular arithmetic, we say that two integers $a$ and $b$ are congruent modulo $n$ if they have the same remainder when divided by $n$. This is written as:
+                \begin{equation}
+                    a \equiv b \ (\text{mod} \ n)
+                \end{equation}
+                \par This means that $n$ divides the difference of $a$ and $b$, or equivalently, there exists an integer $k$ such that:
+                \begin{equation}
+                    a - b = kn
+                \end{equation}
+                \par For example, $17 \equiv 5 \ (\text{mod} \ 12)$ because both 17 and 5 leave a remainder of 5 when divided by 12, and $17 - 5 = 12$ which is a multiple of 12.

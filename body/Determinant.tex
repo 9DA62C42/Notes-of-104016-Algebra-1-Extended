@@ -1,0 +1,203 @@
+    \section{Determinant}
+        \subsection{Introduction}
+            \hskip \parindent
+            \par $A = \begin{pmatrix}a&b\\c&d\end{pmatrix}$ is invertible iff $ad-cb\neq0$. We can prove that by write this matrix into row reduced echelon form.
+        \subsection{Definition of multilinear and alternating function}
+            \hskip \parindent
+            \par Let $A=(A_1 \mid A_2 \mid \cdots \mid A_n)$ be in $\mathbb{F}^{n\times n}$. A function $f:\mathbb{F}^{n \times n} \rightarrow \mathbb{F}$ is:
+            \par \textbf{[i] Multilinear (in columns)} if
+            \par $f(A_1 \mid \cdots \mid \alpha A_i + A'_i \mid \cdots \mid A_n) = \alpha f(A_1 \mid \cdots \mid A_i \mid \cdots \mid A_n) + f(A_1 \mid \cdots \mid A'_i \mid \cdots \mid A_n)$ for all $\alpha \in \mathbb{F}$, $A_i,A'_i \in \mathbb{F}^n$ and $1\leq i \leq n$.
+            \par \textbf{[ii] Alternating (in columns)} if
+            \par $f(A_1 \mid \cdots \mid A_i \mid \cdots \mid A_j \mid \cdots \mid A_n) = 0$ if $A_i = A_j$ for some $i \neq j$.
+            \par If $f$ is alternating multilinear (or form) and $f(I_n) \neq 0$, we say that $f$ is a volume form.
+        \subsection{Definition of determinant}
+            \hskip \parindent
+            \par The unique alternating multilinear function $f:\mathbb{F}^{n \times n} \rightarrow \mathbb{F}$ such that $f(I_n) = 1$ is denoted by $\operatorname*{det}$, so $\operatorname*{det}(A)$ denotes the determinant of $A$.
+            \par \textbf{Notation:} $\operatorname*{det}(A) = |A|$
+        \subsection{Definition: determinant of linear transformation under different basis}
+            \hskip \parindent
+            \par $\operatorname*{det}(f) = \operatorname*{det}([f]_B)$ for some $B$ basis for $V$.
+        \subsection{Remark: one linear transformation has same determinant under different basis}
+            \hskip \parindent
+            \par We can prove that a l.t. has same determinant regardless of the choice of basis.
+            \par Proof see [104016 L-251217]-P15.
+        \subsection{Proposition: relation between alt. mult. function and determinant}
+            \hskip \parindent
+            \par Let $f: \mathbb{F}^{n \times n} \rightarrow \mathbb{F}$ be an alternating multilinear function s.t. $f(Id) = \alpha$. Then $f=\alpha \cdot \operatorname*{det}$.
+            \par Proof see [104016 L-251215]-P15.
+        \subsection{Corollary: the existence of determinant}
+            \hskip \parindent
+            \par There exists a determinant from $\mathbb{F}^{n\times n} \rightarrow \mathbb{F}$ for each $n$ in $\mathbb{N}$.
+        \subsection{Theorem: uniqueness of alt. mult. function}
+            \hskip \parindent
+            \par Let $\alpha \in \mathbb{F} $. For each $n \in \mathbb{N}$, there exists a unique alternating multilinear function such that $f(I_n) = \alpha$.
+        \subsection{Corollary: uniqueness of determinant}
+            \hskip \parindent
+            \par For each $n \in \mathbb{N}$, the determinant is unique ($\alpha = 1$).
+        \subsection{Example of determinant function for $2 \times 2$ matrix}
+            \hskip \parindent
+            \par $f:\mathbb{F}^{2\times2} \rightarrow \mathbb{F}$ given by $f\begin{pmatrix}a&b\\c&d\end{pmatrix} = ad-bc$ is a determinant.
+            \par Proof see [104016 L-251210]-P5.
+        \subsection{Proposition for alt. mult. function}
+            \hskip \parindent
+            \par If f is an alternating multilinear function ($f:\mathbb{F}^{n\times n} \rightarrow \mathbb{F}$, f is a form). Then,
+            \par \textbf{(a)} $f(A_1\mid \cdots \mid A_i \mid \cdots \mid A_j \mid \cdots \mid A_n) = - f (A_1\mid \cdots \mid A_j \mid \cdots \mid A_i \mid \cdots \mid A_n)$.
+            \par \textbf{(b)} $f(A_1 \mid \cdots \mid A_{i-1} \mid 0 \mid A_{i+1} \mid \cdots \mid A_n) = 0$
+            \par \textbf{(c)} $f(A_1 \mid \cdots \mid A_i + \alpha A_j \mid \cdots \mid A_j \mid \cdots \mid A_n) = f(A_1 \mid \cdots \mid A_i \mid \cdots \mid A_j \mid \cdots \mid A_n)$ for all $\alpha \in \mathbb{F}$.
+            \par \textbf{(d)} If $A_i = \sum \limits_{j=1 \& j\neq i}^n \alpha_i A_j$, then $f(A_1 \mid \cdots \mid A_i \mid \cdots \mid A_n) = 0$.
+            \par Proof see [104016 L-251210]-P7.
+        \subsection{Corollary: rank of a matrix and alt. mult. function}
+            \hskip \parindent
+            \par If $f$ is an alternating multilinear function and $A \in \mathbb{F}^{n\times n}$. With rank $A < n$, then $f(A) = 0$.
+        \subsection{Examples of alt. mult. function}
+            \hskip \parindent
+            \begin{itemize}
+                \item [1] $f: \mathbb{F}^{1 \times 1} \rightarrow \mathbb{F}$ is alternating multilinear iff $f$ is a l.t.
+                \item [2] $f: \mathbb{F}^{2 \times 2} \rightarrow \mathbb{F}$, $f\begin{pmatrix}a&b\\c&d\end{pmatrix} = ad-bc$, is an alternating multilinear function.
+                \item [3] $f$ is an alternating multilinear function if $f\begin{pmatrix}a&b\\c&d\end{pmatrix}=\alpha(ad-cb)$, with $f(\begin{pmatrix}1&0\\0&1\end{pmatrix})=\alpha$
+            \end{itemize}
+        \subsection{Proposition: uniqueness of determinant for $2 \times 2$ matrix and it's formula}
+            \hskip \parindent
+            \par $f:\mathbb{F}^{2\times 2} \rightarrow \mathbb{F}$ given by $f(\begin{pmatrix}a&b\\c&d\end{pmatrix})=ad-cb$ is the unique determinant from $\mathbb{F}^{2\times 2}$ to $\mathbb{F}$.
+            \par Proof see [104016 L-251210]-P15.
+        \subsection{Lemma: alt. mult. function from $(n+1)\times(n+1)$ matrix to $n\times n$}
+            \hskip \parindent
+            \par Let $f:\mathbb{F}^{(n+1)\times (n+1)} \rightarrow \mathbb{F}$ be an alternating multilinear function with $f(I_{n+1}) = \alpha $. Let $f_i: \mathbb{F}^{n \times n} \rightarrow \mathbb{F}$ be the function defined by $f_i (A) = f(A_{(i)})$ where:
+            \begin{equation}
+                A_{(i)}=
+                    \begin{pmatrix}
+                    a_{1,1}&\cdots&a_{1,i-1}&0&a_{1,i}&\cdots&a_{1,n}\\
+                    \vdots&\ddots&\vdots&\vdots&\vdots&\ddots&\vdots\\
+                    a_{i-1,1}&\cdots&a_{i-1,i-1}&0&a_{i-1,i}&\cdots&a_{i-1,n}\\
+                    0&\cdots&0&1&0&\cdots&0\\
+                    a_{i,1}&\cdots&a_{i,i-1}&0&a_{i,i}&\cdots&a_{i,n}\\
+                    \vdots&\ddots&\vdots&\vdots&\vdots&\ddots&\vdots\\
+                    a_{n,1}&\cdots&a_{n,i-1}&0&a_{n,i}&\cdots&a_{n,n}
+                    \end{pmatrix},\text{with } A = (a_{ij}) \in \mathbb{F}^{n \times n} \text{ for } i =1,2,\cdots,n
+            \end{equation}
+            \par Then $f_i$ is an alternating multilinear function.
+        \subsection{Formular for $2\times 2$ and $3\times 3$ determinant}
+            \hskip \parindent
+            \begin{align}
+            \begin{vmatrix}
+                a_{11}&a_{12}\\
+                a_{21}&a_{22}
+                \end{vmatrix}
+                &=
+                a_{11}a_{22} - a_{12}a_{21}
+            \end{align}
+            \begin{align}
+            \begin{vmatrix}
+                a_{11}&a_{12}&a_{13}\\
+                a_{21}&a_{22}&a_{23}\\
+                a_{31}&a_{32}&a_{33}
+                \end{vmatrix}
+                &=
+                a_{11}\begin{vmatrix}a_{22}&a_{23}\\a_{32}&a_{33}\end{vmatrix}
+                -
+                a_{12}\begin{vmatrix}a_{21}&a_{23}\\a_{31}&a_{33}\end{vmatrix}
+                +
+                a_{13}\begin{vmatrix}a_{21}&a_{22}\\a_{31}&a_{32}\end{vmatrix} \text{  (by rows)} \\
+                &=
+                a_{11}\begin{vmatrix}a_{22}&a_{23}\\a_{32}&a_{33}\end{vmatrix}
+                -
+                a_{21}\begin{vmatrix}a_{12}&a_{13}\\a_{32}&a_{33}\end{vmatrix}
+                +
+                a_{31}\begin{vmatrix}a_{12}&a_{13}\\a_{22}&a_{23}\end{vmatrix} \text{  (by cols)}
+                \end{align}
+        \subsection{Notation of matrix without certain row and col}
+            \hskip \parindent
+            \par Given $A\in \mathbb{F}^{n \times n}$, $1\leq i ,j \leq n$.
+            \par $A(i\mid j) \in \mathbb{F}^{(n-1) \times (n-1)}$ is the matrix $A$ without the $i$-th row and $j$-th column.
+        \subsection{Proposition: alt. mult. function from $n\times n$ matrix to $(n-1)\times(n-1)$}
+            \hskip \parindent
+            \par Let $g:\mathbb{F}^{(n-1) \times (n-1)} \rightarrow \mathbb{F}$ be an alternating multilinear function with $g(I)=\alpha$ and $n \geq 2$. Then the function $f:\mathbb{F}^{n \times n} \rightarrow \mathbb{F}$ defined by
+            \begin{equation}
+                f(A) = \sum\limits_{j=1}^n (-1)^{i+j} a_{ij} g(A(i \mid j)) \text{ is an alt. mult. funct. with } f(I_n) = \alpha
+            \end{equation}  
+        \subsection{Proposition: determinant expansion by row or column}
+            \hskip \parindent
+            \par Given $A \in \mathbb{F}^{n\times n}$
+            \begin{equation}
+                \operatorname*{det}(A) = \sum \limits _{i=1} ^n (-1)^{i+j} a_{ij} \operatorname*{det}(A(i \mid j)) = \sum \limits _{j=1} ^n (-1)^{i+j} a_{ij} \operatorname*{det}(A(i \mid j))
+            \end{equation}
+            \par The former one is using j-th column, the latter one is using i-th row.
+            \par Example see [104016 L-251215]-P5 and [104016 L-251215]-P8.
+            \par \textbf{Remark}: while calculating determinant, we can choose any row or column to expand, therefore, we need to choose the rows and cols with most 0 to simplify the calculation.
+        \subsection{Proposition: determinant of transpose matrix}
+            \hskip \parindent
+            \par For all $A\in \mathbb{F}^{n\times n}$, $\operatorname*{det}(A) = \operatorname*{det}(A^t)$.
+            \par Proof by induction, see [104016 L-251215]-P9.
+        \subsection{Proposition: elementary row operations and determinant}
+            \hskip \parindent
+            \par Let $A \in \mathbb{F}^{n \times n}$.
+            \par $\operatorname*{det} (A') = \alpha \operatorname*{det} A$ if $A' = M_i(\alpha) A$. $r_i \mapsto \alpha r_i$. First type of elementary row operation.
+            \par $\operatorname*{det} (A') = \operatorname*{det} A$ if $A' = L_i(j,\alpha)(A)$. $r_i \mapsto r_i+\alpha r_j$. Second type of elementary row operation.
+            \par $\operatorname*{det} (A') = - \operatorname*{det} A$ if $A' = T_{i,j}(A)$. $r_i \leftrightarrow r_j$. Third type of elementary row operation.
+        \subsection{Proposition: determinant of upper triangular matrix}
+            \hskip \parindent
+            \par Let $A = (a_{ij} \in \mathbb{F}^{n\times n})$ s.t. $a_{ij}=0$ for all $i,j$ s.t. $i>j$. 
+            \begin{equation}
+                \operatorname*{det}(A) = \prod \limits_{i=1}^n a_{ii}
+            \end{equation}
+            \par Proof by induction, see [104016 L-251215]-P13.
+        \subsection{Corollary: determinant of diagonal matrix}
+            \hskip \parindent
+            \par If $D = \operatorname*{diag}(a_{11},a_{22},\cdots,a_{nn})$, then 
+            \begin{equation}
+                \operatorname*{det}(D) = \prod \limits_{i=1}^n a_{ii}
+            \end{equation}
+        \subsection{Proposition: determinant of matrix product}
+            \hskip \parindent
+            \par Let $A,B \in \mathbb{F}^{n \times n}$. Then 
+            \begin{equation}
+                \operatorname*{det}(AB) = \operatorname*{det}(A) \cdot \operatorname*{det}(B)
+            \end{equation}
+            \par Proof see [104016 L-251215]-P16.
+        \subsection{Corollary: properties of determinant}
+            \hskip \parindent
+            \begin{itemize}
+                \item $\operatorname*{det}(AB) = \operatorname*{det}(BA)$.
+                \item Let $A \in \mathbb{F}^{n \times n}$, $B$ an invertible matrix in $\mathbb{F}^{n \times n}$. Then $\operatorname*{det}(BAB^{-1}) = \operatorname*{det}(A)$. (similar matrix have same determinant)
+                \item Let $A \in \mathbb{F}^{n \times n}$, $\alpha \in \mathbb{F}$. Then $\operatorname*{det}(\alpha A) = \alpha^n \operatorname*{det}(A)$.
+            \end{itemize}
+        \subsection{Proposition: invertibility and determinant}
+            \hskip \parindent
+            \par Let $A \in \mathbb{F}^{n \times n}$, $A$ is invertible iff $\operatorname*{det}A \neq 0$
+            \par Proof from two direction, see [104016 L-251217]-P1.
+        \subsection{Corollary: determinant of inverse matrix}
+            \hskip \parindent
+            \begin{equation}
+                \operatorname*{det} A^{-1} = \frac{1}{\operatorname*{det}(A)}
+            \end{equation}
+            \par Proof see [104016 L-251217]-P1.
+        \subsection{Remark: determinant of sum of matrices}
+            \hskip \parindent
+            \begin{equation}
+                \operatorname*{det}(A+B) \neq \operatorname*{det} A + \operatorname*{det} B
+            \end{equation}
+        \subsection{Example of determinant of sum of matrices}
+            \hskip \parindent
+            \par $A=\begin{pmatrix}1&0\\0&1\end{pmatrix}$, $B=\begin{pmatrix}-1&0\\0&-1\end{pmatrix}$. $A+B=\begin{pmatrix}0&0\\0&0\end{pmatrix}$. $\operatorname*{det}(A+B) = 0 \neq 2 = \operatorname*{det} A + \operatorname*{det} B$.
+        \subsection{Adjoint}
+            \subsubsection{Definition of adjoint matrix}
+                \hskip \parindent
+                \par Given $A \in \mathbb{F} ^ {n \times n}$, the adjoint $\operatorname*{adj}A$ of $A$ is given by 
+                \begin{equation}
+                    (\operatorname*{adj}A)_{ij} = (-1)^{i+j} \operatorname*{det}(A(j\mid i))
+                \end{equation}
+            \subsubsection{Proposition: relation between adjoint and inverse}
+                \hskip \parindent
+                \par Given $A \in \mathbb{F}^{n \times n}$, $A \operatorname*{adj} A = \operatorname*{adj} A \cdot A = \operatorname*{det} A \cdot I_n$.
+                \par Thus, if $A$ is invertible, then $A^{-1} = \frac{1}{\operatorname*{det} A} \operatorname*{adj} A$.
+                \par Proof left as exercise, see Workshop-10. Why the product is commutative also need to be proved.
+            \subsubsection{Example of adjoint and inverse}
+                \hskip \parindent
+                \par Let $A = \begin{pmatrix} 1&5&2\\2&1&1\\1&2&0 \end{pmatrix}$
+                \par $(\operatorname*{adj}A)_{13} = (-1)^{1+3} \operatorname*{det}\begin{pmatrix}5&2\\1&1\end{pmatrix} = 3$
+                \par The full calculation see [104016 L-251217]-P4.
+                \par And $\operatorname*{adj}A = \begin{pmatrix} -2&4&3 \\ 1&-2&3 \\ 3&3&-9 \end{pmatrix}$
+                \par $A \cdot \operatorname*{adj}A = \begin{pmatrix}9&0&0\\0&9&0\\0&0&9\end{pmatrix}$, $\operatorname*{det}A = 9$
+                \par We get $A \cdot \operatorname*{adj} A = \operatorname*{det}A \cdot I$
+                \par $A ^ {-1} = \frac{1}{\operatorname*{det}A} \operatorname*{adj}A$
+            
