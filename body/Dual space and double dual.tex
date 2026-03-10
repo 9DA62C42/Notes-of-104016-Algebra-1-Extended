@@ -1,0 +1,143 @@
+\section{Dual Space and Double Dual}
+    \subsection{Linear functionals}
+        \subsubsection{Definition of linear functional}
+            \hskip \parindent
+            \par Let $V$ be a v.s. over a field $\mathbb{F}$. A \textbf{linear functional} on $V$ is a l.t.
+            \begin{equation}
+                f: V \rightarrow \mathbb{F}
+            \end{equation}
+            \par i.e. a map s.t. $f(u+v)=f(u)+f(v)$ and $f(\alpha v)=\alpha f(v)$ for all $u,v \in V$, $\alpha \in \mathbb{F}$.
+        \subsubsection{Examples of linear functionals}
+            \hskip \parindent
+            \begin{itemize}
+                \item [i] $f: \mathbb{R}^n \rightarrow \mathbb{R}$ defined by $f(x_1,x_2,\ldots,x_n) = a_1 x_1 + a_2 x_2 + \cdots + a_n x_n$ for fixed $a_i \in \mathbb{R}$.
+                \item [ii] $f: \mathbb{F}_n[x] \rightarrow \mathbb{F}$ defined by $f(p) = p(c)$ for a fixed $c \in \mathbb{F}$ (evaluation functional).
+                \item [iii] $f: \mathbb{F}[x] \rightarrow \mathbb{R}$ defined by $f(p) = \int_a^b p(t) \, dt$ for fixed $a,b \in \mathbb{R}$ (when $\mathbb{F} = \mathbb{R}$).
+                \item [iv] $f: M_{n \times n}(\mathbb{F}) \rightarrow \mathbb{F}$ defined by $f(A) = \operatorname{tr}(A)$ (trace functional).
+            \end{itemize}
+
+    \subsection{Dual space}
+        \subsubsection{Definition of dual space}
+            \hskip \parindent
+            \par Let $V$ be a v.s. over $\mathbb{F}$. The \textbf{dual space} of $V$ is the set of all linear functionals on $V$:
+            \begin{equation}
+                V^* = \operatorname{Hom}_{\mathbb{F}}(V, \mathbb{F}) = \{ f: V \rightarrow \mathbb{F} \mid f \text{ is a l.t.}\}
+            \end{equation}
+            \par $V^*$ is itself a v.s. over $\mathbb{F}$ under pointwise addition and scalar multiplication:
+            \begin{itemize}
+                \item $(f+g)(v) = f(v) + g(v)$
+                \item $(\alpha f)(v) = \alpha f(v)$
+            \end{itemize}
+        \subsubsection{Theorem: dimension of dual space}
+            \hskip \parindent
+            \par If $V$ is a f.d.v.s. over $\mathbb{F}$, then
+            \begin{equation}
+                \dim_{\mathbb{F}} V^* = \dim_{\mathbb{F}} V
+            \end{equation}
+            \par In particular, $V^* \cong V$ (though not canonically).
+        \subsubsection{Definition of dual basis}
+            \hskip \parindent
+            \par Let $V$ be a f.d.v.s. over $\mathbb{F}$ with ordered basis $B = \{v_1, v_2, \ldots, v_n\}$. The \textbf{dual basis} of $B$ is the set $B^* = \{f_1, f_2, \ldots, f_n\} \subseteq V^*$ defined by
+            \begin{equation}
+                f_i(v_j) = \delta_{ij} = \begin{cases} 1 & i = j \\ 0 & i \neq j \end{cases}
+            \end{equation}
+            \par for $i, j = 1, 2, \ldots, n$.
+        \subsubsection{Theorem: dual basis is a basis for $V^*$}
+            \hskip \parindent
+            \par The dual basis $B^* = \{f_1, f_2, \ldots, f_n\}$ is a basis for $V^*$.
+            \par \textit{Proof (well-definedness).} Each $f_i$ is well-defined as a l.t. by the theorem of unique transformation (see Section \ref{sec:theorem_unique_transformation}), since we prescribe its values on the basis $B$.
+            \par \textit{Proof (linear independence).} Suppose $\sum_{i=1}^n \alpha_i f_i = 0$. For each $j$, evaluating at $v_j$ gives $\alpha_j = \left(\sum_{i=1}^n \alpha_i f_i\right)(v_j) = \sum_{i=1}^n \alpha_i \delta_{ij} = \alpha_j = 0$. Hence all $\alpha_j = 0$.
+            \par \textit{Proof (spanning).} Let $f \in V^*$ and set $\alpha_i = f(v_i)$ for each $i$. Then for each $j$: $\left(\sum_{i=1}^n \alpha_i f_i\right)(v_j) = \alpha_j = f(v_j)$. Since both $f$ and $\sum_{i=1}^n \alpha_i f_i$ agree on every basis vector $v_j$, by the theorem of unique transformation $f = \sum_{i=1}^n f(v_i) f_i$. $\square$
+        \subsubsection{Remark: coordinate formula via dual basis}
+            \hskip \parindent
+            \par If $v = \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n \in V$, then for each $i$:
+            \begin{equation}
+                f_i(v) = \alpha_i
+            \end{equation}
+            \par So the dual basis functionals \textbf{read off the coordinates} of a vector relative to $B$.
+        \subsubsection{Example: dual basis of $\mathbb{R}^2$}
+            \hskip \parindent
+            \par Let $V = \mathbb{R}^2$ with standard basis $B = \{e_1, e_2\} = \{(1,0),(0,1)\}$. The dual basis is $B^* = \{f_1, f_2\}$ where
+            \begin{align*}
+                f_1(x_1,x_2) &= x_1 \quad (\text{projection onto the first coordinate})\\
+                f_2(x_1,x_2) &= x_2 \quad (\text{projection onto the second coordinate})
+            \end{align*}
+            \par More generally, with basis $B = \{(1,1),(1,-1)\}$, one checks that
+            \begin{align*}
+                f_1(x_1,x_2) &= \tfrac{x_1+x_2}{2}\\
+                f_2(x_1,x_2) &= \tfrac{x_1-x_2}{2}
+            \end{align*}
+            \par satisfies $f_i(v_j) = \delta_{ij}$.
+
+    \subsection{Double dual}
+        \subsubsection{Definition of double dual}
+            \hskip \parindent
+            \par The \textbf{double dual} (or second dual) of $V$ is the dual space of $V^*$:
+            \begin{equation}
+                V^{**} = (V^*)^* = \operatorname{Hom}_{\mathbb{F}}(V^*, \mathbb{F})
+            \end{equation}
+        \subsubsection{Definition of canonical embedding}
+            \hskip \parindent
+            \par There is a natural l.t. $\varphi: V \rightarrow V^{**}$ called the \textbf{canonical embedding}, defined by
+            \begin{equation}
+                \varphi(v)(f) = f(v) \quad \forall v \in V,\; f \in V^*
+            \end{equation}
+            \par That is, each vector $v \in V$ is sent to the ``evaluation at $v$'' functional $\hat{v} = \varphi(v): V^* \rightarrow \mathbb{F}$, $f \mapsto f(v)$.
+        \subsubsection{Proposition: canonical embedding is a monomorphism}
+            \hskip \parindent
+            \par The canonical embedding $\varphi: V \rightarrow V^{**}$ is always injective (monomorphic), i.e. $\operatorname{Ker} \varphi = \{0\}$.
+            \par \textit{Proof.} Suppose $\varphi(v) = 0$, i.e. $f(v) = 0$ for all $f \in V^*$. If $v \neq 0$, one can extend $\{v\}$ to a basis $\{v, v_2, \ldots, v_n\}$ of $V$ (by the basis extension theorem, see Section \ref{sec:theorem_extension_of_l.i.sets}) and define $f \in V^*$ by $f(v) = 1$ and $f(v_i) = 0$ for $i \geq 2$ (by the theorem of unique transformation, see Section \ref{sec:theorem_unique_transformation}). This gives $f(v) = 1 \neq 0$, a contradiction. Hence $v = 0$. $\square$
+        \subsubsection{Theorem: finite-dimensional spaces are canonically isomorphic to their double dual}
+            \hskip \parindent
+            \par If $V$ is a f.d.v.s. over $\mathbb{F}$, then the canonical embedding $\varphi: V \rightarrow V^{**}$ is an isomorphism:
+            \begin{equation}
+                V \cong V^{**}
+            \end{equation}
+            \par \textit{Proof.} We have $\dim V^{**} = \dim V^* = \dim V$. Since $\varphi$ is injective (monomorphism) and $\dim V = \dim V^{**}$, by the rank-nullity theorem (see Section \ref{sec:theorem_rank_plus_dimker}) $\varphi$ is also surjective (epimorphism). Hence $\varphi$ is an isomorphism. $\square$
+        \subsubsection{Remark: canonical vs. non-canonical isomorphism}
+            \hskip \parindent
+            \par Although $V \cong V^*$ and $V \cong V^{**}$ both hold when $\dim V < \infty$, the isomorphisms are fundamentally different:
+            \begin{itemize}
+                \item [i] $V \cong V^*$: this isomorphism depends on the choice of basis (not canonical).
+                \item [ii] $V \cong V^{**}$: the canonical embedding $\varphi$ is basis-independent (canonical). This means $V$ and $V^{**}$ can be identified naturally without making any choices.
+            \end{itemize}
+
+    \subsection{Transpose of a linear transformation}
+        \subsubsection{Definition of transpose (dual map)}
+            \hskip \parindent
+            \par Let $T: V \rightarrow W$ be a l.t.. The \textbf{transpose} (or \textbf{dual map}) of $T$ is the l.t.
+            \begin{equation}
+                T^t: W^* \rightarrow V^*
+            \end{equation}
+            \par defined by
+            \begin{equation}
+                T^t(g) = g \circ T \quad \forall g \in W^*
+            \end{equation}
+            \par That is, $(T^t(g))(v) = g(T(v))$ for all $v \in V$.
+        \subsubsection{Proposition: transpose is a linear transformation}
+            \hskip \parindent
+            \par $T^t: W^* \rightarrow V^*$ is a l.t.. For all $g, h \in W^*$ and $\alpha \in \mathbb{F}$:
+            \begin{itemize}
+                \item [i] $T^t(g+h) = (g+h) \circ T = g \circ T + h \circ T = T^t(g) + T^t(h)$
+                \item [ii] $T^t(\alpha g) = (\alpha g) \circ T = \alpha (g \circ T) = \alpha T^t(g)$
+            \end{itemize}
+        \subsubsection{Theorem: matrix of the transpose}
+            \hskip \parindent
+            \par Let $V$ and $W$ be f.d.v.s. over $\mathbb{F}$ with ordered bases $B = \{v_1,\ldots,v_n\}$ and $B' = \{w_1,\ldots,w_m\}$, and let $B^* = \{f_1,\ldots,f_n\}$, $B'^* = \{g_1,\ldots,g_m\}$ be the respective dual bases. If $A = [T]^B_{B'}$ is the $m \times n$ matrix of $T$, then the matrix of $T^t$ with respect to $B'^*$ and $B^*$ is the \textbf{transpose matrix} $A^T$:
+            \begin{equation}
+                [T^t]^{B'^*}_{B^*} = A^T = ([T]^B_{B'})^T
+            \end{equation}
+        \subsubsection{Proposition: rank of transpose equals rank of $T$}
+            \hskip \parindent
+            \par For a l.t. $T: V \rightarrow W$ between f.d.v.s.,
+            \begin{equation}
+                \operatorname{rank}(T^t) = \operatorname{rank}(T)
+            \end{equation}
+        \subsubsection{Example: transpose of a matrix transformation}
+            \hskip \parindent
+            \par Let $T: \mathbb{R}^2 \rightarrow \mathbb{R}^3$ be defined by the matrix $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6 \end{bmatrix}$, i.e. $T(x) = Ax$.
+            \par The transpose map $T^t: (\mathbb{R}^3)^* \rightarrow (\mathbb{R}^2)^*$ is given, under identification of $(\mathbb{R}^n)^*$ with $\mathbb{R}^n$ via the standard dual basis, by the matrix
+            \begin{equation}
+                A^T = \begin{bmatrix} 1 & 3 & 5 \\ 2 & 4 & 6 \end{bmatrix}
+            \end{equation}
+            \par So $(T^t(g))(x) = g(Ax)$, which corresponds to applying the row vector $g^T A$ to $x$.
