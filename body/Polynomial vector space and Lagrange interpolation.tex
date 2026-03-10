@@ -1,0 +1,118 @@
+\section{Polynomial Vector Space and Lagrange Interpolation}
+    \subsection{Polynomial vector space}
+        \subsubsection{Definition of polynomial vector space}
+            \hskip \parindent
+            \par Let $\mathbb{F}$ be a field and let $n \in \mathbb{N}_0$. The set of all polynomials of degree $\leq n$ with coefficients in $\mathbb{F}$ is denoted by $\mathbb{F}_n[x]$:
+            \begin{equation}
+                \mathbb{F}_n[x] = \{ a_0 + a_1 x + a_2 x^2 + \cdots + a_n x^n \mid a_0,a_1,\ldots,a_n \in \mathbb{F} \}
+            \end{equation}
+            \par Together with polynomial addition and scalar multiplication, $\mathbb{F}_n[x]$ forms a vector space over $\mathbb{F}$.
+        \subsubsection{Theorem: dimension of polynomial vector space}
+            \hskip \parindent
+            \par Let $\mathbb{F}_n[x]$ be the polynomial vector space over $\mathbb{F}$. Then
+            \begin{equation}
+                \dim_{\mathbb{F}} \mathbb{F}_n[x] = n+1
+            \end{equation}
+        \subsubsection{Standard basis of polynomial vector space}
+            \hskip \parindent
+            \par The set $\varepsilon = \{1, x, x^2, \ldots, x^n\}$ is a basis for $\mathbb{F}_n[x]$, called the \textbf{standard basis}. In particular, every polynomial $p(x) = a_0 + a_1 x + \cdots + a_n x^n$ has the coordinate vector
+            \begin{equation}
+                [p(x)]_{\varepsilon} = \begin{bmatrix} a_0 \\ a_1 \\ \vdots \\ a_n \end{bmatrix} \in \mathbb{F}^{n+1}
+            \end{equation}
+        \subsubsection{Example: isomorphism between polynomial space and $\mathbb{F}^{n+1}$}
+            \hskip \parindent
+            \par The map $T: \mathbb{F}_n[x] \rightarrow \mathbb{F}^{n+1}$ defined by
+            \begin{equation}
+                T(a_0 + a_1 x + \cdots + a_n x^n) = (a_0, a_1, \ldots, a_n)
+            \end{equation}
+            \par is an isomorphism. Therefore $\mathbb{F}_n[x] \cong \mathbb{F}^{n+1}$.
+
+    \subsection{Evaluation functionals}
+        \subsubsection{Definition of evaluation functional}
+            \hskip \parindent
+            \par Let $c \in \mathbb{F}$. The \textbf{evaluation functional} at $c$ is the map $L_c : \mathbb{F}_n[x] \rightarrow \mathbb{F}$ defined by
+            \begin{equation}
+                L_c(p) = p(c)
+            \end{equation}
+        \subsubsection{Proposition: evaluation functional is a linear transformation}
+            \hskip \parindent
+            \par For any $c \in \mathbb{F}$, $L_c: \mathbb{F}_n[x] \rightarrow \mathbb{F}$ is a l.t. (i.e., a linear functional). For all $p, q \in \mathbb{F}_n[x]$ and $\alpha \in \mathbb{F}$:
+            \begin{itemize}
+                \item [i] $L_c(p + q) = (p+q)(c) = p(c) + q(c) = L_c(p) + L_c(q)$
+                \item [ii] $L_c(\alpha p) = (\alpha p)(c) = \alpha p(c) = \alpha L_c(p)$
+            \end{itemize}
+        \subsubsection{Remark: family of evaluation functionals}
+            \hskip \parindent
+            \par Given distinct points $c_0, c_1, \ldots, c_n \in \mathbb{F}$, the map
+            \begin{equation}
+                T: \mathbb{F}_n[x] \rightarrow \mathbb{F}^{n+1}, \quad p \mapsto (p(c_0), p(c_1), \ldots, p(c_n))
+            \end{equation}
+            \par is a l.t.. As shown by the interpolation theorem below, this map is an isomorphism when the $c_i$ are pairwise distinct.
+
+    \subsection{The interpolation problem}
+        \subsubsection{Statement of the interpolation problem}
+            \hskip \parindent
+            \par Given $n+1$ distinct points $c_0, c_1, \ldots, c_n \in \mathbb{F}$ and prescribed values $y_0, y_1, \ldots, y_n \in \mathbb{F}$, the \textbf{interpolation problem} asks: does there exist a polynomial $p(x) \in \mathbb{F}_n[x]$ s.t.
+            \begin{equation}
+                p(c_i) = y_i \quad \forall i = 0, 1, \ldots, n
+            \end{equation}
+            \par In other words, we seek $p(x)$ of degree $\leq n$ passing through all given data points $(c_0,y_0), (c_1,y_1), \ldots, (c_n,y_n)$.
+        \subsubsection{Reformulation as a linear map}
+            \hskip \parindent
+            \par Define the evaluation map
+            \begin{equation}
+                T: \mathbb{F}_n[x] \rightarrow \mathbb{F}^{n+1}, \quad p(x) \mapsto (p(c_0), p(c_1), \ldots, p(c_n))
+            \end{equation}
+            \par Then the interpolation problem is equivalent to: given $y = (y_0, y_1, \ldots, y_n) \in \mathbb{F}^{n+1}$, find $p(x) \in \mathbb{F}_n[x]$ s.t. $T(p) = y$.
+        \subsubsection{Theorem: unique existence of interpolating polynomial}
+            \hskip \parindent
+            \par If $c_0, c_1, \ldots, c_n \in \mathbb{F}$ are pairwise distinct, then for any $y_0, y_1, \ldots, y_n \in \mathbb{F}$, there exists a \textbf{unique} polynomial $p(x) \in \mathbb{F}_n[x]$ s.t. $p(c_i) = y_i$ for all $i = 0, 1, \ldots, n$.
+            \par Equivalently, the evaluation map $T: \mathbb{F}_n[x] \rightarrow \mathbb{F}^{n+1}$ is an isomorphism.
+
+    \subsection{Lagrange interpolation}
+        \subsubsection{Lagrange basis polynomials}
+            \hskip \parindent
+            \par Given pairwise distinct points $c_0, c_1, \ldots, c_n \in \mathbb{F}$, the \textbf{Lagrange basis polynomials} are defined by
+            \begin{equation}
+                \ell_i(x) = \prod_{j \neq i} \frac{x - c_j}{c_i - c_j}
+            \end{equation}
+            \par for $i = 0, 1, \ldots, n$. Each $\ell_i(x) \in \mathbb{F}_n[x]$ and satisfies the \textbf{Kronecker delta property}:
+            \begin{equation}
+                \ell_i(c_j) = \delta_{ij} = \begin{cases} 1 & i = j \\ 0 & i \neq j \end{cases}
+            \end{equation}
+        \subsubsection{Remark: Lagrange basis is a basis for $\mathbb{F}_n[x]$}
+            \hskip \parindent
+            \par The set $\{\ell_0(x), \ell_1(x), \ldots, \ell_n(x)\}$ is a basis for $\mathbb{F}_n[x]$, called the \textbf{Lagrange basis} associated to the points $c_0, c_1, \ldots, c_n$. Each $\ell_i(x)$ has degree at most $n$, so the set lies in $\mathbb{F}_n[x]$. Since there are $n+1$ such polynomials and $\dim \mathbb{F}_n[x] = n+1$, it suffices to show they are l.i.. Suppose $\sum_{i=0}^n \alpha_i \ell_i(x) = 0$. Evaluating at $c_j$ and using the Kronecker delta property $\ell_i(c_j) = \delta_{ij}$ gives $\alpha_j = 0$ for each $j = 0,1,\ldots,n$. Hence they are l.i. and form a basis.
+        \subsubsection{Theorem: Lagrange interpolation formula}
+            \hskip \parindent
+            \par Let $c_0, c_1, \ldots, c_n \in \mathbb{F}$ be pairwise distinct and let $y_0, y_1, \ldots, y_n \in \mathbb{F}$. The unique interpolating polynomial $p(x) \in \mathbb{F}_n[x]$ s.t. $p(c_i) = y_i$ for all $i$ is given by the \textbf{Lagrange interpolation formula}:
+            \begin{equation}
+                p(x) = \sum_{i=0}^{n} y_i \,\ell_i(x) = \sum_{i=0}^{n} y_i \prod_{j \neq i} \frac{x - c_j}{c_i - c_j}
+            \end{equation}
+            \par This is simply the coordinate representation of $p(x)$ in the Lagrange basis: $p(x) = \sum_{i=0}^n y_i \ell_i(x)$ with coordinates $(y_0,y_1,\ldots,y_n)$.
+        \subsubsection{Example: Lagrange interpolation with three data points}
+            \hskip \parindent
+            \par Find $p(x) \in \mathbb{R}_2[x]$ s.t. $p(1) = 2$, $p(2) = 3$, $p(3) = 5$.
+            \par Set $c_0 = 1$, $c_1 = 2$, $c_2 = 3$ and $y_0 = 2$, $y_1 = 3$, $y_2 = 5$. The Lagrange basis polynomials are:
+            \begin{align*}
+                \ell_0(x) &= \frac{(x-2)(x-3)}{(1-2)(1-3)} = \frac{(x-2)(x-3)}{2}\\[4pt]
+                \ell_1(x) &= \frac{(x-1)(x-3)}{(2-1)(2-3)} = \frac{(x-1)(x-3)}{-1} = -(x-1)(x-3)\\[4pt]
+                \ell_2(x) &= \frac{(x-1)(x-2)}{(3-1)(3-2)} = \frac{(x-1)(x-2)}{2}
+            \end{align*}
+            \par Applying the Lagrange formula and expanding each term:
+            \begin{align*}
+                2\,\ell_0(x) &= (x-2)(x-3) = x^2 - 5x + 6\\
+                3\,\ell_1(x) &= -3(x-1)(x-3) = -3x^2 + 12x - 9\\
+                5\,\ell_2(x) &= \tfrac{5}{2}(x-1)(x-2) = \tfrac{5}{2}x^2 - \tfrac{15}{2}x + 5
+            \end{align*}
+            \par Summing the coefficients:
+            \begin{align*}
+                [x^2]: &\quad 1 - 3 + \tfrac{5}{2} = \tfrac{1}{2}\\
+                [x^1]: &\quad -5 + 12 - \tfrac{15}{2} = 7 - \tfrac{15}{2} = -\tfrac{1}{2}\\
+                [x^0]: &\quad 6 - 9 + 5 = 2
+            \end{align*}
+            \par Therefore:
+            \begin{equation}
+                p(x) = \frac{1}{2}x^2 - \frac{1}{2}x + 2
+            \end{equation}
+            \par Verification: $p(1) = \frac{1}{2} - \frac{1}{2} + 2 = 2$ \checkmark, $p(2) = 2 - 1 + 2 = 3$ \checkmark, $p(3) = \frac{9}{2} - \frac{3}{2} + 2 = 3 + 2 = 5$ \checkmark.
