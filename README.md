@@ -27,10 +27,12 @@ Xiangjun Liu
 13. Null Space and Kernel
 14. Linear Transformation
 15. Coordinate and Matrix Representation of Linear Transformation
-16. Determinant
-17. Diagonalization and Eigenvalues
-18. Annihilating Polynomial
-19. Proofs
+16. Polynomial Vector Space and Lagrange Interpolation
+17. Dual Space and Double Dual
+18. Determinant
+19. Diagonalization and Eigenvalues
+20. Annihilating Polynomial
+21. Proofs
 
 ### License
 
@@ -65,10 +67,12 @@ Xiangjun Liu
 13. 零空间与核
 14. 线性变换
 15. 线性变换的坐标与矩阵表示
-16. 行列式
-17. 对角化与特征值
-18. 消没多项式
-19. 证明
+16. 多项式向量空间与拉格朗日插值
+17. 对偶空间与双重对偶
+18. 行列式
+19. 对角化与特征值
+20. 消没多项式
+21. 证明
 
 ### 许可证
 
