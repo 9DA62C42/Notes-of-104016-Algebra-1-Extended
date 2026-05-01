@@ -1,0 +1,117 @@
+% ============================================================
+%  Chapter 2 — Fields, Finite Fields and Modular Arithmetic
+% ============================================================
+\section{Fields, Finite Fields and Modular Arithmetic}
+
+A \emph{field} is the algebraic structure that provides the scalars for a vector
+space.  Understanding the field axioms carefully—and seeing them satisfied in
+finite and modular settings—builds the foundation for all of linear algebra.
+
+% ------------------------------------------------------------
+\begin{defbox}[Definition --- Field Axioms]
+A \textbf{field} is a set $\F$ equipped with two binary operations, addition
+$+$ and multiplication $\cdot$, satisfying the following axioms for all
+$x,y,z\in\F$:
+
+\medskip
+\textbf{Additive axioms}
+\begin{enumerate}[label=A\arabic*.]
+    \item \textit{Commutativity:} $x+y=y+x$.
+    \item \textit{Associativity:} $x+(y+z)=(x+y)+z$.
+    \item \textit{Identity:} there exists a unique element $0\in\F$ s.t.\ $x+0=x$.
+    \item \textit{Inverse:} for each $x$ there exists a unique element $-x\in\F$
+          s.t.\ $x+(-x)=0$.
+\end{enumerate}
+
+\medskip
+\textbf{Multiplicative axioms}
+\begin{enumerate}[label=M\arabic*.]
+    \item \textit{Commutativity:} $xy=yx$.
+    \item \textit{Associativity:} $x(yz)=(xy)z$.
+    \item \textit{Identity:} there exists a unique element $1\neq 0$ in $\F$
+          s.t.\ $x\cdot 1=x$.
+    \item \textit{Inverse:} for each $x\neq 0$ there exists a unique $x^{-1}\in\F$
+          s.t.\ $xx^{-1}=1$.
+\end{enumerate}
+
+\medskip
+\textbf{Distributivity}
+\begin{enumerate}[label=D.]
+    \item $x(y+z)=xy+xz$.
+\end{enumerate}
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{defbox}[Definition --- Finite Fields (Galois Fields)]
+A \textbf{finite field} (also called a \emph{Galois field}) is a field with
+finitely many elements.  The most common examples are the sets of integers
+modulo a prime $p$, denoted $\F_p = \Z_p = \{0,1,\ldots,p-1\}$ with addition
+and multiplication performed modulo $p$.
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{defbox}[Definition --- Modular Arithmetic]
+For integers $a,b$ and a positive integer $n$, we write
+\[
+    a \equiv b \pmod{n}
+\]
+to mean $n \mid (a-b)$, i.e.\ $a - b = kn$ for some integer $k$.
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{tipbox}[Remark --- Intuition for Modular Arithmetic]
+Modular arithmetic is arithmetic where integers ``wrap around'' at the modulus.
+For example, $17 \equiv 5 \pmod{12}$ because $17-5=12$, which is divisible by
+$12$.  Clocks are a familiar everyday instance: $13\text{ o'clock} \equiv 1
+\pmod{12}$.
+\end{tipbox}
+
+% ------------------------------------------------------------
+\begin{exbox}[Example --- The Field $\F_3$]
+Consider $\F_3 = \{0,1,2\}$ with addition and multiplication modulo $3$.
+
+\medskip
+\textbf{Addition table ($\bmod\ 3$):}
+\[
+\begin{array}{c|ccc}
++ & 0 & 1 & 2 \\\hline
+0 & 0 & 1 & 2 \\
+1 & 1 & 2 & 0 \\
+2 & 2 & 0 & 1
+\end{array}
+\]
+
+\medskip
+\textbf{Multiplication table ($\bmod\ 3$):}
+\[
+\begin{array}{c|ccc}
+\cdot & 0 & 1 & 2 \\\hline
+0     & 0 & 0 & 0 \\
+1     & 0 & 1 & 2 \\
+2     & 0 & 2 & 1
+\end{array}
+\]
+
+All field axioms can be verified by inspection of these tables (proof omitted).
+\end{exbox}
+
+% ------------------------------------------------------------
+\begin{thmbox}[Theorem --- $\Z_p$ is a Field for Prime $p$]
+Let $p$ be a prime.  Then $\Z_p = \{0,1,\ldots,p-1\}$ with addition and
+multiplication modulo $p$ is a field with $p$ elements.
+
+\medskip
+The field axioms (commutativity, associativity, identity, inverse,
+distributivity) can each be verified; in particular, every nonzero element
+$a \in \Z_p$ has a multiplicative inverse (since $\gcd(a,p)=1$ when $p$ is
+prime and $0<a<p$).
+\end{thmbox}
+
+% ------------------------------------------------------------
+\begin{warnbox}[Notation Notice --- $\Z_p$ vs.\ $\F_p$]
+Both $\Z_p$ and $\F_p$ are used in these notes to denote the finite field of
+integers modulo a prime $p$.  Some texts reserve $\Z_p$ for the $p$-adic
+integers (a very different object) and use only $\F_p$.
+In these notes the two notations are interchangeable and always mean
+$\{0,1,\ldots,p-1\}$ with arithmetic modulo $p$.
+\end{warnbox}

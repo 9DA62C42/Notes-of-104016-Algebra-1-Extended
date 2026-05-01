@@ -1,0 +1,91 @@
+% ============================================================
+%  Chapter 3 — Rational, Real and Complex Numbers
+% ============================================================
+\section{Rational, Real and Complex Numbers}
+
+Before developing linear algebra over an arbitrary field $\F$, it is useful to
+review the three principal number systems: the rationals $\Q$, the reals $\R$,
+and the complex numbers $\C$.  The last of these is central to eigenvalue
+theory and will reappear throughout the course.
+
+% ------------------------------------------------------------
+\begin{defbox}[Definition --- Rational, Real and Complex Numbers]
+\begin{itemize}
+    \item \textbf{Rational numbers} $\Q$: all numbers expressible as $p/q$ with
+          $p,q\in\Z$ and $q\neq 0$.
+    \item \textbf{Real numbers} $\R$: all rational numbers together with all
+          irrational numbers (e.g.\ $\sqrt{2}$, $\pi$, $e$).
+    \item \textbf{Complex numbers} $\C$: all numbers of the form $z = a+bi$
+          where $a,b\in\R$ and $i^2=-1$.
+          \begin{itemize}
+              \item $\operatorname{Re}(z) = a$ is the \emph{real part}.
+              \item $\operatorname{Im}(z) = b$ is the \emph{imaginary part}.
+              \item $\bar{z} = a-bi$ is the \emph{(complex) conjugate}.
+              \item $|z| = \sqrt{a^2+b^2}$ is the \emph{modulus}.
+          \end{itemize}
+\end{itemize}
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{defbox}[Definition --- Arithmetic of Complex Numbers]
+Let $z_1 = a+bi$ and $z_2 = c+di$ with $a,b,c,d\in\R$.
+\begin{align*}
+    z_1 + z_2 &= (a+c)+(b+d)i \\
+    z_1 - z_2 &= (a-c)+(b-d)i \\
+    z_1 z_2   &= (ac-bd)+(ad+bc)i \\
+    \frac{z_1}{z_2} &= \frac{(ac+bd)+(bc-ad)i}{c^2+d^2}, \quad z_2\neq 0
+\end{align*}
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{propbox}[Proposition --- Properties of Conjugates and Moduli]
+For $z_1,z_2\in\C$ (with $z_2\neq 0$ where division appears):
+\begin{enumerate}
+    \item $\overline{z_1+z_2} = \bar{z}_1 + \bar{z}_2$
+    \item $\overline{z_1 z_2} = \bar{z}_1\,\bar{z}_2$
+    \item $|z_1 z_2| = |z_1|\,|z_2|$
+    \item $\left|\dfrac{z_1}{z_2}\right| = \dfrac{|z_1|}{|z_2|}$
+\end{enumerate}
+\end{propbox}
+
+% ------------------------------------------------------------
+\begin{defbox}[Definition --- Polar Form and the $\operatorname{cis}$ Notation]
+Every complex number $z = a+bi$ can be written in \emph{polar form} as
+\[
+    z = r\operatorname{cis}(\theta) = r\bigl(\cos\theta + i\sin\theta\bigr),
+\]
+where $r = |z|$ is the modulus and $\theta = \arg(z)$ is the \emph{argument}
+of $z$.
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{thmbox}[Theorem --- Euler's Formula]
+For any $\theta\in\R$,
+\[
+    e^{i\theta} = \cos\theta + i\sin\theta.
+\]
+In particular, $\operatorname{cis}(\theta) = e^{i\theta}$.
+\end{thmbox}
+
+% ------------------------------------------------------------
+\begin{thmbox}[Theorem --- De Moivre's Theorem]
+For any $\theta\in\R$ and $n\in\Z$,
+\[
+    \bigl(\cos\theta + i\sin\theta\bigr)^n = \cos(n\theta) + i\sin(n\theta).
+\]
+This is especially useful for computing powers and roots of complex numbers.
+\end{thmbox}
+
+% ------------------------------------------------------------
+\begin{flowbox}[Key Formulae --- Polar-Form Arithmetic]
+Let $z_1 = r_1\operatorname{cis}(\theta_1)$ and
+$z_2 = r_2\operatorname{cis}(\theta_2)$.
+\begin{align*}
+    z_1 z_2     &= r_1 r_2\,\operatorname{cis}(\theta_1+\theta_2) \\
+    z_1/z_2     &= \tfrac{r_1}{r_2}\,\operatorname{cis}(\theta_1-\theta_2)
+                   \quad(z_2\neq 0)\\
+    z_1^n       &= r_1^n\,\operatorname{cis}(n\theta_1) \\
+    z_1^{-1}    &= \tfrac{1}{r_1}\,\operatorname{cis}(-\theta_1) \\
+    \bar{z}_1   &= r_1\,\operatorname{cis}(-\theta_1)
+\end{align*}
+\end{flowbox}
