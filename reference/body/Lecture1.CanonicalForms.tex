@@ -1,0 +1,332 @@
+\section{Lecture — Canonical Forms: Eigenvalues to Minimal Polynomial}
+% ====================================================================
+This chapter develops tools for finding, for a given linear operator, a basis in which its matrix representation is as simple as possible. The central concepts are \textbf{eigenvalues}, the \textbf{characteristic polynomial}, \textbf{annihilating polynomials}, and the \textbf{minimal polynomial}.
+% --------------------------------------------------------------------
+\subsection{Introduction}
+% --------------------------------------------------------------------
+The motivating question of this chapter is: given a linear operator $f: V \to V$, does there exist a basis $\mathcal{B}$ of $V$ such that $[f]_{\mathcal{B}}$ is a diagonal matrix (or, more generally, a matrix of canonical form)?  The answer hinges on the factorisation properties of certain polynomials attached to $f$.
+% --------------------------------------------------------------------
+\subsection{Characteristic Values}
+% --------------------------------------------------------------------
+
+\begin{defbox}[Definition --- Eigenvalue, Eigenvector, and Eigenspace]
+Let $V$ be a vector space over a field $k$, and let $f: V \to V$
+be $k$-linear.  A scalar $\lambda \in k$ is called an
+\textbf{eigenvalue} (characteristic value) of $f$ if there exists a
+\emph{non-zero} vector $v \in V$ such that
+\[
+  f(v) = \lambda\, v.
+\]
+Such a vector $v \neq 0$ is called an \textbf{eigenvector}
+(characteristic vector) of $f$ for $\lambda$.
+
+\medskip
+The \textbf{eigenspace} corresponding to $\lambda$ is
+\[
+  V_\lambda \;=\; \bigl\{\, v \in V \;\bigm|\; f(v) = \lambda v \,\bigr\}
+       \;=\; \operatorname{Ker}\!\bigl(f - \lambda\,\mathrm{Id}_V\bigr).
+\]
+Note that $V_\lambda$ is a subspace of $V$ (it includes $0$, but eigenvectors
+are by definition non-zero).
+\end{defbox}
+
+\begin{tipbox}[Remark --- Three Characterisations of Eigenvalues]
+\begin{enumerate}[leftmargin=1.5em, itemsep=3pt]
+  \item $\lambda$ is an eigenvalue of $f$
+        \,$\iff$\, $V_\lambda \neq \{0\}$
+        \,$\iff$\, $(f - \lambda\,\mathrm{Id}_V)$ is \textbf{not} a monomorphism
+        (not injective).
+  \item $V_\lambda = \operatorname{Ker}(f - \lambda\,\mathrm{Id}_V)$.
+  \item $\det(f - \lambda\,\mathrm{Id}_V) = 0$.
+        \quad\textit{(Requires $\dim V < \infty$.)}
+\end{enumerate}
+\textbf{Notice:} Remarks (1) and (2) hold without any finite-dimensionality
+assumption on $V$.
+\end{tipbox}
+
+\begin{thmbox}[Theorem --- Three Equivalent Expressions]
+Let $V$ be a finite-dimensional vector space over $k$ and
+$f: V \to V$ linear.  The following statements are equivalent:
+\begin{enumerate}[leftmargin=1.5em, itemsep=3pt]
+  \item $\lambda \in k$ is an eigenvalue of $f$.
+  \item $(f - \lambda\,\mathrm{Id}_V)$ is singular (not invertible).
+  \item $\det(f - \lambda\,\mathrm{Id}_V) = 0$.
+\end{enumerate}
+\end{thmbox}
+
+\begin{thmbox}[Lemma --- Dimension of Sum of Eigenspaces]
+Let $V$ be a finite-dimensional vector space and let
+$c_1, c_2, \ldots, c_k \in k$ be \emph{distinct} eigenvalues of
+$f$.  Set $W = W_1 + W_2 + \cdots + W_k$ where $W_i = V_{c_i}$.  Then
+the sum is \textbf{direct}:
+\[
+  W \;=\; W_1 \oplus W_2 \oplus \cdots \oplus W_k,
+\]
+and consequently $\dim W = \sum\limits_{i=1}^{k} \dim W_i$.
+\end{thmbox}
+
+\begin{thmbox}[Theorem --- Criteria for Diagonalizability]
+Let $f: V \to V$ be a linear operator on an $n$-dimensional space over
+$k$, with distinct eigenvalues $c_1, \ldots, c_k$.  The following
+are equivalent:
+\begin{enumerate}[leftmargin=1.5em, itemsep=3pt]
+  \item $f$ is diagonalizable.
+  \item The characteristic polynomial $\chi_f(x)$ splits completely over
+        $k$, and for each $c_i$ the \emph{geometric multiplicity}
+        equals the \emph{algebraic multiplicity}.
+  \item $\dim V = \sum\limits_{i=1}^{k} \dim V_{c_i}$.
+\end{enumerate}
+\end{thmbox}
+
+% --------------------------------------------------------------------
+\subsection{Annihilating Polynomials}
+% --------------------------------------------------------------------
+
+\begin{defbox}[Definition --- Annihilating Ideal $\mathcal{A}$ --- Notation]
+Let $f: V \to V$ be $k$-linear.  The set of all \textbf{annihilating
+polynomials} of $f$ is
+\[
+  \mathcal{A}
+  \;=\;
+  \bigl\{\, p(x) \in k[x] \;\bigm|\; p(f) = 0 \text{ and } p(x) \neq 0 \,\bigr\}.
+\]
+Together with the zero polynomial, $\mathcal{A}$ forms an
+\textbf{ideal} of $k[x]$.  Moreover, if $\dim V = n < \infty$, then
+$\mathcal{A}$ contains a non-zero polynomial of degree at most $n^2$.
+\end{defbox}
+
+\begin{defbox}[Definition --- Minimal Polynomial]
+Let $T$ be a linear operator on $V$ over $F$. Consider the set of degrees of nonzero elements of $\mathcal{A}$:
+\[
+  J \;=\; \{\, \deg p(x) \mid p(x) \in \mathcal{A},\; p(x) \neq 0 \,\} \;\subseteq\; \mathbb{N}.
+\]
+By the \textbf{well-ordering principle}, $J$ has a minimal element $s \in \mathbb{N}$.
+Pick any $m_s(x) \in \mathcal{A}$ with $\deg m_s(x) = s$ and $m_s(x) \neq 0$.
+Let $\alpha$ be the leading coefficient of $m_s(x)$, and set
+\[
+  m_f(x) \;:=\; \frac{m_s(x)}{\alpha}.
+\]
+Then $m_f(x)$ is the \textbf{minimal polynomial} of $T$: it is the unique
+\emph{monic} polynomial of \emph{least degree} in $\mathcal{A}$.
+\end{defbox}
+
+\begin{proofbox}[Proof --- Uniqueness of the Minimal Polynomial]
+Suppose $m_1(x)$ and $m_2(x)$ both satisfy the conditions for $m_f(x)$.
+Divide $m_1(x)$ by $m_2(x)$ using long division:
+\[
+  m_1(x) \;=\; m_2(x)\,q(x) + r(x),
+  \qquad
+  r(x) = 0 \;\text{ or }\; \deg r(x) < \deg m_2(x).
+\]
+Evaluating at $f$:
+\[
+  r(f) \;=\; m_1(f) - m_2(f)\,q(f) \;=\; 0 - 0 \;=\; 0,
+\]
+so $r(x) \in \mathcal{A} \cup \{0\}$.  But $\deg r < \deg m_2 = \deg m_1$,
+which contradicts the minimality of $m_1$ and $m_2$ unless $r = 0$.
+Hence $m_1(x) = m_2(x)\,q(x)$.  Since both are monic of the same
+degree, we must have $q(x) = 1$, giving $m_1(x) = m_2(x)$.
+\hfill$\blacksquare$
+\end{proofbox}
+
+\begin{tipbox}[Remark --- Properties of the Minimal Polynomial]
+\begin{enumerate}[leftmargin=1.5em, itemsep=4pt]
+  \item \textbf{Divisibility:}  If $p \in k[x]$ satisfies $p(f) = 0$,
+        then $m_f(x) \mid p(x)$.
+
+  \item \textbf{Eigenspace action:}  Let $c \in k$ be an eigenvalue
+        of $f$ and $v \in V_c$.  For any $p(x) \in k[x]$,
+        \[
+          p(f)(v) \;=\; p(c)\,v.
+        \]
+
+  \item \textbf{Conjugation invariance:}  For invertible $P \in M_{n}(k)$
+        and $A \in M_{n}(k)$,
+        \[
+          m_A(x) \;=\; m_{PAP^{-1}}(x).
+        \]
+
+  \item \textbf{Basis independence:}  For $f \colon V \to V$ $k$-linear
+        with any ordered basis $\mathcal{B}$ of $V$,
+        \[
+          m_f(x) \;=\; m_{[f]_{\mathcal{B}}}(x).
+        \]
+\end{enumerate}
+\end{tipbox}
+
+\begin{proofbox}[Proof --- Properties Justification]
+\begin{enumerate}[leftmargin=1.5em, itemsep=6pt]
+  \item \textbf{(Divisibility)}
+        By definition, $m_f(x)$ is the monic polynomial of least degree in
+        $J = \{g \in k[x] \mid g(f) = 0\}$.
+        Divide $p$ by $m_f$: write $p = m_f \cdot q + r$ with $\deg r < \deg m_f$
+        (or $r = 0$).  Since $p(f) = 0$ and $m_f(f) = 0$, we get $r(f) = 0$,
+        so $r \in J$.  By minimality of $\deg m_f$, we must have $r = 0$,
+        i.e.\ $m_f \mid p$. \qed
+
+  \item \textbf{(Eigenspace action)}
+        Since $v \in V_c$, we have $f(v) = cv$, and by induction
+        $f^i(v) = c^i v$ for all $i \geq 0$.  Write $p(x) = \sum\limits_{i} a_i x^i$;
+        then
+        \[
+          p(f)(v) \;=\; \sum\limits_{i} a_i f^i(v)
+                   \;=\; \sum\limits_{i} a_i c^i v
+                   \;=\; p(c)\,v. \qquad\qed
+        \]
+
+  \item \textbf{(Conjugation invariance)}
+        Write $m_A(x) = \sum\limits_{i} \alpha_i x^i$.  Then
+        \[
+          m_A(PAP^{-1})
+          \;=\; \sum\limits_{i} \alpha_i P A^i P^{-1}
+          \;=\; P\!\left(\sum\limits_{i} \alpha_i A^i\right)\!P^{-1}
+          \;=\; P\,m_A(A)\,P^{-1}
+          \;=\; 0,
+        \]
+        so $m_{PAP^{-1}} \mid m_A$.  Replacing $A$ by $PAP^{-1}$ and $P$ by
+        $P^{-1}$ gives the reverse divisibility.  Since both polynomials are
+        monic, $m_A(x) = m_{PAP^{-1}}(x)$. \qed
+
+  \item \textbf{(Basis independence)}
+        Let $A = [f]_{\mathcal{B}}$.  For any $v \in V$,
+        \[
+          [m_A(f)(v)]_{\mathcal{B}}
+          \;=\; m_A(A)\,[v]_{\mathcal{B}}
+          \;=\; 0,
+        \]
+        hence $m_A(f) = 0$, so $m_f \mid m_A$.  Conversely,
+        $[m_f(f)(v)]_{\mathcal{B}} = m_f(A)[v]_{\mathcal{B}} = 0$ for all $v$
+        gives $m_f(A) = 0$, so $m_A \mid m_f$.
+        Both are monic, hence $m_f(x) = m_A(x)$. \qed
+\end{enumerate}
+\end{proofbox}
+
+\begin{corbox}[Corollary --- Basis Independence of the Minimal Polynomial]
+Let $f: V \to V$ be $k$-linear and let $\mathcal{B}_1$,
+$\mathcal{B}_2$ be two bases of $V$.  Then
+\[
+  m_{[f]_{\mathcal{B}_1}}(x) \;=\; m_{[f]_{\mathcal{B}_2}}(x).
+\]
+\textit{(Follows immediately from Remark~(3) above, since
+$[f]_{\mathcal{B}_2} = P\,[f]_{\mathcal{B}_1}\,P^{-1}$ for the
+change-of-basis matrix $P$.)}
+\end{corbox}
+
+\begin{thmbox}[Theorem 3 --- Common Roots of Char.\ and Min.\ Polynomials
+ ]
+Let $f: V \to V$ be a linear operator on a finite-dimensional space.
+The characteristic polynomial $\chi_f(x)$ and the minimal polynomial
+$m_f(x)$ have \textbf{the same set of roots} (in the algebraic closure
+$\bar{k}$).  That is:
+\[
+  \lambda \text{ is a root of } m_f
+  \;\iff\;
+  \lambda \text{ is a root of } \chi_f.
+\]
+\end{thmbox}
+
+\begin{proofbox}[Proof --- Theorem 3]
+Let $c \in \bar{k}$ be a scalar.  We show $m_f(c) = 0 \iff \chi_f(c) = 0$.
+
+\medskip
+\noindent$(\Rightarrow)$\quad
+Suppose $m_f(c) = 0$.  Write $m_f(x) = (x - c)\,q(x)$ for some polynomial
+$q$.  Since $\deg q < \deg m_f$, minimality of $m_f$ forces $q(f) \neq 0$.
+Choose $v \in V$ with $q(f)(v) \neq 0$, and set $u \coloneqq q(f)(v)$.  Then
+\[
+  0 \;=\; m_f(f)(v)
+    \;=\; (f - c\,\mathrm{Id})\,q(f)(v)
+    \;=\; (f - c\,\mathrm{Id})\,u,
+\]
+so $f(u) = cu$ with $u \neq 0$.  Hence $c$ is an eigenvalue of $f$, i.e.\
+$\chi_f(c) = 0$.
+
+\medskip
+\noindent$(\Leftarrow)$\quad
+Suppose $\chi_f(c) = 0$, i.e.\ $c$ is an eigenvalue of $f$.
+Let $v \neq 0$ be a corresponding eigenvector, so $f(v) = cv$.
+Divide $m_f(x)$ by $(x - c)$:
+\[
+  m_f(x) \;=\; (x - c)\,q(x) + r, \qquad r \in k,
+\]
+where the remainder is a constant since $\deg(x-c) = 1$.
+Evaluating at $f$ and applying to $v$:
+\[
+  0 \;=\; m_f(f)(v)
+    \;=\; \underbrace{(f - c\,\mathrm{Id})}_{=\,0 \text{ on }v}
+          q(f)(v) + r\,v
+    \;=\; r\,v.
+\]
+Since $v \neq 0$, we conclude $r = 0$, hence $(x - c) \mid m_f(x)$,
+so $m_f(c) = 0$.
+\end{proofbox}
+
+\begin{tipbox}[Remark --- Minimal Polynomial and Diagonalizability]
+$f$ is \textbf{diagonalizable} (over $k$) with eigenvalues
+$c_1, c_2, \ldots, c_k$ if and only if the minimal polynomial splits
+into \textbf{distinct} linear factors over $k$:
+\[
+  m_f(x) \;=\; \prod_{i=1}^{k}(x - c_i).
+\]
+Equivalently: $m_f$ has no repeated roots.
+\end{tipbox}
+
+\begin{thmbox}[Theorem --- Cayley--Hamilton Theorem]
+For any $A \in k^{n \times n}$ with characteristic polynomial
+$\chi_A(x)$,
+\[
+  \chi_A(A) \;=\; 0.
+\]
+\end{thmbox}
+
+\begin{corbox}[Corollary --- Minimal Polynomial Divides Characteristic
+  Polynomial]
+For any $A \in k^{n \times n}$,
+\[
+  m_A(x) \;\bigm|\; \chi_A(x).
+\]
+\end{corbox}
+
+\begin{propbox}[Proposition --- Stability Under Field Extension]
+The minimal polynomial does not change when the coefficient field is
+enlarged.  In particular, if $A \in M_{n \times n}(\mathbb{R})$, then the
+minimal polynomial computed over $\mathbb{R}$ and over $\mathbb{C}$ coincide.  Hence
+one may discuss the \emph{complex} roots of $m_A$ even when
+$A \in M_{n \times n}(\mathbb{R})$.
+\end{propbox}
+
+\begin{propbox}[Proposition --- Diagonalizability via Minimal Polynomial]
+Let $A \in k^{n \times n}$.  Then $A$ is \textbf{diagonalizable
+over $k$} if and only if $m_A(x)$ has all its roots in $k$
+and every root is a \textbf{simple root} (multiplicity $1$ in $m_A$).
+\end{propbox}
+
+\begin{flowbox}[Key Formula Summary --- Minimal vs.\ Characteristic Polynomial]
+For $A \in M_{n}(k)$ with eigenvalues $\lambda_1, \ldots, \lambda_r$
+(listed with algebraic multiplicity):
+\[
+  m_A(x) \;\bigm|\; \chi_A(x),
+  \qquad
+  \chi_A(A) = 0 \quad\text{(Cayley--Hamilton)}.
+\]
+\[
+  \det(A) = \prod_{i=1}^{r}\lambda_i,
+  \qquad
+  \operatorname{tr}(A) = \sum\limits_{i=1}^{r}\lambda_i.
+\]
+Diagonalizability criterion:
+\[
+  A \text{ diagonalizable over } k
+  \;\iff\;
+  m_A(x) = \prod_{i}(x - c_i), \quad c_i \in k \text{ distinct.}
+\]
+\end{flowbox}
+
+\begin{tipbox}[Recall --- Determinant and Trace via Eigenvalues]
+Let $A \in M_{n \times n}(\mathbb{R})$ and let $\lambda_1, \lambda_2, \ldots,
+\lambda_r$ be the eigenvalues of $A$ counted with algebraic
+multiplicity.  Then:
+\begin{equation*}
+   \det(A) = \displaystyle\prod_{i=1}^{r} \lambda_i \qquad \operatorname{tr}(A) = \displaystyle\sum\limits_{i=1}^{r} \lambda_i
+\end{equation*}
+\end{tipbox}
