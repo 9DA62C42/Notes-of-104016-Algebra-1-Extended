@@ -1,0 +1,52 @@
+\documentclass[11pt,a4paper]{article}
+% ---- Packages ----
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tikz}
+\usetikzlibrary{patterns,arrows.meta,calc}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{lastpage}
+% ====================================================================
+\input{Body/Basic1.tcolorbox.tex}
+\input{Body/Basic2.format.tex}
+\input{Body/Basic3.shortcuts.tex}
+% ====================================================================
+\begin{document}
+% ====================================================================
+    \input{Body/Title.tex}
+% ====================================================================
+    \tableofcontents
+    \input{Body/Legend.tex}
+    \newpage
+% ====================================================================
+    \input{Body/Lecture1.CanonicalForms.tex}
+    \input{Body/Tutorial1.MinimalPolynomial.tex}
+    \input{Body/Lecture2.CayleyHamilton.tex}
+    \input{Body/Tutorial2.CayleyHamiltonApplication.tex}
+    \input{Body/Lecture3.InvariantSubspaces.tex}
+    \input{Body/Tutorial3.MoreOnInvariantSubspace.tex}
+    \input{Body/Lecture4.fConductor.tex}
+    \input{Body/Lecture5.SimultaneousDiagonalisation.tex}
+    \input{Body/Lecture6.DirectSum.tex}
+    \input{Body/Lecture7.Projections.tex}
+    \input{Body/Tutorial4.LagrangePolynomial.tex}
+    \input{Body/Tutorial5.ProjectionsandMatrix.tex}
+    \input{Body/Lecture8.PrimaryDecomposition.tex}
+    \input{Body/Lecture9.CyclicAndJC.tex}
+    \input{Body/Tutorial6.AnnihilatorAndCompanion.tex}
+    \input{Body/Lecture10.fAdmissibleAndCyclicDecomposition.tex}
+    \input{Body/Lecture11.ApplicationsOfCyclicDecomposition.tex}
+    \input{Body/Tutorial7.NilpotentJordanForm.tex}
+    \input{Body/Lecture12.JordanNormalForm.tex}
+    \input{Body/Lecture13.JordanBasisConstruction.tex}
+    \input{Body/Tutorial8.JordanFormComputation.tex}
+    \input{Body/Acknowledgements.tex}
+\end{document}
