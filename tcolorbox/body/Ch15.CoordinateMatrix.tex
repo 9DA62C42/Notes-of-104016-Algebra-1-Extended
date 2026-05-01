@@ -1,0 +1,276 @@
+% ============================================================
+%  Chapter 15 — Coordinate and Matrix Representation of Linear Transformations
+% ============================================================
+\section{Coordinate and Matrix Representation of Linear Transformations}
+
+Every vector in a finite-dimensional space can be uniquely expressed as a linear
+combination of a chosen ordered basis.  Recording these coefficients gives the
+\emph{coordinate vector}, and applying this idea to a linear transformation
+yields the \emph{matrix representation} — the central bridge between abstract
+linear algebra and matrix computation.
+
+% ---- Coordinate vector --------------------------------------
+\begin{defbox}[Definition --- Coordinate Vector]
+\label{def:coordinate-vector}
+Let $V$ be a finite-dimensional vector space over $\F$ with ordered basis
+$\mathcal{B}=\{v_1,\ldots,v_n\}$.  For every $v\in V$ there exist \emph{unique}
+scalars $\alpha_1,\ldots,\alpha_n\in\F$ such that
+\[
+    v = \alpha_1 v_1 + \cdots + \alpha_n v_n.
+\]
+The \textbf{coordinate vector of $v$ relative to $\mathcal{B}$} is
+\[
+    [v]_{\mathcal{B}} =
+    \begin{pmatrix}\alpha_1\\\vdots\\\alpha_n\end{pmatrix} \in \F^n.
+\]
+The map $[\,\cdot\,]_{\mathcal{B}}:V\to\F^n,\; v\mapsto[v]_{\mathcal{B}}$
+is called the \textbf{coordinate map} relative to $\mathcal{B}$.
+\end{defbox}
+
+% ---- Coordinate map is an isomorphism -----------------------
+\begin{propbox}[Proposition --- Coordinate Map is a Linear Isomorphism]
+\label{prop:coord-iso}
+The coordinate map $[\,\cdot\,]_{\mathcal{B}}:V\to\F^n$ is a linear
+transformation and an isomorphism.  In particular:
+\[
+    [v+w]_{\mathcal{B}} = [v]_{\mathcal{B}} + [w]_{\mathcal{B}}, \qquad
+    [cv]_{\mathcal{B}} = c\,[v]_{\mathcal{B}} \quad\text{for all }c\in\F.
+\]
+\end{propbox}
+
+% ---- Examples of coordinate vectors -------------------------
+\begin{exbox}[Example --- Coordinate Vectors in Standard Spaces]
+\begin{enumerate}
+    \item $V=\R^n$, standard basis $\varepsilon=\{e_1,\ldots,e_n\}$:
+          $[x]_\varepsilon=(x_1,\ldots,x_n)^T$.
+    \item $V=\F_n[x]$, basis $\varepsilon=\{1,x,\ldots,x^n\}$:
+          $[a_0+a_1 x+\cdots+a_n x^n]_\varepsilon=(a_0,a_1,\ldots,a_n)^T$.
+    \item $V=\R^3$, basis $\mathcal{B}=\{(1,1,1),(1,1,0),(1,0,0)\}$:
+          $[(x,y,z)]_{\mathcal{B}}=(z,\,y-z,\,x-y)^T$.
+\end{enumerate}
+\end{exbox}
+
+% ---- Matrix representation diagram --------------------------
+\begin{flowbox}[Key Formula --- Matrix Representation Diagram]
+\label{flow:matrix-rep}
+Let $T:V\to W$ be linear, $\mathcal{B}=\{v_1,\ldots,v_n\}$ an ordered basis for
+$V$, and $\mathcal{B}'=\{w_1,\ldots,w_m\}$ an ordered basis for $W$.
+\[
+\begin{array}{ccc}
+V & \xrightarrow{[\,\cdot\,]_{\mathcal{B}}} & \F^n \\[6pt]
+{\scriptstyle T}\Big\downarrow & & \Big\downarrow{\scriptstyle [T]^{\mathcal{B}}_{\mathcal{B}'}} \\[6pt]
+W & \xrightarrow{[\,\cdot\,]_{\mathcal{B}'}} & \F^m
+\end{array}
+\]
+The diagram commutes:
+\[
+    \boxed{[T(v)]_{\mathcal{B}'} = [T]^{\mathcal{B}}_{\mathcal{B}'}\,[v]_{\mathcal{B}}.}
+\]
+The matrix $[T]^{\mathcal{B}}_{\mathcal{B}'}$ is constructed column by column:
+\[
+    [T]^{\mathcal{B}}_{\mathcal{B}'} =
+    \bigl[[T(v_1)]_{\mathcal{B}'}\;\big|\;[T(v_2)]_{\mathcal{B}'}\;\big|\;\cdots
+          \;\big|\;[T(v_n)]_{\mathcal{B}'}\bigr].
+\]
+\end{flowbox}
+
+% ---- Definition: matrix of T relative to bases --------------
+\begin{defbox}[Definition --- Matrix of a Linear Transformation]
+\label{def:matrix-of-lt}
+Let $T:V\to W$ with ordered bases $\mathcal{B}_1=\{v_1,\ldots,v_n\}$ for $V$
+and $\mathcal{B}_2=\{w_1,\ldots,w_m\}$ for $W$.  The \textbf{matrix of $T$
+relative to $\mathcal{B}_1$ and $\mathcal{B}_2$} is the $m\times n$ matrix
+\[
+    A = [T]^{\mathcal{B}_1}_{\mathcal{B}_2}
+      = \bigl[[T(v_1)]_{\mathcal{B}_2}\;\big|\;\cdots\;\big|\;
+              [T(v_n)]_{\mathcal{B}_2}\bigr].
+\]
+When $V=W$ and $\mathcal{B}_1=\mathcal{B}_2=\mathcal{B}$, we write $[T]_\mathcal{B}$.
+\end{defbox}
+
+% ---- Unique matrix correspondence ---------------------------
+\begin{thmbox}[Theorem --- Each Linear Transformation Corresponds to a Unique Matrix]
+\label{thm:lt-unique-matrix}
+Let $V$ be $n$-dimensional with ordered basis $\mathcal{B}$, and $W$ be
+$m$-dimensional with ordered basis $\mathcal{B}'$.  For each linear
+transformation $T:V\to W$ there exists a \emph{unique} matrix
+$A\in\Mmn{m}{n}$ such that
+\[
+    [T(v)]_{\mathcal{B}'} = A\,[v]_{\mathcal{B}} \quad \text{for all }v\in V.
+\]
+Moreover, the assignment $T\mapsto A=[T]^{\mathcal{B}}_{\mathcal{B}'}$ is a
+one-to-one correspondence between $\Hom_\F(V,W)$ and $\Mmn{m}{n}$.
+\end{thmbox}
+
+% ---- Kernel/image via matrix representation -----------------
+\begin{corbox}[Corollary --- Kernel and Image via Matrix Representation]
+\label{cor:ker-img-matrix}
+Let $T:V\to W$ with bases $\mathcal{B},\mathcal{B}'$ and matrix
+$A=[T]^{\mathcal{B}}_{\mathcal{B}'}$.
+\begin{enumerate}[label=(\roman*)]
+    \item $\Ker T = \{v\in V \mid [v]_{\mathcal{B}}\in\Ker A\}$.
+          A set $\{u_1,\ldots,u_r\}$ is a basis of $\Ker T$ if and only if
+          $\{[u_1]_{\mathcal{B}},\ldots,[u_r]_{\mathcal{B}}\}$ is a basis
+          of $\Ker A$.
+    \item $\Img T = \{w\in W \mid [w]_{\mathcal{B}'}\in\operatorname{Col}(A)\}$.
+          A set $\{u_1,\ldots,u_s\}$ is a basis of $\Img T$ if and only if
+          $\{[u_1]_{\mathcal{B}'},\ldots,[u_s]_{\mathcal{B}'}\}$ is a basis
+          of $\operatorname{Col}(A)$.
+\end{enumerate}
+\end{corbox}
+
+% ---- Addition and scalar mult of l.t. -----------------------
+\begin{tipbox}[Remark --- Addition and Scalar Multiplication of Linear Transformations]
+\label{rem:lt-add-scalar}
+For linear transformations $T,T':V\to W$ and scalar $\alpha\in\F$:
+\[
+    [\alpha T + T']^{\mathcal{B}}_{\mathcal{B}'}
+    = \alpha\,[T]^{\mathcal{B}}_{\mathcal{B}'} + [T']^{\mathcal{B}}_{\mathcal{B}'}.
+\]
+Hence the matrix representation is compatible with the vector space structure
+on $\Hom_\F(V,W)$.
+\end{tipbox}
+
+% ---- F_{BB'} is an isomorphism ------------------------------
+\begin{thmbox}[Theorem --- Matrix Representation is an Isomorphism of Vector Spaces]
+\label{thm:matrix-rep-iso}
+The map
+\[
+    \Phi_{\mathcal{B}\mathcal{B}'}: \Hom_\F(V,W) \longrightarrow \Mmn{m}{n},
+    \quad T \longmapsto [T]^{\mathcal{B}}_{\mathcal{B}'},
+\]
+is an isomorphism of vector spaces over $\F$.
+\end{thmbox}
+
+\begin{corbox}[Corollary --- Dimension of $\Hom_\F(V,W)$]
+\label{cor:dim-hom}
+If $\dime_\F V = n$ and $\dime_\F W = m$, then
+\[
+    \dime_\F\bigl(\Hom_\F(V,W)\bigr) = mn.
+\]
+\end{corbox}
+
+% ---- Composition and matrix product -------------------------
+\begin{thmbox}[Theorem --- Composition Corresponds to Matrix Product]
+\label{thm:comp-matrix-product}
+Let $T_1:V\to W$ and $T_2:W\to Z$ be linear transformations with ordered
+bases $\mathcal{B}_1,\mathcal{B}_2,\mathcal{B}_3$ for $V,W,Z$ respectively.
+Then
+\[
+    [T_2\circ T_1]^{\mathcal{B}_1}_{\mathcal{B}_3}
+    = [T_2]^{\mathcal{B}_2}_{\mathcal{B}_3}\,[T_1]^{\mathcal{B}_1}_{\mathcal{B}_2}.
+\]
+\end{thmbox}
+
+% ---- Invertible l.t. <-> invertible matrix ------------------
+\begin{corbox}[Corollary --- Invertible Linear Map Corresponds to Invertible Matrix]
+\label{cor:invertible-lt-matrix}
+Let $T:V\to W$ be invertible with ordered bases $\mathcal{B}_1$ for $V$ and
+$\mathcal{B}_2$ for $W$.  Then $[T]^{\mathcal{B}_1}_{\mathcal{B}_2}$ is
+invertible and
+\[
+    \bigl[T^{-1}\bigr]^{\mathcal{B}_2}_{\mathcal{B}_1}
+    = \bigl([T]^{\mathcal{B}_1}_{\mathcal{B}_2}\bigr)^{-1}.
+\]
+\end{corbox}
+
+% ---- Change of basis ----------------------------------------
+\begin{defbox}[Definition --- Change-of-Basis Matrix]
+\label{def:cob-matrix}
+Let $V$ be $n$-dimensional with two ordered bases
+$\mathcal{B}_1=\{v_1,\ldots,v_n\}$ and $\mathcal{B}_2=\{w_1,\ldots,w_n\}$.
+For each $j$ write $w_j = \sum_i P_{ij}\,v_i$.  The \textbf{change-of-basis
+matrix from $\mathcal{B}_2$ to $\mathcal{B}_1$} is
+\[
+    C(\mathcal{B}_2,\mathcal{B}_1)
+    = [\mathrm{id}]^{\mathcal{B}_2}_{\mathcal{B}_1}
+    = \bigl[[w_1]_{\mathcal{B}_1}\;\big|\;[w_2]_{\mathcal{B}_1}\;\big|\;\cdots
+             \;\big|\;[w_n]_{\mathcal{B}_1}\bigr].
+\]
+It satisfies
+\[
+    [v]_{\mathcal{B}_1} = C(\mathcal{B}_2,\mathcal{B}_1)\,[v]_{\mathcal{B}_2}
+    \quad\text{for all }v\in V,
+\]
+and is invertible with $C(\mathcal{B}_2,\mathcal{B}_1)^{-1}=C(\mathcal{B}_1,\mathcal{B}_2)$.
+\end{defbox}
+
+% ---- Theorems about change of basis -------------------------
+\begin{thmbox}[Theorem --- Unique Change-of-Basis Matrix]
+\label{thm:cob-unique}
+There exists a unique invertible matrix $A\in\Mn{n}$ such that
+\[
+    [v]_{\mathcal{B}_1} = A\,[v]_{\mathcal{B}_2}
+    \quad\text{and}\quad
+    [v]_{\mathcal{B}_2} = A^{-1}[v]_{\mathcal{B}_1}
+    \quad\text{for all }v\in V.
+\]
+This matrix is $A = C(\mathcal{B}_2,\mathcal{B}_1)$.
+\end{thmbox}
+
+\begin{thmbox}[Theorem --- Unique Basis for a Given Change-of-Basis Matrix]
+\label{thm:cob-unique-basis}
+Given an invertible matrix $A\in\Mn{n}$ and an ordered basis $\mathcal{B}_1$
+of $V$, there exists a unique ordered basis $\mathcal{B}_2$ of $V$ such that
+$[v]_{\mathcal{B}_1} = A\,[v]_{\mathcal{B}_2}$ for all $v\in V$.
+\end{thmbox}
+
+\begin{propbox}[Proposition --- Composition of Change-of-Basis Matrices]
+\label{prop:cob-composition}
+For three ordered bases $\mathcal{B}_1,\mathcal{B}_2,\mathcal{B}_3$ of $V$:
+\[
+    C(\mathcal{B}_1,\mathcal{B}_3) = C(\mathcal{B}_2,\mathcal{B}_3)\,C(\mathcal{B}_1,\mathcal{B}_2).
+\]
+\end{propbox}
+
+% ---- Change of basis for l.t. representation ----------------
+\begin{thmbox}[Theorem --- Change of Basis for Matrix Representation of a Linear Map]
+\label{thm:cob-lt}
+Let $T:V\to W$ be linear, $\mathcal{B}_1,\mathcal{B}_2$ ordered bases for $V$,
+and $\mathcal{B}'_1,\mathcal{B}'_2$ ordered bases for $W$.  Then
+\[
+    [T]^{\mathcal{B}_2}_{\mathcal{B}'_2}
+    = C(\mathcal{B}'_1,\mathcal{B}'_2)\,[T]^{\mathcal{B}_1}_{\mathcal{B}'_1}\,
+      C(\mathcal{B}_2,\mathcal{B}_1).
+\]
+\end{thmbox}
+
+% ---- Endomorphism change of basis ---------------------------
+\begin{corbox}[Corollary --- Change of Basis for an Endomorphism]
+\label{cor:cob-endo}
+For an endomorphism $T:V\to V$ and two ordered bases $\mathcal{B}_1,\mathcal{B}_2$:
+\[
+    [T]_{\mathcal{B}_2}
+    = C(\mathcal{B}_2,\mathcal{B}_1)^{-1}\,[T]_{\mathcal{B}_1}\,
+      C(\mathcal{B}_2,\mathcal{B}_1).
+\]
+In particular, $[T]_{\mathcal{B}_1}$ and $[T]_{\mathcal{B}_2}$ are
+\textbf{similar matrices}.
+\end{corbox}
+
+\begin{tipbox}[Remark --- Geometric Meaning of Similarity]
+Two matrices represent the same linear transformation in different coordinate
+systems if and only if they are similar.  The transformation itself does not
+change; only the way we \emph{describe} it in coordinates changes.
+\end{tipbox}
+
+% ---- Similar matrices ---------------------------------------
+\begin{defbox}[Definition --- Similar Matrices]
+\label{def:similar}
+A matrix $B\in\Mn{n}$ is \textbf{similar} to $A\in\Mn{n}$, written
+$A\sim_{\mathrm{sim}} B$, if there exists an invertible matrix $C\in\Mn{n}$
+such that
+\[
+    B = C^{-1}AC.
+\]
+\end{defbox}
+
+\begin{propbox}[Proposition --- Similarity is an Equivalence Relation]
+\label{prop:similarity-equivalence}
+Matrix similarity is an equivalence relation on $\Mn{n}$:
+\begin{enumerate}[label=(\roman*)]
+    \item \emph{Reflexive:} $A\sim A$ (take $C=I$).
+    \item \emph{Symmetric:} $A\sim B\Rightarrow B\sim A$.
+    \item \emph{Transitive:} $A\sim B$ and $B\sim C\Rightarrow A\sim C$.
+\end{enumerate}
+\end{propbox}
