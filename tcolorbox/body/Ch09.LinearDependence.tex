@@ -1,0 +1,138 @@
+% ============================================================
+%  Chapter 9 — Linear Dependence and Independence
+% ============================================================
+\section{Linear Dependence and Independence}
+
+One of the central questions in linear algebra is: can a vector be expressed
+as a linear combination of others?  The concepts of \emph{linear dependence}
+and \emph{linear independence} give a precise vocabulary for answering this
+question, and they underlie the notion of a basis.
+
+% ---- Definitions -------------------------------------------
+\begin{defbox}[Definition --- Linear Dependence and Independence]
+\label{def:lin-dep-indep}
+Let $V$ be a vector space over $\F$ and $S\subseteq V$.
+
+\begin{itemize}
+    \item $S$ is \textbf{linearly dependent} (l.d.) if there exist
+          \emph{distinct} vectors $v_1,\ldots,v_n\in S$ and scalars
+          $\alpha_1,\ldots,\alpha_n\in\F$, not all zero, such that
+          \[
+              \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n = \mathbf{0}.
+          \]
+    \item $S$ is \textbf{linearly independent} (l.i.) if it is not linearly
+          dependent.
+\end{itemize}
+\end{defbox}
+
+% ---- Finite-set formulation --------------------------------
+\begin{tipbox}[Remark --- Linear Independence for Finite Sets]
+For a finite set $S=\{v_1,\ldots,v_n\}$, linear independence means:
+\[
+    \alpha_1 v_1 + \cdots + \alpha_n v_n = \mathbf{0}
+    \implies \alpha_1 = \cdots = \alpha_n = 0.
+\]
+That is, the \emph{only} linear combination equal to $\mathbf{0}$ is the
+trivial one.
+\end{tipbox}
+
+% ---- Standard examples -------------------------------------
+\begin{exbox}[Example --- Linear Dependence and Independence]
+\begin{enumerate}
+    \item In $\R^2$: $\{(1,2),(-1,2)\}$ is l.i., since
+          $\alpha(1,2)+\beta(-1,2)=\mathbf{0}$ gives $\alpha-\beta=0$ and
+          $2\alpha+2\beta=0$, forcing $\alpha=\beta=0$.
+
+    \item In $\F^n$: the standard basis vectors $\{e_1,\ldots,e_n\}$ are l.i.
+
+    \item In $\F_n[x]$ (polynomials of degree $\le n$): $\{1,x,x^2,\ldots,x^n\}$
+          is l.i., because a polynomial that is identically zero has all
+          coefficients equal to zero.
+
+    \item In $\F[x]$: $\{x^i\mid i\in\N_0\}$ is l.i.
+\end{enumerate}
+\end{exbox}
+
+% ---- Method: row reduction ---------------------------------
+\begin{methodbox}[Method --- Checking Linear Independence via Row Reduction]
+\label{meth:li-row-reduction}
+To test whether $v_1,\ldots,v_n\in\F^m$ are l.i.:
+\begin{enumerate}
+    \item Form the matrix $A=[v_1\mid\cdots\mid v_n]$ (vectors as \emph{columns}).
+    \item Row-reduce $A$ to echelon form.
+    \item The vectors are \textbf{l.i.\ iff} every column is a pivot column,
+          equivalently $\rk(A)=n$.
+          A zero row (or a non-pivot column) signals linear dependence.
+\end{enumerate}
+\end{methodbox}
+
+% ---- Key properties ----------------------------------------
+\begin{propbox}[Proposition --- Properties of Linear Independence]
+\label{prop:li-properties}
+Let $V$ be a vector space over $\F$.
+\begin{enumerate}[label=(\roman*)]
+    \item Any set containing $\mathbf{0}$ is l.d.
+    \item If $S$ is l.d.\ and $S\subseteq T$, then $T$ is l.d.
+    \item If $S\subseteq T$ and $T$ is l.i., then $S$ is l.i.
+    \item If $S=\{v_1,\ldots,v_n\}$ is l.d.\ with $n\ge 2$, then some $v_i$ is
+          a linear combination of the others.
+    \item $S$ is l.i.\ if and only if every \emph{finite} subset of $S$ is l.i.
+\end{enumerate}
+\end{propbox}
+
+\begin{proofbox}[Proof --- Properties of Linear Independence]
+\begin{enumerate}[label=(\roman*)]
+    \item $1\cdot\mathbf{0}=\mathbf{0}$ with coefficient $1\ne 0$.
+    \item A non-trivial relation among vectors in $S$ is also a non-trivial
+          relation among vectors in $T$.
+    \item (Contrapositive of (ii).)
+    \item If $\sum_{i=1}^n \alpha_i v_i=\mathbf{0}$ with some $\alpha_j\ne 0$,
+          then $v_j = -\alpha_j^{-1}\sum_{i\ne j}\alpha_i v_i$.
+    \item By definition, l.d.\ involves a \emph{finite} subset; so $S$ is l.d.\
+          iff some finite subset is l.d.
+\end{enumerate}
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Two-vector criterion ----------------------------------
+\begin{exbox}[Example --- Linear Independence of Two and Three Vectors]
+\begin{itemize}
+    \item $\{u,v\}$ is l.i.\ $\iff$ $u\ne\mathbf{0}$ and $v\ne\alpha u$ for
+          every $\alpha\in\F$ (i.e.\ $v$ is not a scalar multiple of $u$).
+    \item $\{u,v,w\}$ is l.i.\ $\iff$ $\{u,v\}$ is l.i.\ and
+          $w\notin\spn\{u,v\}$.
+\end{itemize}
+\end{exbox}
+
+% ---- Criterion for linear independence ---------------------
+\begin{propbox}[Proposition --- Sequential Criterion for Linear Independence]
+\label{prop:li-sequential}
+A finite list $v_1,\ldots,v_r\in V$ is l.i.\ if
+\begin{enumerate}[label=(\roman*)]
+    \item $v_1\ne\mathbf{0}$, and
+    \item $v_i\notin\spn\{v_1,\ldots,v_{i-1}\}$ for each $i=2,\ldots,r$.
+\end{enumerate}
+\end{propbox}
+
+\begin{proofbox}[Proof --- Sequential Criterion for Linear Independence]
+Suppose $\sum_{i=1}^r\alpha_i v_i=\mathbf{0}$.  Let $j$ be the largest index
+with $\alpha_j\ne 0$.  If $j\ge 2$, then
+$v_j = -\alpha_j^{-1}\sum_{i<j}\alpha_i v_i\in\spn\{v_1,\ldots,v_{j-1}\}$,
+contradicting condition (ii).  If $j=1$ then $\alpha_1 v_1=\mathbf{0}$ with
+$v_1\ne\mathbf{0}$, so $\alpha_1=0$.  Hence all $\alpha_i=0$.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Rank criterion for l.i. in F^m -----------------------
+\begin{propbox}[Proposition --- Rank Criterion for Linear Independence]
+\label{prop:rank-li}
+Vectors $v_1,\ldots,v_n\in\F^m$ are l.i.\ if and only if
+$\rk[v_1\mid\cdots\mid v_n]=n$.
+\end{propbox}
+
+\begin{proofbox}[Proof --- Rank Criterion for Linear Independence]
+The vectors are l.i.\ iff $Ax=\mathbf{0}$ (with $A=[v_1\mid\cdots\mid v_n]$)
+has only the trivial solution, iff the RREF of $A$ has no free variables, iff
+every column of $A$ is a pivot column, iff $\rk(A)=n$.
+\hfill$\blacksquare$
+\end{proofbox}
