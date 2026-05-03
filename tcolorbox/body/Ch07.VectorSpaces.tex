@@ -1,0 +1,109 @@
+% ============================================================
+%  Chapter 7 — Vector Spaces and Subspaces
+% ============================================================
+\section{Vector Spaces and Subspaces}
+
+A vector space is an abstract algebraic structure that captures the key
+properties of $\F^n$.  Working at this level of generality allows results
+proved once to apply to polynomials, matrices, function spaces, and many other
+settings simultaneously.
+
+% ---- Vector space definition --------------------------------
+\begin{defbox}[Definition --- Vector Space over $\F$]
+A \textbf{vector space} over a field $\F$ is a set $V$ equipped with two
+operations:
+\begin{itemize}
+    \item \emph{Vector addition} $+: V\times V\to V$, and
+    \item \emph{Scalar multiplication} $\cdot:\F\times V\to V$,
+\end{itemize}
+satisfying the following axioms for all $u,v,w\in V$ and $\alpha,\beta\in\F$:
+
+\medskip
+\textbf{Additive axioms}
+\begin{enumerate}[label=A\textsubscript{\arabic*}.]
+    \item $(u+v)+w = u+(v+w)$.
+    \item $u+v = v+u$.
+    \item There exists $\mathbf{0}\in V$ s.t.\ $\mathbf{0}+u=u$ for all $u$.
+    \item For every $u\in V$ there exists $-u\in V$ s.t.\ $u+(-u)=\mathbf{0}$.
+\end{enumerate}
+
+\medskip
+\textbf{Scalar multiplication axioms}
+\begin{enumerate}[label=P\textsubscript{\arabic*}.]
+    \item $1\cdot v = v$.
+    \item $\alpha(\beta v) = (\alpha\beta)v$.
+    \item $\alpha(u+v) = \alpha u + \alpha v$.
+    \item $(\alpha+\beta)v = \alpha v + \beta v$.
+\end{enumerate}
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{tipbox}[Remark --- Proving a Set is a Vector Space]
+To verify that a set $V$ with given operations is a vector space over $\F$, it
+suffices to check \emph{closure} under addition and scalar multiplication
+together with all eight axioms.  In practice the associativity and distributivity
+axioms are often inherited from $\F$, so the main work is confirming closure and
+the existence of $\mathbf{0}$ and additive inverses.
+\end{tipbox}
+
+% ---- Standard examples -------------------------------------
+\begin{exbox}[Example --- Standard Vector Spaces over $\F$]
+\begin{enumerate}
+    \item \textbf{$\F^n$:} column vectors with componentwise addition and scalar
+          multiplication.
+    \item \textbf{The trivial space $\{\mathbf{0}\}$:} the vector space containing
+          only the zero vector.
+    \item \textbf{$\F[x]$:} polynomials over $\F$ with
+          $(p+q)(x)=p(x)+q(x)$ and $(\alpha p)(x)=\alpha p(x)$.
+    \item \textbf{$\Mmn{m}{n}$:} $m\times n$ matrices over $\F$ with
+          $(A+B)_{ij}=a_{ij}+b_{ij}$ and $(\alpha A)_{ij}=\alpha a_{ij}$.
+    \item \textbf{Function spaces:} $V=\{f:S\to\F\}$ for a set $S$, with
+          $(f+g)(x)=f(x)+g(x)$ and $(\alpha f)(x)=\alpha f(x)$.
+\end{enumerate}
+\end{exbox}
+
+% ---- Subspace ----------------------------------------------
+\begin{defbox}[Definition --- Subspace]
+A non-empty subset $W$ of a vector space $V$ over $\F$ is a \textbf{subspace}
+of $V$ (written $W\leq V$) if $W$ is itself a vector space over $\F$ under the
+same operations.
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{propbox}[Proposition --- Subspace Test]
+A non-empty subset $W\subseteq V$ is a subspace of $V$ if and only if:
+\begin{enumerate}[label=(\roman*)]
+    \item $\mathbf{0}\in W$.
+    \item $u,v\in W \Rightarrow u+v\in W$ (closed under addition).
+    \item $\alpha\in\F,\; v\in W \Rightarrow \alpha v\in W$ (closed under scalar
+          multiplication).
+\end{enumerate}
+\end{propbox}
+
+% ------------------------------------------------------------
+\begin{exbox}[Example --- Subspace of $\R^3$]
+Let $V=\R^3$ and $W=\{(x,y,0)\mid x,y\in\R\}$.  Then $W\leq V$:
+\begin{enumerate}[label=(\roman*)]
+    \item $(0,0,0)\in W$. \checkmark
+    \item $(x_1,y_1,0)+(x_2,y_2,0)=(x_1+x_2,y_1+y_2,0)\in W$. \checkmark
+    \item $\alpha(x,y,0)=(\alpha x,\alpha y,0)\in W$. \checkmark
+\end{enumerate}
+\end{exbox}
+
+% ------------------------------------------------------------
+\begin{exbox}[Example --- Solution Set of $A\mathbf{x}=\mathbf{0}$ is a Subspace]
+Let $A\in\Mmn{m}{n}$ and $W=\{\mathbf{v}\in\F^n\mid A\mathbf{v}=\mathbf{0}\}$.
+\begin{enumerate}[label=(\roman*)]
+    \item $A\mathbf{0}_n=\mathbf{0}$, so $\mathbf{0}_n\in W$. \checkmark
+    \item If $A\mathbf{v}=\mathbf{0}$ and $A\mathbf{w}=\mathbf{0}$, then
+          $A(\mathbf{v}+\mathbf{w})=A\mathbf{v}+A\mathbf{w}=\mathbf{0}$. \checkmark
+    \item $A(\alpha\mathbf{v})=\alpha A\mathbf{v}=\mathbf{0}$. \checkmark
+\end{enumerate}
+Thus $W\leq\F^n$.
+\end{exbox}
+
+% ------------------------------------------------------------
+\begin{exbox}[Example --- Symmetric Matrices Form a Subspace]
+The set $W=\{A\in\Mn{n}\mid a_{ij}=a_{ji}\ \forall\,i,j\}$ of symmetric
+matrices satisfies all three subspace conditions, so $W\leq\Mn{n}$.
+\end{exbox}

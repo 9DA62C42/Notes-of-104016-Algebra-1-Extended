@@ -1,0 +1,139 @@
+% ============================================================
+%  Chapter 8 — Span and Generating Systems
+% ============================================================
+\section{Span and Generating Systems}
+\label{sec:span}
+
+Given a vector space $V$ over $\F$, we often want to describe a subspace by
+specifying a small list of vectors that ``generate'' it.  The notion of a
+\emph{linear combination} formalises what it means for one vector to be built
+from others, and the \emph{span} of a set is the collection of all such
+combinations.
+
+% ---- Linear combination ------------------------------------
+\begin{defbox}[Definition --- Linear Combination]
+\label{def:linear-combination}
+Let $V$ be a vector space over $\F$ and let $v_1,\ldots,v_n\in V$.  A vector
+$v\in V$ is a \textbf{linear combination} of $v_1,\ldots,v_n$ if there exist
+scalars $\alpha_1,\ldots,\alpha_n\in\F$ such that
+\[
+    v = \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n
+      = \sum_{i=1}^{n}\alpha_i v_i.
+\]
+\end{defbox}
+
+% ---- Span --------------------------------------------------
+\begin{defbox}[Definition --- Span of Vectors]
+\label{def:span}
+The \textbf{span} of $v_1,\ldots,v_n\in V$ is the set of all their linear
+combinations:
+\[
+    \spn\{v_1,\ldots,v_n\}
+    = \left\{\, \sum_{i=1}^{n}\alpha_i v_i \;\middle|\; \alpha_1,\ldots,\alpha_n\in\F \,\right\}.
+\]
+The set $\{v_1,\ldots,v_n\}$ is called a \textbf{generating system}
+(or \textbf{spanning set}) of $\spn\{v_1,\ldots,v_n\}$.
+More generally, for any subset $S\subseteq V$, $\spn(S)$ is the set of all
+finite linear combinations of elements of $S$.
+\end{defbox}
+
+% ---- Span is a subspace ------------------------------------
+\begin{propbox}[Proposition --- Span is a Subspace]
+\label{prop:span-subspace}
+For any $v_1,\ldots,v_n\in V$, the set $\spn\{v_1,\ldots,v_n\}$ is a subspace
+of $V$.  In fact it is the \emph{smallest} subspace of $V$ containing every
+$v_i$.
+\end{propbox}
+
+\begin{proofbox}[Proof --- Span is a Subspace]
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{Zero vector:}
+          $\mathbf{0} = 0\cdot v_1 + \cdots + 0\cdot v_n \in \spn\{v_1,\ldots,v_n\}$.
+    \item \textbf{Closed under addition:}
+          If $u = \sum\alpha_i v_i$ and $w = \sum\beta_i v_i$, then
+          $u+w = \sum(\alpha_i+\beta_i)v_i \in \spn\{v_1,\ldots,v_n\}$.
+    \item \textbf{Closed under scalar multiplication:}
+          $\lambda u = \sum(\lambda\alpha_i)v_i \in \spn\{v_1,\ldots,v_n\}$.
+\end{enumerate}
+Any subspace containing all $v_i$ must contain every linear combination of
+them, so $\spn\{v_1,\ldots,v_n\}$ is minimal.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Column-space / matrix view ----------------------------
+\begin{tipbox}[Remark --- Span in $\F^m$ via Matrices]
+\label{rem:span-matrix}
+When $V = \F^m$ and $v_1,\ldots,v_n\in\F^m$, form the matrix
+$A = [v_1\mid\cdots\mid v_n]\in\Mmn{m}{n}$.  Then
+\[
+    \spn\{v_1,\ldots,v_n\}
+    = \{b\in\F^m \mid Ax = b \text{ is consistent}\}.
+\]
+That is, the span equals the column space of $A$.
+\end{tipbox}
+
+% ---- Standard examples -------------------------------------
+\begin{exbox}[Example --- Span of Standard Vectors]
+\begin{enumerate}
+    \item In $\R^2$: $\spn\{(1,0),(0,1)\} = \R^2$, since
+          $(x,y) = x(1,0)+y(0,1)$.
+
+    \item In $\F^n$: $\spn\{e_1,\ldots,e_n\} = \F^n$ where $e_i$ are standard
+          basis vectors.
+
+    \item In $\Mmn{m}{n}$: let $E^{ij}$ be the matrix with a $1$ in position
+          $(i,j)$ and $0$ elsewhere.  Then
+          $\spn\{E^{ij}\mid 1\le i\le m,\,1\le j\le n\} = \Mmn{m}{n}$.
+
+    \item In $\F[x]$: $\F[x] = \spn\{x^i\mid i\in\N_0\}$, since every polynomial
+          is a finite linear combination of monomials.
+\end{enumerate}
+\end{exbox}
+
+% ---- Intersection of subspaces -----------------------------
+\begin{propbox}[Proposition --- Intersection of Subspaces]
+\label{prop:intersection-subspace}
+If $S$ and $T$ are subspaces of $V$, then $S\cap T$ is also a subspace of $V$.
+\end{propbox}
+
+\begin{proofbox}[Proof --- Intersection of Subspaces]
+Since $\mathbf{0}\in S$ and $\mathbf{0}\in T$, we have $\mathbf{0}\in S\cap T$.
+If $u,v\in S\cap T$ and $\alpha\in\F$, then $u+v\in S$ (as $S\le V$) and
+$u+v\in T$ (as $T\le V$), so $u+v\in S\cap T$; similarly $\alpha v\in S\cap T$.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Union is NOT a subspace -------------------------------
+\begin{warnbox}[Warning --- Union of Subspaces Need Not Be a Subspace]
+In general, $S\cup T$ is \emph{not} a subspace of $V$.
+
+\textbf{Counterexample.}  Let $V=\R^2$,\; $S=\{(x,0)\mid x\in\R\}$,\;
+$T=\{(0,y)\mid y\in\R\}$.  Both are subspaces, but
+$(1,0)\in S\cup T$ and $(0,1)\in S\cup T$ while
+$(1,0)+(0,1)=(1,1)\notin S\cup T$.
+\end{warnbox}
+
+% ---- Rank and generating sets in F^m -----------------------
+\begin{propbox}[Proposition --- Rank Criterion for Generating Sets]
+\label{prop:rank-generating}
+Vectors $v_1,\ldots,v_n\in\F^m$ form a generating set for $\F^m$ if and only
+if the matrix $A=[v_1\mid\cdots\mid v_n]$ has rank $m$.  In particular,
+$m\le n$ must hold whenever such a generating set exists.
+\end{propbox}
+
+\begin{proofbox}[Proof --- Rank Criterion for Generating Sets]
+The vectors span $\F^m$ iff every $b\in\F^m$ is a linear combination of the
+$v_i$, i.e.\ iff $Ax=b$ is consistent for every $b$.  By the theory of linear
+systems this is equivalent to the RREF of $A$ having a pivot in every row,
+i.e.\ $\rk(A)=m$.  Since $A$ has $n$ columns, $\rk(A)\le n$, so $m\le n$.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Subset span relation ----------------------------------
+\begin{tipbox}[Remark --- Span and Subsets]
+If $w_1,\ldots,w_k\in\spn\{v_1,\ldots,v_n\}$, then
+$\spn\{w_1,\ldots,w_k\}\subseteq\spn\{v_1,\ldots,v_n\}$.
+Consequently, if $v_r\in\spn\{v_1,\ldots,v_{r-1}\}$, then
+$\spn\{v_1,\ldots,v_r\}=\spn\{v_1,\ldots,v_{r-1}\}$ (the redundant vector
+can be removed without changing the span).
+\end{tipbox}

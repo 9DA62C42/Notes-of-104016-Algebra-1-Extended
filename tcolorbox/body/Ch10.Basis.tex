@@ -1,0 +1,140 @@
+% ============================================================
+%  Chapter 10 — Basis
+% ============================================================
+\section{Basis}
+\label{sec:basis}
+
+A \emph{basis} combines two requirements that are individually familiar: the
+vectors span the whole space (so nothing is missing) and they are linearly
+independent (so there is no redundancy).  Bases are the workhorses of linear
+algebra: they provide coordinates, enable matrix representations, and measure
+the size of a space.
+
+% ---- Definition --------------------------------------------
+\begin{defbox}[Definition --- Basis of a Vector Space]
+\label{def:basis}
+A \textbf{basis} for a vector space $V$ over $\F$ is a linearly independent
+subset $B\subseteq V$ such that $\spn(B)=V$.
+\end{defbox}
+
+% ---- Uniqueness of representation --------------------------
+\begin{thmbox}[Theorem --- Unique Representation Characterisation]
+\label{thm:basis-unique-rep}
+A finite set $\{v_1,\ldots,v_n\}\subseteq V$ is a basis for $V$ if and only if
+every vector $v\in V$ can be written \emph{uniquely} as
+\[
+    v = \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n,
+    \qquad \alpha_i\in\F.
+\]
+\end{thmbox}
+
+\begin{proofbox}[Proof --- Unique Representation Characterisation]
+($\Rightarrow$) Since the set spans $V$, every $v$ has at least one such
+representation.  Suppose $v=\sum\alpha_i v_i=\sum\beta_i v_i$; subtracting
+gives $\sum(\alpha_i-\beta_i)v_i=\mathbf{0}$.  Linear independence forces
+$\alpha_i=\beta_i$ for all $i$.
+
+($\Leftarrow$) Existence of representations gives $\spn\{v_1,\ldots,v_n\}=V$.
+If $\sum\alpha_i v_i=\mathbf{0}$, uniqueness applied to $\mathbf{0}$ shows
+$\alpha_i=0$ for all $i$, so the set is l.i.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Examples ----------------------------------------------
+\begin{exbox}[Example --- Bases in $\R^2$]
+\begin{enumerate}
+    \item $\{(1,0),(0,1)\}$ is the \emph{standard basis} for $\R^2$.
+
+    \item $S=\{(1,1),(1,-1)\}$: the matrix $A=\begin{pmatrix}1&1\\1&-1\end{pmatrix}$
+          has $\rk(A)=2$, so $S$ is l.i.\ and spans $\R^2$.  The decomposition is
+          \[
+              (x,y) = \tfrac{x+y}{2}(1,1) + \tfrac{x-y}{2}(1,-1).
+          \]
+
+    \item $\{(1,0),(0,1),(1,1)\}$ is \emph{not} a basis: it is l.d.\
+          since $(1,1)=(1,0)+(0,1)$.
+\end{enumerate}
+\end{exbox}
+
+% ---- Basis for F^m via rank --------------------------------
+\begin{propbox}[Proposition --- Basis for $\F^m$ via Rank]
+\label{prop:basis-Fm}
+A set $\{v_1,\ldots,v_n\}\subseteq\F^m$ is a basis for $\F^m$ if and only if
+$n=m$ and $\rk[v_1\mid\cdots\mid v_n]=n$.
+\end{propbox}
+
+\begin{proofbox}[Proof --- Basis for $\F^m$ via Rank]
+The set spans $\F^m$ iff $\rk(A)=m$ (Proposition~\ref{prop:rank-generating}),
+and is l.i.\ iff $\rk(A)=n$ (Proposition~\ref{prop:rank-li}).
+Both conditions together require $m=n$ and $\rk(A)=n$.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Characterisation for finite-dimensional spaces --------
+\begin{thmbox}[Theorem --- Characterisation of Basis in Finite Dimensions]
+\label{thm:basis-char}
+Let $V$ be a finite-dimensional vector space with $\dime V=n$, and let
+$\{v_1,\ldots,v_n\}\subseteq V$.  The following are equivalent:
+\begin{enumerate}[label=(\arabic*)]
+    \item $\{v_1,\ldots,v_n\}$ is a basis for $V$.
+    \item $V = \spn\{v_1,\ldots,v_n\}$.
+    \item $\{v_1,\ldots,v_n\}$ is l.i.
+\end{enumerate}
+\end{thmbox}
+
+\begin{proofbox}[Proof --- Characterisation of Basis in Finite Dimensions]
+(1)$\Rightarrow$(2) and (1)$\Rightarrow$(3) are immediate from the definition.
+
+(2)$\Rightarrow$(1): If $V=\spn\{v_1,\ldots,v_n\}$ and the set were l.d., we
+could remove a redundant vector and still span $V$ with fewer than $n$ vectors.
+But then any basis of $V$ (which has $n$ elements by definition) would be a
+set of $n$ l.i.\ vectors in the span of $n-1$ vectors, contradicting the
+Fundamental Lemma (Theorem~\ref{thm:fundamental-lemma}).
+
+(3)$\Rightarrow$(1): An l.i.\ set of $n=\dime V$ vectors in $V$ is
+automatically a basis; see the extension theorem
+(Theorem~\ref{thm:extend-to-basis}).
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Extracting a basis from a spanning set ----------------
+\begin{thmbox}[Theorem --- Basis Subset of a Spanning Set]
+\label{thm:basis-subset}
+Any finite spanning set of a vector space $V$ contains a basis for $V$.
+More precisely, any finite set of nonzero vectors $\{v_1,\ldots,v_n\}$
+contains a basis for $\spn\{v_1,\ldots,v_n\}$.
+\end{thmbox}
+
+\begin{propbox}[Proposition --- Finding a Basis via RREF]
+\label{prop:basis-via-rref}
+Let $A=[v_1\mid\cdots\mid v_n]\in\Mmn{m}{n}$ and let $R$ be its reduced
+row-echelon form (RREF).  If $i_1 < i_2 < \cdots < i_r$ are the pivot column
+indices of $R$, then $\{v_{i_1},\ldots,v_{i_r}\}$ is a basis for
+$\spn\{v_1,\ldots,v_n\}$.
+\end{propbox}
+
+\begin{proofbox}[Proof --- Finding a Basis via RREF]
+Row operations preserve the column-space relations: a column $v_j$ is a linear
+combination of earlier columns iff the corresponding column of $R$ is
+non-pivot.  Hence removing non-pivot columns does not change the span.  The
+remaining (pivot) columns are l.i.\ because in $R$ they contain the standard
+pivot pattern.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Extending a l.i. set to a basis -----------------------
+\begin{thmbox}[Theorem --- Extending a Linearly Independent Set to a Basis]
+\label{thm:extend-to-basis}
+In any finite-dimensional vector space $V$ over $\F$, every linearly
+independent set $\{v_1,\ldots,v_k\}$ can be extended to a basis of $V$.
+That is, there exist $v_{k+1},\ldots,v_n\in V$ such that
+$\{v_1,\ldots,v_n\}$ is a basis for $V$.
+\end{thmbox}
+
+\begin{proofbox}[Proof --- Extending a Linearly Independent Set to a Basis]
+Let $B_0=\{v_1,\ldots,v_k\}$.  If $\spn(B_0)=V$ we are done.  Otherwise
+pick $v_{k+1}\in V\setminus\spn(B_0)$; by the sequential criterion
+(Proposition~\ref{prop:li-sequential}), $B_1=B_0\cup\{v_{k+1}\}$ is still
+l.i.  Repeat.  Since $\dime V$ is finite, this process terminates with a basis.
+\hfill$\blacksquare$
+\end{proofbox}

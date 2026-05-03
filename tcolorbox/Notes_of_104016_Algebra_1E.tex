@@ -1,0 +1,52 @@
+\documentclass[11pt,a4paper]{article}
+% ---- Packages ----
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{patterns,arrows.meta,calc}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{lastpage}
+% ====================================================================
+\input{body/Basic1.tcolorbox.tex}
+\input{body/Basic2.format.tex}
+\input{body/Basic3.shortcuts.tex}
+% ====================================================================
+\begin{document}
+% ====================================================================
+    \input{body/Title.tex}
+% ====================================================================
+    \tableofcontents
+    \input{body/Legend.tex}
+    \newpage
+% ====================================================================
+    \input{body/Ch01.AbbreviationsNotations.tex}
+    \input{body/Ch02.Fields.tex}
+    \input{body/Ch03.Numbers.tex}
+    \input{body/Ch04.Polynomials.tex}
+    \input{body/Ch05.Vectors.tex}
+    \input{body/Ch06.Matrices.tex}
+    \input{body/Ch07.VectorSpaces.tex}
+    \input{body/Ch08.Span.tex}
+    \input{body/Ch09.LinearDependence.tex}
+    \input{body/Ch10.Basis.tex}
+    \input{body/Ch11.Dimension.tex}
+    \input{body/Ch12.SumDirectSum.tex}
+    \input{body/Ch13.NullSpaceKernel.tex}
+    \input{body/Ch14.LinearTransformation.tex}
+    \input{body/Ch15.CoordinateMatrix.tex}
+    \input{body/Ch16.Determinant.tex}
+    \input{body/Ch17.DiagonalizationEigenvalues.tex}
+    \input{body/Ch18.AnnihilatingPolynomials.tex}
+    \input{body/Ch19.Proofs.tex}
+% ====================================================================
+    \input{body/Acknowledgements.tex}
+\end{document}

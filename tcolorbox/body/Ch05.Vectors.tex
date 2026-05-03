@@ -1,0 +1,125 @@
+% ============================================================
+%  Chapter 5 — Vectors
+% ============================================================
+\section{Vectors}
+
+Vectors are the fundamental objects that vector spaces are built from.  We
+begin with the geometric picture in $\R^2$ and $\R^3$ and then generalise to
+$\F^n$ for an arbitrary field $\F$, which is the setting used for the rest of
+the course.
+
+% ---- R^2 ---------------------------------------------------
+\begin{defbox}[Definition --- Vectors in $\R^2$]
+$\R^2 = \{(a,b)\mid a,b\in\R\}$.  A \textbf{vector} is a directed line
+segment $\overrightarrow{PQ}$, characterised by its line of action, direction,
+and magnitude $|\overrightarrow{PQ}|$.
+
+Two vectors are \emph{equivalent} if they are parallel, have the same
+direction, and have the same magnitude.  Every vector is equivalent to a
+unique vector based at the origin $O$.
+
+\medskip
+For $\mathbf{v}=(a,b)$ and $\mathbf{w}=(c,d)$:
+\[
+    \mathbf{v}+\mathbf{w} = (a+c,\,b+d), \qquad k\mathbf{v} = (ka,\,kb),
+    \quad k\in\R.
+\]
+The \emph{line through $\mathbf{v}_0$ in direction $\mathbf{v}$} is
+$\ell = \{\mathbf{v}_0 + t\mathbf{v}\mid t\in\R\}$.
+\end{defbox}
+
+% ---- R^3 ---------------------------------------------------
+\begin{defbox}[Definition --- Lines and Planes in $\R^3$]
+A \textbf{line} $\ell$ in $\R^3$ through $(a,b,c)$ with direction
+$(\alpha,\beta,\gamma)$:
+\begin{itemize}
+    \item \emph{Parametric form:}
+          $(x,y,z) = (a,b,c) + t(\alpha,\beta,\gamma)$, $t\in\R$.
+    \item \emph{Algebraic (symmetric) form:}
+          $\dfrac{x-a}{\alpha} = \dfrac{y-b}{\beta} = \dfrac{z-c}{\gamma}$.
+\end{itemize}
+
+A \textbf{plane} through $(a,b,c)$ with normal $\mathbf{N}=(A,B,C)$:
+\[
+    Ax + By + Cz + D = 0, \qquad D = -aA-bB-cC.
+\]
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{defbox}[Definition --- Mutual Relations of Two Lines in $\R^3$]
+Two lines $\ell_1,\ell_2$ in $\R^3$ with direction vectors $\mathbf{v}_1,\mathbf{v}_2$
+can be in exactly one of the following configurations:
+\begin{enumerate}
+    \item \textbf{Intersecting:} $\ell_1\cap\ell_2\neq\varnothing$ and
+          $\mathbf{v}_1\not\parallel\mathbf{v}_2$.
+    \item \textbf{Parallel (non-coincident):} $\ell_1\cap\ell_2=\varnothing$ and
+          $\mathbf{v}_1\parallel\mathbf{v}_2$.
+    \item \textbf{Coincident:} $\ell_1=\ell_2$.
+    \item \textbf{Skew:} $\ell_1\cap\ell_2=\varnothing$ and
+          $\mathbf{v}_1\not\parallel\mathbf{v}_2$.
+\end{enumerate}
+\end{defbox}
+
+% ---- F^n ---------------------------------------------------
+\begin{defbox}[Definition --- $\F^n$ and Its Arithmetic]
+\[
+    \F^n = \{(a_1,\ldots,a_n)\mid a_i\in\F\}.
+\]
+Elements are written as column vectors.  Operations:
+\begin{itemize}
+    \item \emph{Addition:} $(a_i)+(b_i) = (a_i+b_i)$.
+    \item \emph{Scalar multiplication:} $c(a_i)=(ca_i)$, $c\in\F$.
+    \item \emph{Zero vector:} $\mathbf{0}=(0,\ldots,0)$.
+    \item \emph{Additive inverse:} $-\mathbf{v}=(-a_1,\ldots,-a_n)$.
+\end{itemize}
+A \textbf{linear combination} of vectors $\mathbf{v}_1,\ldots,\mathbf{v}_k\in\F^n$ is
+any vector of the form $c_1\mathbf{v}_1+\cdots+c_k\mathbf{v}_k$ with $c_i\in\F$.
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{propbox}[Proposition --- Vector Space Axioms for $(\F^n,+,\cdot)$]
+$\F^n$ satisfies the eight vector space axioms:
+\begin{enumerate}[label=A\arabic*.]
+    \item Commutativity of addition: $\mathbf{u}+\mathbf{v}=\mathbf{v}+\mathbf{u}$.
+    \item Associativity of addition: $(\mathbf{u}+\mathbf{v})+\mathbf{w}=\mathbf{u}+(\mathbf{v}+\mathbf{w})$.
+    \item Additive identity: $\mathbf{v}+\mathbf{0}=\mathbf{v}$.
+    \item Additive inverse: $\mathbf{v}+(-\mathbf{v})=\mathbf{0}$.
+\end{enumerate}
+\begin{enumerate}[label=P\arabic*.]
+    \item Compatibility: $a(b\mathbf{v})=(ab)\mathbf{v}$.
+    \item Unit scalar: $1\mathbf{v}=\mathbf{v}$.
+    \item Distributivity over vector addition: $a(\mathbf{u}+\mathbf{v})=a\mathbf{u}+a\mathbf{v}$.
+    \item Distributivity over field addition: $(a+b)\mathbf{v}=a\mathbf{v}+b\mathbf{v}$.
+\end{enumerate}
+\end{propbox}
+
+% ------------------------------------------------------------
+\begin{defbox}[Definition --- Canonical Basis Vectors of $\F^n$]
+The \textbf{canonical (standard) basis vectors} $e_1,\ldots,e_n\in\F^n$ are
+defined by: $e_i$ has entry $1$ in position $i$ and $0$ elsewhere.
+Every vector $\mathbf{v}=(a_1,\ldots,a_n)\in\F^n$ can be written
+\[
+    \mathbf{v} = a_1 e_1 + \cdots + a_n e_n.
+\]
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{tipbox}[Remark --- Geometric Interpretations of Spans]
+Let $\mathbf{v},\mathbf{w},\mathbf{v}_0\in\F^n$.
+\begin{itemize}
+    \item $\mathbf{0}\in\spn\{\mathbf{v}_1,\ldots,\mathbf{v}_k\}$ since
+          $\mathbf{0}=0\mathbf{v}_1+\cdots+0\mathbf{v}_k$.
+    \item $\mathbf{v}_i\in\spn\{\mathbf{v}_1,\ldots,\mathbf{v}_k\}$ since it
+          equals the l.c.\ with coefficient $1$ on $\mathbf{v}_i$ and $0$
+          elsewhere.
+    \item $\spn\{\mathbf{v}\} = \{t\mathbf{v}\mid t\in\F\}$ is a line through
+          $\mathbf{0}$ (for $\mathbf{v}\neq\mathbf{0}$).
+    \item $\{\mathbf{v}_0+t\mathbf{v}\mid t\in\F\}$ is an \emph{affine line}
+          through $\mathbf{v}_0$ in direction $\mathbf{v}$.
+    \item $\spn\{\mathbf{v},\mathbf{w}\} = \{a\mathbf{v}+b\mathbf{w}\mid a,b\in\F\}$
+          is a plane through $\mathbf{0}$ (when $\mathbf{v},\mathbf{w}$ are
+          non-parallel).
+    \item $\{\mathbf{v}_0+a\mathbf{v}+b\mathbf{w}\mid a,b\in\F\}$ is an
+          \emph{affine plane}.
+\end{itemize}
+\end{tipbox}

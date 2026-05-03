@@ -1,0 +1,152 @@
+% ============================================================
+%  Chapter 12 — Sums of Subsets, Subspaces, and Direct Sums
+% ============================================================
+\section{The Sum of Subsets, Subspaces, and Direct Sum}
+\label{sec:directsum}
+
+Having seen how to intersect subspaces, we now study how to \emph{combine}
+them.  The \emph{sum} of two subspaces is the smallest subspace containing
+both, and the more refined notion of a \emph{direct sum} ensures that the
+decomposition of a vector is unique.
+
+% ---- Sum of subsets ----------------------------------------
+\begin{defbox}[Definition --- Sum of Subsets and Subspaces]
+\label{def:sum-subsets}
+For subsets $S, T\subseteq V$, their \textbf{sum} is
+\[
+    S + T = \{s+t \mid s\in S,\; t\in T\}.
+\]
+If $W_1,\ldots,W_k$ are subspaces of $V$, their \textbf{sum} is
+\[
+    W_1 + W_2 + \cdots + W_k
+    = \{w_1+w_2+\cdots+w_k \mid w_i\in W_i\}.
+\]
+Note that $W_i\subseteq W_1+\cdots+W_k$ for each $i$, and
+$W_1\cup\cdots\cup W_k\subseteq W_1+\cdots+W_k$.
+\end{defbox}
+
+% ---- Sum is a subspace -------------------------------------
+\begin{propbox}[Proposition --- Sum of Subspaces is a Subspace]
+\label{prop:sum-subspace}
+If $W_1,\ldots,W_k$ are subspaces of $V$, then
+$W_1+\cdots+W_k$ is a subspace of $V$.  It is the smallest subspace of $V$
+containing every $W_i$.
+\end{propbox}
+
+\begin{proofbox}[Proof --- Sum of Subspaces is a Subspace]
+$\mathbf{0}=\mathbf{0}+\cdots+\mathbf{0}\in W_1+\cdots+W_k$.  If
+$v=\sum w_i$ and $v'=\sum w_i'$ with $w_i,w_i'\in W_i$, then
+$v+v'=\sum(w_i+w_i')\in W_1+\cdots+W_k$.  Scalar multiplication is
+similar.  Any subspace containing all $W_i$ must contain all sums of their
+elements, so the sum is minimal.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Span description of sum -------------------------------
+\begin{tipbox}[Remark --- Sum via Bases]
+If $B_{W_1}=\{u_1,\ldots,u_s\}$ and $B_{W_2}=\{w_1,\ldots,w_t\}$ are bases
+for $W_1$ and $W_2$ respectively, then
+\[
+    W_1 + W_2 = \spn\{u_1,\ldots,u_s,\, w_1,\ldots,w_t\}.
+\]
+In particular $W_1+W_2 = \spn(B_{W_1}\cup B_{W_2})$.
+\end{tipbox}
+
+% ---- Dimension formula -------------------------------------
+\begin{thmbox}[Theorem --- Dimension Formula for Sums]
+\label{thm:dim-formula}
+For subspaces $W_1, W_2$ of a finite-dimensional vector space $V$:
+\[
+    \dime(W_1+W_2) = \dime W_1 + \dime W_2 - \dime(W_1\cap W_2).
+\]
+More generally, $\dime\!\left(\sum_{i=1}^k W_i\right)\le\sum_{i=1}^k\dime W_i$.
+\end{thmbox}
+
+\begin{proofbox}[Proof --- Dimension Formula for Sums]
+See the original lecture notes for a complete proof
+(reference: [104016 L-251222]-P14).
+
+\medskip\noindent
+\textit{Sketch.}  Let $r=\dime(W_1\cap W_2)$ and choose a basis
+$\{c_1,\ldots,c_r\}$ for $W_1\cap W_2$.  Extend it to bases
+$\{c_1,\ldots,c_r,u_1,\ldots,u_s\}$ for $W_1$ and
+$\{c_1,\ldots,c_r,w_1,\ldots,w_t\}$ for $W_2$.  One verifies that the
+combined list $\{c_1,\ldots,c_r,u_1,\ldots,u_s,w_1,\ldots,w_t\}$ is a basis
+for $W_1+W_2$, giving $\dime(W_1+W_2)=(r+s)+(r+t)-r=\dime W_1+\dime W_2-r$.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Direct sum definition ---------------------------------
+\begin{defbox}[Definition --- Direct Sum]
+\label{def:direct-sum}
+The sum $W_1+\cdots+W_k$ is a \textbf{direct sum}, written
+$W_1\oplus W_2\oplus\cdots\oplus W_k$, if the only way to write
+$\mathbf{0}=w_1+\cdots+w_k$ with $w_i\in W_i$ is $w_i=\mathbf{0}$ for all
+$i$.  Equivalently, every $v\in W_1\oplus\cdots\oplus W_k$ has a
+\emph{unique} decomposition $v=w_1+\cdots+w_k$ with $w_i\in W_i$.
+\end{defbox}
+
+% ---- Equivalent conditions for direct sum ------------------
+\begin{propbox}[Proposition --- Equivalent Conditions for Direct Sum]
+\label{prop:direct-sum-equiv}
+Let $W_1,\ldots,W_k$ be subspaces of $V$.  The following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+    \item $W_1+\cdots+W_k$ is a direct sum.
+    \item If $B_i$ is a basis for $W_i$, then $B_1\cup\cdots\cup B_k$ is a
+          basis for $W_1+\cdots+W_k$.
+    \item $\dime\!\left(\displaystyle\bigoplus_{i=1}^k W_i\right)
+          = \displaystyle\sum_{i=1}^k \dime W_i$.
+\end{enumerate}
+\end{propbox}
+
+\begin{proofbox}[Proof --- Equivalent Conditions for Direct Sum]
+See the original lecture notes for a complete proof
+(reference: [104016 L-251222]-P7 and P10).
+
+\medskip\noindent
+\textit{Sketch.}
+(i)$\Rightarrow$(ii): The union of the bases spans the sum.  A relation
+$\sum_i\sum_j\alpha_{ij}b_{ij}=\mathbf{0}$ (where $b_{ij}\in B_i$) gives
+$\sum_i w_i=\mathbf{0}$ with $w_i=\sum_j\alpha_{ij}b_{ij}\in W_i$, so
+each $w_i=\mathbf{0}$ (direct sum), hence all $\alpha_{ij}=0$ (l.i.\ of $B_i$).
+(ii)$\Rightarrow$(iii): counts the union of bases.
+(iii)$\Rightarrow$(i): if $\sum w_i=\mathbf{0}$ with $w_i\in W_i$, extend each
+$\{w_i\}\cup B_i$ argument shows each $w_i=\mathbf{0}$.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Two-subspace criterion --------------------------------
+\begin{propbox}[Proposition --- Direct Sum of Two Subspaces]
+\label{prop:direct-sum-two}
+$W_1 + W_2$ is a direct sum if and only if $W_1\cap W_2=\{\mathbf{0}\}$.
+\end{propbox}
+
+\begin{proofbox}[Proof --- Direct Sum of Two Subspaces]
+($\Rightarrow$) If $v\in W_1\cap W_2$, then $v+(-v)=\mathbf{0}$ is a
+decomposition with $v\in W_1$ and $-v\in W_2$.  By the direct-sum condition
+$v=\mathbf{0}$.
+
+($\Leftarrow$) Suppose $w_1+w_2=\mathbf{0}$ with $w_i\in W_i$.  Then
+$w_1=-w_2\in W_1\cap W_2=\{\mathbf{0}\}$, so $w_1=w_2=\mathbf{0}$.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Complement --------------------------------------------
+\begin{defbox}[Definition --- Complement of a Subspace]
+\label{def:complement}
+A subspace $W'\leq V$ is a \textbf{complement} of $W\leq V$ if
+\[
+    V = W \oplus W'.
+\]
+That is, $V = W+W'$ and $W\cap W'=\{\mathbf{0}\}$.
+\end{defbox}
+
+\begin{tipbox}[Remark --- Dimension of a Complement]
+If $W'$ is a complement of $W$ in a finite-dimensional $V$, then by the
+direct-sum dimension formula:
+\[
+    \dime_\F W' = \dime_\F V - \dime_\F W.
+\]
+A complement always exists (extend a basis of $W$ to a basis of $V$; the
+added vectors span $W'$), though it is generally not unique.
+\end{tipbox}

@@ -1,0 +1,200 @@
+% ============================================================
+%  Chapter 6 — Matrices
+% ============================================================
+\section{Matrices}
+\label{sec:matrices}
+
+Matrices encode linear maps between finite-dimensional vector spaces and are
+the primary computational tool of linear algebra.  This chapter covers the
+arithmetic of matrices, row reduction, systems of linear equations, and matrix
+invertibility.
+
+% ---- Basic definitions -------------------------------------
+\begin{defbox}[Definition --- Matrix over $\F$]
+An $m\times n$ \textbf{matrix} $A$ over $\F$ is a rectangular array of $mn$
+entries $a_{ij}\in\F$, with $m$ rows and $n$ columns.  The $(i,j)$-entry is
+$a_{ij}$.
+
+\begin{itemize}
+    \item The set of all $m\times n$ matrices over $\F$ is denoted
+          $\Mmn{m}{n}$ (also written $\F^{m\times n}$).
+    \item A \emph{square} matrix has $m=n$; its set is $\Mn{n}$.
+    \item \emph{Column representation:}
+          $A = [u_1 \mid u_2 \mid \cdots \mid u_n]$
+          where $u_j\in\F^m$ is the $j$-th column of $A$.
+\end{itemize}
+\end{defbox}
+
+% ---- Arithmetic --------------------------------------------
+\begin{defbox}[Definition --- Matrix Arithmetic]
+For $A,B\in\Mmn{m}{n}$, $c\in\F$, and $\mathbf{v}\in\F^n$:
+\begin{itemize}
+    \item \emph{Addition:} $(A+B)_{ij} = a_{ij}+b_{ij}$.
+    \item \emph{Scalar multiplication:} $(cA)_{ij} = ca_{ij}$.
+    \item \emph{Matrix–vector product:}
+          $(A\mathbf{v})_i = \displaystyle\sum_{j=1}^n a_{ij}v_j$.
+          Equivalently, $A\mathbf{v} = v_1(Ae_1)+\cdots+v_n(Ae_n)$.
+\end{itemize}
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{propbox}[Proposition --- Properties of Matrix–Vector Multiplication]
+For $A\in\Mmn{m}{n}$, $\mathbf{v},\mathbf{w}\in\F^n$, $c\in\F$:
+\[
+    A(\mathbf{v}+\mathbf{w}) = A\mathbf{v}+A\mathbf{w}, \qquad
+    A(c\mathbf{v}) = c(A\mathbf{v}).
+\]
+\end{propbox}
+
+% ---- Matrix multiplication ---------------------------------
+\begin{defbox}[Definition --- Matrix Multiplication]
+For $A\in\Mmn{m}{n}$ and $B\in\Mmn{n}{p}$, the \textbf{product} $C=AB\in\Mmn{m}{p}$
+has entries
+\[
+    c_{ij} = \sum_{r=1}^{n} a_{ir}\,b_{rj}.
+\]
+Equivalently, $AB = [A(Be_1)\mid A(Be_2)\mid\cdots\mid A(Be_p)]$.
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{exbox}[Example --- Matrix Multiplication]
+Let
+\[
+    A = \begin{pmatrix}1&2&3\\-2&-1&-1\end{pmatrix}, \qquad
+    B = \begin{pmatrix}0&1&-1&1\\-1&0&1&-1\\1&0&-1&1\end{pmatrix}.
+\]
+Then
+\[
+    AB = \begin{pmatrix}1&1&-2&2\\0&-2&2&-2\end{pmatrix}.
+\]
+\end{exbox}
+
+% ------------------------------------------------------------
+\begin{propbox}[Proposition --- Properties of Matrix Multiplication]
+\begin{enumerate}
+    \item \emph{Associativity:} $A(BC)=(AB)C$.
+    \item \emph{Distributivity:} $A(B+C)=AB+AC$; $(A+B)C=AC+BC$.
+    \item \emph{Identity:} $I_m A = A = A I_n$ for $A\in\Mmn{m}{n}$.
+    \item \emph{Zero:} $O_{m\times n}A = O_{m\times p}$ and
+          $AO_{n\times p}=O_{m\times p}$.
+    \item \emph{Powers:} $A^0=I_n$ and $A^k=A\cdot A^{k-1}$ for $A\in\Mn{n}$.
+    \item \emph{Transpose:} $(AB)^T = B^T A^T$.
+    \item \emph{Not commutative in general:} $AB\neq BA$ in general.
+\end{enumerate}
+\end{propbox}
+
+% ---- Elementary row operations -----------------------------
+\begin{defbox}[Definition --- Elementary Row Operations]
+The three \textbf{elementary row operations} on a matrix are:
+\begin{enumerate}
+    \item \textbf{Type 1 — Row scaling:} $r_i \leftarrow \alpha r_i$,
+          $\alpha\in\F\setminus\{0\}$.
+    \item \textbf{Type 2 — Row addition:}
+          $r_i \leftarrow r_i + \alpha r_j$ ($i\neq j$), $\alpha\in\F$.
+    \item \textbf{Type 3 — Row swap:} $r_i \leftrightarrow r_j$.
+\end{enumerate}
+Two matrices are \textbf{row-equivalent} if one can be obtained from the other
+by a finite sequence of elementary row operations.
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{thmbox}[Theorem --- Invertibility of Elementary Row Operations]
+The inverse of every elementary row operation exists and is an elementary row
+operation of the same type.
+\end{thmbox}
+
+% ---- Echelon forms -----------------------------------------
+\begin{defbox}[Definition --- Row-Echelon and Reduced Row-Echelon Form]
+A matrix is in \textbf{row-echelon form (REF)} if:
+\begin{itemize}
+    \item All zero rows are at the bottom.
+    \item The leading nonzero entry (pivot) of each nonzero row lies strictly
+          to the right of the pivot of the row above.
+\end{itemize}
+It is in \textbf{reduced row-echelon form (RREF)} if, additionally:
+\begin{itemize}
+    \item Every pivot equals $1$.
+    \item Every pivot is the only nonzero entry in its column.
+\end{itemize}
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{thmbox}[Theorem --- Uniqueness of RREF]
+Every matrix is row-equivalent to a \emph{unique} matrix in RREF.
+\end{thmbox}
+
+% ---- Linear systems ----------------------------------------
+\begin{defbox}[Definition --- Linear System and Augmented Matrix]
+A \textbf{system of linear equations} $A\mathbf{x}=\mathbf{b}$ (with
+$A\in\Mmn{m}{n}$, $\mathbf{b}\in\F^m$) is represented by the
+\textbf{augmented matrix} $[A\mid\mathbf{b}]$.  The system is
+\emph{homogeneous} if $\mathbf{b}=\mathbf{0}$.
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{methodbox}[Method --- Solving a Linear System via RREF]
+Let $[R\mid\mathbf{b}']$ be the RREF of $[A\mid\mathbf{b}]$.
+\begin{enumerate}
+    \item \textbf{Inconsistent:} if some row $r_i$ of $R$ is all zeros but
+          $b'_i\neq 0$, the system has no solution.
+    \item \textbf{Unique solution:} if consistent and every column of $R$ is a
+          pivot column, the solution is unique.
+    \item \textbf{Infinitely many solutions:} if consistent and some columns of
+          $R$ are non-pivot (free) columns, those columns correspond to free
+          (independent) variables; pivot columns give the dependent variables.
+\end{enumerate}
+\end{methodbox}
+
+% ---- Invertible matrices -----------------------------------
+\begin{defbox}[Definition --- Left, Right, and Two-Sided Inverses]
+For $A\in\Mn{n}$:
+\begin{itemize}
+    \item $B$ is a \emph{left inverse} of $A$ if $BA=I_n$.
+    \item $C$ is a \emph{right inverse} of $A$ if $AC=I_n$.
+    \item $A$ is \textbf{invertible} if there exists $A^{-1}$ s.t.\
+          $AA^{-1}=A^{-1}A=I_n$.
+\end{itemize}
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{thmbox}[Theorem --- Left and Right Inverses Coincide]
+If $A$ has a left inverse $B$ and a right inverse $C$, then $B=C$.
+Consequently the inverse $A^{-1}$ is unique, and $(A^{-1})^{-1}=A$.
+\end{thmbox}
+
+\begin{proofbox}[Proof --- Left and Right Inverses Coincide]
+$B = B(AC) = (BA)C = C$. \hfill$\blacksquare$
+\end{proofbox}
+
+% ------------------------------------------------------------
+\begin{thmbox}[Theorem --- Invertibility and Rank]
+For $A\in\Mn{n}$, the following are equivalent:
+\begin{enumerate}
+    \item $A$ is invertible.
+    \item $\rk(A) = n$.
+    \item The linear map $T_A:\F^n\to\F^n$, $\mathbf{v}\mapsto A\mathbf{v}$,
+          is an isomorphism.
+\end{enumerate}
+\end{thmbox}
+
+% ------------------------------------------------------------
+\begin{methodbox}[Method --- Computing the Inverse via Row Reduction]
+To find $A^{-1}$ for $A\in\Mn{n}$: form the augmented matrix $[A\mid I_n]$
+and row-reduce.  If $A$ is invertible, the result is $[I_n\mid A^{-1}]$.
+\end{methodbox}
+
+% ---- Diagonal matrices -------------------------------------
+\begin{defbox}[Definition --- Diagonal Matrix]
+A matrix $A\in\Mn{n}$ is \textbf{diagonal} if $a_{ij}=0$ whenever $i\neq j$.
+Notation: $A = \operatorname{diag}(d_1,\ldots,d_n)$.
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{propbox}[Proposition --- Invertibility of Diagonal Matrices]
+$\operatorname{diag}(d_1,\ldots,d_n)$ is invertible if and only if
+$d_i\neq 0$ for all $i$.  In that case,
+\[
+    \operatorname{diag}(d_1,\ldots,d_n)^{-1}
+    = \operatorname{diag}\!\left(\tfrac{1}{d_1},\ldots,\tfrac{1}{d_n}\right).
+\]
+\end{propbox}

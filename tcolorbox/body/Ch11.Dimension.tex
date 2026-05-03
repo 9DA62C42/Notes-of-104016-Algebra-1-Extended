@@ -1,0 +1,118 @@
+% ============================================================
+%  Chapter 11 — Dimension
+% ============================================================
+\section{Dimension}
+\label{sec:dimension}
+
+The \emph{dimension} of a vector space is the number of vectors in any basis.
+For this to be a well-defined concept we must prove that all bases have the
+same size — a consequence of the Fundamental Lemma.  Dimension is the single
+most important numerical invariant of a finite-dimensional vector space.
+
+% ---- Definition --------------------------------------------
+\begin{defbox}[Definition --- Dimension of a Vector Space]
+\label{def:dimension}
+Let $V$ be a finite-dimensional vector space over $\F$ with basis
+$B=\{v_1,\ldots,v_n\}$.  The \textbf{dimension} of $V$ over $\F$ is
+\[
+    \dime_\F V = n.
+\]
+The trivial space $\{\mathbf{0}\}$ has dimension $0$.  If $V$ has no finite
+basis it is called \textbf{infinite-dimensional}.
+\end{defbox}
+
+% ---- Fundamental Lemma -------------------------------------
+\begin{thmbox}[Theorem --- Fundamental Lemma of Linear Algebra]
+\label{thm:fundamental-lemma}
+If $\{v_1,\ldots,v_n\}$ is a linearly independent set in $V$, then every
+subset of $\spn\{v_1,\ldots,v_n\}$ with more than $n$ vectors is linearly
+dependent.
+\end{thmbox}
+
+\begin{proofbox}[Proof --- Fundamental Lemma of Linear Algebra]
+Suppose $w_1,\ldots,w_m\in\spn\{v_1,\ldots,v_n\}$ with $m>n$.  Write
+$w_j=\sum_{i=1}^n a_{ij}v_i$ for each $j$.  The system
+$\sum_{j=1}^m\alpha_j w_j=\mathbf{0}$ becomes
+$\sum_{i=1}^n\!\bigl(\sum_{j=1}^m a_{ij}\alpha_j\bigr)v_i=\mathbf{0}$.
+Since $\{v_i\}$ is l.i., this reduces to the homogeneous system
+$(a_{ij})\alpha=\mathbf{0}$ with $n$ equations in $m>n$ unknowns, which
+always has a non-trivial solution.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Dimension is well-defined -----------------------------
+\begin{thmbox}[Theorem --- Dimension Is Well-Defined]
+\label{thm:dimension-well-defined}
+Any two bases of a finite-dimensional vector space $V$ have the same number of
+elements.  Hence $\dime_\F V$ is well-defined.
+\end{thmbox}
+
+\begin{proofbox}[Proof --- Dimension Is Well-Defined]
+Let $B=\{v_1,\ldots,v_n\}$ and $B'=\{w_1,\ldots,w_m\}$ both be bases.
+Since $B$ is l.i.\ and $B'\subseteq\spn(B)=V$, the Fundamental Lemma gives
+$m\le n$.  By symmetry (swapping $B$ and $B'$) we also get $n\le m$, so
+$m=n$.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Standard dimensions -----------------------------------
+\begin{exbox}[Example --- Dimensions of Standard Spaces]
+\begin{enumerate}
+    \item $\dime_\F \F^n = n$ (standard basis $e_1,\ldots,e_n$).
+    \item $\dime_\F \Mmn{m}{n} = mn$ (basis $\{E^{ij}\}$).
+    \item $\dime_\R \C^1 = 2$, since $\C\cong\R^2$ as real vector spaces
+          (basis $\{1,i\}$ over $\R$).
+    \item $\dime_\R \C^n = 2n$.
+\end{enumerate}
+\end{exbox}
+
+% ---- Column space, row space, rank -------------------------
+\begin{defbox}[Definition --- Column Space and Row Space]
+\label{def:column-row-space}
+For $A=[v_1\mid\cdots\mid v_n]\in\Mmn{m}{n}$ with columns $v_i\in\F^m$ and
+rows $w_j\in\F^n$:
+\begin{align*}
+    \text{Column space of }A &= \spn\{v_1,\ldots,v_n\} \subseteq \F^m. \\
+    \text{Row space of }A    &= \spn\{w_1,\ldots,w_m\} \subseteq \F^n.
+\end{align*}
+\end{defbox}
+
+\begin{defbox}[Definition --- Rank of a Matrix]
+\label{def:rank-matrix}
+The \textbf{rank} of $A\in\Mmn{m}{n}$ is
+\[
+    \rk(A) = \dime_\F(\text{column space of }A).
+\]
+\end{defbox}
+
+% ---- Computing rank ----------------------------------------
+\begin{tipbox}[Remark --- Computing Rank]
+\label{rem:rank-rref}
+$\rk(A)$ equals the number of nonzero rows in the RREF of $A$, which also
+equals the number of pivot columns.  In particular:
+\begin{itemize}
+    \item Row-equivalent matrices have the same rank.
+    \item $\rk(A) = \rk(R)$ where $R$ is the RREF of $A$.
+\end{itemize}
+\end{tipbox}
+
+% ---- Subspace dimension ------------------------------------
+\begin{thmbox}[Theorem --- Dimension of a Subspace]
+\label{thm:subspace-dim}
+If $W$ is a subspace of a finite-dimensional vector space $V$, then $W$ is
+also finite-dimensional and
+\[
+    \dime_\F W \;\le\; \dime_\F V.
+\]
+Moreover $\dime_\F W = \dime_\F V$ if and only if $W=V$.
+\end{thmbox}
+
+\begin{proofbox}[Proof --- Dimension of a Subspace]
+Start with $\mathbf{0}\in W$ (or the empty set if $W=\{\mathbf{0}\}$).
+Repeatedly pick vectors in $W$ not in the span of those chosen so far.  By the
+Fundamental Lemma, this process terminates after at most $n=\dime V$ steps,
+yielding a finite l.i.\ spanning set for $W$, so $W$ is finite-dimensional and
+$\dime W\le n$.  If $\dime W=n$ then $W$ has a basis of $n$ l.i.\ vectors,
+which also spans $V$ by Theorem~\ref{thm:basis-char}, so $W=V$.
+\hfill$\blacksquare$
+\end{proofbox}

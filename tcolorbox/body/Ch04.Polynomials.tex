@@ -1,0 +1,150 @@
+% ============================================================
+%  Chapter 4 — Polynomials
+% ============================================================
+\section{Polynomials}
+\label{sec:polynomials}
+
+Polynomials over a field $\F$ are the central objects of study when we analyse
+eigenvalues, minimal polynomials, and the structure theorem for linear
+operators.  This chapter collects the essential algebraic facts.
+
+% ------------------------------------------------------------
+\begin{defbox}[Definition --- Polynomial over $\F$]
+A \textbf{polynomial} over $\F$ is an expression
+\[
+    p(x) = a_n x^n + a_{n-1}x^{n-1} + \cdots + a_1 x + a_0,
+    \quad a_i\in\F,\; n\in\N_0.
+\]
+The set of all polynomials over $\F$ is denoted $\F[x]$.
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{defbox}[Definition --- Degree, Leading Term, and Related Notions]
+For a non-zero polynomial $p(x) = a_n x^n + \cdots + a_0 \in \F[x]$:
+\begin{itemize}
+    \item $\deg(p)$: the \emph{degree}, i.e.\ the largest $n$ s.t.\ $a_n\neq 0$.
+    \item \emph{Leading term}: $a_n x^n$ where $n=\deg(p)$.
+    \item \emph{Leading coefficient}: $a_n$.
+    \item \emph{Constant coefficient}: $a_0$.
+    \item \emph{Monic}: leading coefficient equals $1$.
+    \item \emph{Constant polynomial}: $\deg(p)=0$, i.e.\ $p(x)=a_0\neq 0$.
+\end{itemize}
+By convention: $\deg(0) = -\infty$ and $x^0 = 1$.
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{defbox}[Definition --- Divisibility of Polynomials]
+We say $d(x)$ \textbf{divides} $p(x)$, written $d(x)\mid p(x)$, if there
+exists $q(x)\in\F[x]$ s.t.\ $p(x)=d(x)q(x)$.
+\end{defbox}
+
+% ------------------------------------------------------------
+\begin{propbox}[Proposition --- Basic Divisibility Properties]
+For $f,g,h\in\F[x]$ and $c\in\F\setminus\{0\}$:
+\begin{enumerate}
+    \item $f(x)\mid 0$; \quad $c\mid f(x)$; \quad $cf(x)\mid f(x)$.
+    \item If $f\mid g$ and $g\mid h$, then $f\mid h$.
+    \item If $f\mid g$, then $f\mid g\cdot h$.
+    \item If $f\mid g$ and $f\mid h$, then $f\mid (g+h)$.
+    \item If $f(x)\mid c$, then $\deg(f)=0$.
+    \item If $f\mid g$ and $g\mid f$, then $\exists\, d\in\F\setminus\{0\}$ s.t.\ $f=dg$.
+    \item $f\mid g \iff cf\mid g \iff f\mid cg$.
+\end{enumerate}
+\end{propbox}
+
+% ------------------------------------------------------------
+\begin{thmbox}[Theorem --- Greatest Common Divisor of Polynomials]
+Let $f,g\in\F[x]$, not both zero.  Then there exists a \textbf{unique monic}
+polynomial $h(x)$ of highest degree that divides both $f$ and $g$.  Moreover:
+\begin{itemize}
+    \item Every common divisor of $f$ and $g$ divides $h$.
+    \item There exist $r,t\in\F[x]$ s.t.\ $h = rf + tg$ (Bézout's identity).
+\end{itemize}
+We write $\gcd(f,g)=h$, and call $f,g$ \textbf{coprime} if $\gcd(f,g)=1$.
+\end{thmbox}
+
+% ------------------------------------------------------------
+\begin{thmbox}[Theorem --- Long Division of Polynomials]
+For $p,q\in\F[x]$ with $q\neq 0$, there exist unique $c,r\in\F[x]$ s.t.
+\[
+    p(x) = c(x)q(x) + r(x), \quad \deg(r) < \deg(q) \text{ or } r=0.
+\]
+\end{thmbox}
+
+% ------------------------------------------------------------
+\begin{thmbox}[Theorem --- Remainder Theorem]
+For any $p(x)\in\F[x]$ and $\alpha\in\F$,
+\[
+    p(x) = (x-\alpha)\,c(x) + p(\alpha).
+\]
+\end{thmbox}
+
+% ------------------------------------------------------------
+\begin{corbox}[Corollary --- Factor Theorem]
+$(x-\alpha)\mid p(x)$ if and only if $p(\alpha)=0$.
+\end{corbox}
+
+% ------------------------------------------------------------
+\begin{thmbox}[Theorem --- Coprime Divisibility (Lemma)]
+If $f\mid gh$ and $\gcd(f,g)=1$, then $f\mid h$.
+\end{thmbox}
+
+% ------------------------------------------------------------
+\begin{corbox}[Corollary --- Coprime Factor Product]
+If $f\mid h$ and $g\mid h$ with $\gcd(f,g)=1$, then $fg\mid h$.
+\end{corbox}
+
+% ------------------------------------------------------------
+\begin{thmbox}[Theorem --- Unique Factorisation of Polynomials]
+Let $f(x)\in\F[x]$, $f\neq 0$, $\deg(f)\geq 1$.  Then there exist irreducible
+monic polynomials $p_1,\ldots,p_r\in\F[x]$ and a scalar $c\in\F\setminus\{0\}$
+s.t.
+\[
+    f(x) = c\,p_1(x)^{n_1}\cdots p_r(x)^{n_r}.
+\]
+The polynomials $p_1,\ldots,p_r$ are unique up to permutation; the exponents
+$n_1,\ldots,n_r$ and the scalar $c$ are uniquely determined.
+\end{thmbox}
+
+% ------------------------------------------------------------
+\begin{thmbox}[Theorem --- Fundamental Theorem of Algebra]
+$\C$ is \emph{algebraically closed}: every non-constant polynomial in $\C[x]$
+has at least one root in $\C$.
+
+Equivalently, every $f(x)\in\C[x]$ of degree $n\geq 1$ factors completely over
+$\C$ into $n$ linear factors (counting multiplicity).
+\end{thmbox}
+
+% ------------------------------------------------------------
+\begin{thmbox}[Theorem --- Gauss' Rational Root Criterion]
+Let $f(x) = a_n x^n + \cdots + a_0\in\Z[x]$.  If $r/s$ (with $\gcd(r,s)=1$)
+is a rational root of $f$, then $s\mid a_n$ and $r\mid a_0$.
+\end{thmbox}
+
+% ------------------------------------------------------------
+\begin{thmbox}[Theorem --- Eisenstein's Irreducibility Criterion]
+Let $f(x) = x^n + a_{n-1}x^{n-1} + \cdots + a_0\in\Z[x]$ be monic.  If there
+exists a prime $p$ s.t.
+\begin{enumerate}
+    \item $p\mid a_i$ for all $i\in\{0,1,\ldots,n-1\}$, and
+    \item $p^2\nmid a_0$,
+\end{enumerate}
+then $f$ is irreducible over $\Q[x]$.
+\end{thmbox}
+
+% ------------------------------------------------------------
+\begin{thmbox}[Theorem --- Vieta's Formulae]
+Let $p(x) = a_n x^n + \cdots + a_0 = a_n(x-x_1)\cdots(x-x_n)\in\F[x]$.
+Then the roots $x_1,\ldots,x_n$ satisfy:
+\begin{align*}
+    \sum_{i} x_i
+        &= -\,\frac{a_{n-1}}{a_n}, \\
+    \sum_{i<j} x_i x_j
+        &= \phantom{-}\frac{a_{n-2}}{a_n}, \\
+    \sum_{i<j<k} x_i x_j x_k
+        &= -\,\frac{a_{n-3}}{a_n}, \\
+        &\;\;\vdots \\
+    \prod_{i} x_i
+        &= (-1)^n\frac{a_0}{a_n}.
+\end{align*}
+\end{thmbox}

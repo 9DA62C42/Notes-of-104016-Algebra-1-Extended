@@ -1,0 +1,259 @@
+% ============================================================
+%  Chapter 17 — Diagonalization and Eigenvalues
+% ============================================================
+\section{Diagonalization and Eigenvalues}
+\label{sec:diagonalization}
+
+A fundamental question in linear algebra is whether a linear operator can be
+represented, in some basis, by a diagonal matrix.  This chapter develops the
+theory of eigenvalues and eigenspaces, which provides the complete answer.
+
+% ---- Aim of diagonalization ---------------------------------
+\begin{tipbox}[Remark --- Aim of Diagonalization]
+\label{rem:aim-diag}
+Given an $n$-dimensional vector space $V$ over $\F$ and a linear operator
+$f:V\to V$, the goal is to find an ordered basis $\mathcal{B}$ for $V$ such
+that
+\[
+    [f]_{\mathcal{B}} = \operatorname{diag}(\lambda_1,\lambda_2,\ldots,\lambda_n).
+\]
+\end{tipbox}
+
+% ---- Diagonalizable l.t. ------------------------------------
+\begin{defbox}[Definition --- Diagonalizable Linear Transformation]
+\label{def:diagonalizable}
+A linear transformation $f:V\to V$ is called \textbf{diagonalizable} if
+there exists an ordered basis $\mathcal{B}$ for $V$ such that
+\[
+    [f]_{\mathcal{B}} = \operatorname{diag}(\lambda_1,\ldots,\lambda_n)
+    = \begin{bmatrix}
+        \lambda_1 & 0 & \cdots & 0 \\
+        0 & \lambda_2 & \cdots & 0 \\
+        \vdots & & \ddots & \vdots \\
+        0 & 0 & \cdots & \lambda_n
+      \end{bmatrix}.
+\]
+A matrix $A\in\F^{n\times n}$ is diagonalizable if there exists an
+invertible $P\in\F^{n\times n}$ such that $P^{-1}AP$ is diagonal, i.e.\
+$A=PDP^{-1}$ for some diagonal matrix $D$.
+\end{defbox}
+
+% ---- Eigenvector --------------------------------------------
+\begin{defbox}[Definition --- Eigenvector]
+\label{def:eigenvector}
+A \textbf{nonzero} vector $v\in V$ is called an \textbf{eigenvector} of $f$
+if there exists a scalar $\lambda\in\F$ such that
+\[
+    f(v) = \lambda v.
+\]
+\end{defbox}
+
+% ---- Eigenvalue and eigenspace ------------------------------
+\begin{defbox}[Definition --- Eigenvalue and Eigenspace]
+\label{def:eigenvalue-eigenspace}
+A scalar $\lambda\in\F$ is called an \textbf{eigenvalue} of $f$ if
+\[
+    \Ker(f - \lambda\,\mathrm{id}) \neq \{0\},
+\]
+equivalently, if there exists $v\in V\setminus\{0\}$ such that
+$f(v)=\lambda v$.
+
+The set
+\[
+    V_\lambda = \{v\in V \mid f(v)=\lambda v\}
+\]
+is called the \textbf{eigenspace} of $f$ associated with $\lambda$
+(or \emph{relative to} $\lambda$).  Its nonzero elements are the
+eigenvectors corresponding to $\lambda$.
+\end{defbox}
+
+\begin{tipbox}[Remark --- Eigenspace as a Kernel]
+For any scalar $\lambda\in\F$ and linear operator $f:V\to V$:
+\[
+    f(v)=\lambda v
+    \;\Longleftrightarrow\;
+    (f-\lambda\,\mathrm{id})(v)=0
+    \;\Longleftrightarrow\;
+    v\in\Ker(f-\lambda\,\mathrm{id}).
+\]
+Hence $V_\lambda = \Ker(f-\lambda\,\mathrm{id})$, which is a
+\textbf{subspace} of $V$.
+\end{tipbox}
+
+% ---- Equivalent conditions for eigenvalue -------------------
+\begin{thmbox}[Theorem --- Equivalent Conditions for Eigenvalues]
+\label{thm:eigenvalue-conditions}
+The following are equivalent:
+\begin{enumerate}[label=\textbf{(\roman*)}]
+    \item $\lambda$ is an eigenvalue of $f$.
+    \item $f-\lambda\,\mathrm{id}$ is not a monomorphism (i.e.\ not injective).
+    \item $\det(f-\lambda\,\mathrm{id})=0$.
+\end{enumerate}
+\end{thmbox}
+
+% ---- Characteristic polynomial ------------------------------
+\subsection{The Characteristic Polynomial}
+
+\begin{defbox}[Definition --- Characteristic Polynomial]
+\label{def:char-poly}
+Let $f:V\to V$ be a linear operator on a vector space $V$ over $\F$, and
+let $\mathcal{B}$ be an ordered basis for $V$.  The \textbf{characteristic
+polynomial} of $f$ is the monic polynomial
+\[
+    \chi_f(x) = \det\!\bigl(x\cdot\mathrm{id} - [f]_{\mathcal{B}}\bigr).
+\]
+\end{defbox}
+
+\begin{warnbox}[Notation Notice --- Convention for the Characteristic Polynomial]
+The notes define the characteristic polynomial as
+$\chi_f(x)=\det(x\cdot\mathrm{id}-[f]_{\mathcal{B}})$.
+Some textbooks use the opposite sign convention
+$\chi_f(x)=\det([f]_{\mathcal{B}}-x\cdot\mathrm{id})$, which gives the
+same roots but may differ in sign of coefficients.  \textbf{These notes
+follow the convention $\chi_f(x)=\det(x\cdot I - A)$.}
+\end{warnbox}
+
+\begin{corbox}[Corollary --- Eigenvalues are Roots of the Characteristic Polynomial]
+\label{cor:eigenvalues-roots}
+Let $f:V\to V$ be a linear operator on a finite-dimensional vector space
+$V$ over $\F$.  A scalar $\lambda\in\F$ is an eigenvalue of $f$ if and
+only if $\lambda$ is a root of $\chi_f(x)$.
+\end{corbox}
+
+\begin{propbox}[Proposition --- Characteristic Polynomial is Basis-Independent]
+\label{prop:chi-basis-independent}
+$\chi_f(x)$ does not depend on the choice of ordered basis $\mathcal{B}$.
+\end{propbox}
+
+\begin{proofbox}[Proof --- Characteristic Polynomial is Basis-Independent]
+If $\mathcal{B}$ and $\mathcal{B}'$ are two ordered bases, then
+$[f]_{\mathcal{B}'}=C^{-1}[f]_{\mathcal{B}}C$ for some invertible $C$.
+Hence
+\[
+    \det(xI-[f]_{\mathcal{B}'})
+    = \det(C^{-1}(xI-[f]_{\mathcal{B}})C)
+    = \det(xI-[f]_{\mathcal{B}}).
+    \hfill\blacksquare
+\]
+\end{proofbox}
+
+% ---- Worked example -----------------------------------------
+\begin{exbox}[Example --- Characteristic Polynomial, Eigenvalues, and Eigenspaces]
+\label{ex:char-poly}
+Let $\mathcal{B}=\{v_1,v_2\}$ be an ordered basis for $\R^2$ and define
+$f:\R^2\to\R^2$ by $f(v_1)=2v_1+2v_2$ and $f(v_2)=3v_1+v_2$.
+
+\medskip\noindent
+\textbf{Matrix:}
+$[f]_{\mathcal{B}} = \begin{pmatrix}2&3\\2&1\end{pmatrix}$.
+
+\medskip\noindent
+\textbf{Characteristic polynomial:}
+\[
+    \chi_f(x)
+    = \det\!\begin{pmatrix}x-2&-3\\-2&x-1\end{pmatrix}
+    = (x-2)(x-1)-6
+    = x^2-3x-4
+    = (x-4)(x+1).
+\]
+
+\medskip\noindent
+\textbf{Eigenvalues:} $\lambda_1=4$, $\lambda_2=-1$.
+
+\medskip\noindent
+\textbf{Eigenspace $V_4$:}
+\[
+    V_4 = \Ker\!\begin{pmatrix}-2&3\\2&-3\end{pmatrix}
+        = \Ker\!\begin{pmatrix}-2&3\\0&0\end{pmatrix}
+        = \operatorname{span}\!\{(3,2)\}
+        \;\Longrightarrow\;
+        V_4 = \operatorname{span}\{3v_1+2v_2\}.
+\]
+
+\medskip\noindent
+\textbf{Eigenspace $V_{-1}$:}
+$V_{-1}=\operatorname{span}\{v_1-v_2\}$ (similar computation).
+
+\medskip\noindent
+\textbf{Conclusion:}
+$\R^2 = V_4\oplus V_{-1}$, and the basis
+$\mathcal{B}'=\{3v_1+2v_2,\;v_1-v_2\}$ satisfies
+\[
+    [f]_{\mathcal{B}'} = \begin{pmatrix}4&0\\0&-1\end{pmatrix},
+    \qquad
+    [f]_{\mathcal{B}} = C(\mathcal{B}',\mathcal{B})\,[f]_{\mathcal{B}'}\,C(\mathcal{B},\mathcal{B}'),
+\]
+where $C(\mathcal{B}',\mathcal{B})=\begin{pmatrix}3&1\\2&-1\end{pmatrix}$
+and $C(\mathcal{B},\mathcal{B}')=C(\mathcal{B}',\mathcal{B})^{-1}$.
+\end{exbox}
+
+% ---- Intersection of eigenspaces ----------------------------
+\begin{propbox}[Proposition --- Eigenspaces for Distinct Eigenvalues Intersect Trivially]
+\label{prop:eigenspace-intersection}
+Let $f:V\to V$ be a linear operator on a finite-dimensional vector space
+$V$ over $\F$.  If $\lambda_1\neq\lambda_2$ are distinct eigenvalues of
+$f$, then
+\[
+    V_{\lambda_1}\cap V_{\lambda_2} = \{0\}.
+\]
+\end{propbox}
+
+\begin{corbox}[Corollary --- Sum of Two Eigenspaces is Direct]
+Under the same hypotheses, $V_{\lambda_1}+V_{\lambda_2}=V_{\lambda_1}\oplus V_{\lambda_2}$.
+\end{corbox}
+
+\begin{thmbox}[Theorem --- Sum of Eigenspaces is Direct]
+\label{thm:eigenspaces-direct}
+Let $\lambda_1,\lambda_2,\ldots,\lambda_k$ be \emph{distinct} eigenvalues
+of $f:V\to V$.  Then
+\[
+    V_{\lambda_1}+V_{\lambda_2}+\cdots+V_{\lambda_k}
+    = V_{\lambda_1}\oplus V_{\lambda_2}\oplus\cdots\oplus V_{\lambda_k}.
+\]
+\end{thmbox}
+
+% ---- Multiplicities -----------------------------------------
+\begin{defbox}[Definition --- Geometric and Algebraic Multiplicity]
+\label{def:multiplicities}
+Let $\lambda$ be an eigenvalue of $f$.
+\begin{enumerate}[label=\textbf{(\alph*)}]
+    \item The \textbf{geometric multiplicity} of $\lambda$ is
+          $\dime V_\lambda = \dime\Ker(f-\lambda\,\mathrm{id})$.
+    \item The \textbf{algebraic multiplicity} of $\lambda$ is
+          $\operatorname{mult}(\lambda,\chi_f(x))$, the multiplicity
+          of $\lambda$ as a root of the characteristic polynomial.
+\end{enumerate}
+\end{defbox}
+
+\begin{propbox}[Proposition --- Relation Between Geometric and Algebraic Multiplicity]
+\label{prop:mult-inequality}
+Let $f$ be a linear operator on a finite-dimensional vector space $V$ over
+$\F$ and let $\lambda$ be an eigenvalue of $f$.  Then
+\[
+    1 \;\le\; \dime V_\lambda \;\le\; \operatorname{mult}(\lambda,\chi_f(x)).
+\]
+\end{propbox}
+
+% ---- Equivalent conditions for diagonalizability ------------
+\begin{thmbox}[Theorem --- Equivalent Conditions for Diagonalizability]
+\label{thm:diag-equiv}
+Let $f:V\to V$ be a linear operator on a finite-dimensional vector space
+$V$ over $\F$, and let $\lambda_1,\ldots,\lambda_k$ be the distinct
+eigenvalues of $f$.  The following are equivalent:
+\begin{enumerate}[label=\textbf{(\roman*)}]
+    \item $f$ is diagonalizable.
+    \item The characteristic polynomial splits as
+          $\chi_f(x)=\prod_{i=1}^k(x-\lambda_i)^{d_i}$ and
+          $\dime V_{\lambda_i}=d_i$ for each $i$.
+    \item $\displaystyle\dime V = \sum_{i=1}^k \dime V_{\lambda_i}$.
+\end{enumerate}
+Here $d_i=\operatorname{mult}(\lambda_i,\chi_f(x))$ is the algebraic
+multiplicity of $\lambda_i$.
+\end{thmbox}
+
+\begin{propbox}[Proposition --- $n$ Distinct Eigenvalues Implies Diagonalizable]
+\label{prop:n-distinct-eigenvalues}
+Let $V$ be an $n$-dimensional vector space over $\F$ and let $f$ be a
+linear operator on $V$.  If $\chi_f(x)$ has $n$ distinct roots in $\F$,
+then $f$ is diagonalizable.
+\end{propbox}

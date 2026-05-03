@@ -1,0 +1,353 @@
+% ============================================================
+%  Chapter 14 — Linear Transformations
+% ============================================================
+\section{Linear Transformations}
+\label{sec:lt}
+
+A \emph{linear transformation} is a map between vector spaces that respects
+the vector-space structure — it preserves addition and scalar multiplication.
+Linear transformations are the morphisms of linear algebra: they encode change
+of basis, differentiation, rotation, projection, and virtually every other
+natural operation on vector spaces.
+
+% ---- Definition --------------------------------------------
+\begin{defbox}[Definition --- Linear Transformation]
+\label{def:linear-transformation}
+A map $T:V\to W$ between vector spaces over $\F$ is a
+\textbf{linear transformation} (also called a \emph{linear map} or
+\emph{homomorphism}) if for all $u,v\in V$ and $\alpha\in\F$:
+\[
+    T(u+v) = T(u)+T(v), \qquad T(\alpha v) = \alpha T(v).
+\]
+Equivalently, $T(\alpha u + v) = \alpha T(u)+T(v)$ for all $\alpha,u,v$.
+\end{defbox}
+
+% ---- Zero maps to zero -------------------------------------
+\begin{tipbox}[Remark --- Linear Maps Preserve the Zero Vector]
+\label{rem:lt-zero}
+For any linear transformation $T:V\to W$, we have $T(\mathbf{0}_V)=\mathbf{0}_W$.
+
+\textit{Proof.}
+$T(\mathbf{0}_V) = T(\mathbf{0}_V + \mathbf{0}_V) = T(\mathbf{0}_V)+T(\mathbf{0}_V)$.
+Subtracting $T(\mathbf{0}_V)$ from both sides gives $T(\mathbf{0}_V)=\mathbf{0}_W$.
+\end{tipbox}
+
+% ---- Representation by matrix ------------------------------
+\begin{tipbox}[Remark --- Representation by a Matrix (Basis Determines the Map)]
+\label{rem:lt-span}
+If $V=\spn\{v_1,\ldots,v_n\}$ and $T:V\to W$ is linear, then for any
+$v=\sum\alpha_i v_i\in V$:
+\[
+    T(v) = \alpha_1 T(v_1) + \cdots + \alpha_n T(v_n).
+\]
+Thus $T$ is completely determined by its values on a spanning set.
+\end{tipbox}
+
+% ---- Matrix of a linear map on F^n -------------------------
+\begin{propbox}[Proposition --- Matrix of a Linear Map $\F^n\to\F^m$]
+\label{prop:lt-matrix}
+Every linear transformation $T:\F^n\to\F^m$ satisfies $T(x)=Ax$ for a
+unique matrix $A\in\Mmn{m}{n}$, namely
+\[
+    A = [T(e_1)\mid T(e_2)\mid\cdots\mid T(e_n)].
+\]
+This matrix $A$ is called the \textbf{matrix of $T$ relative to the standard
+bases} of $\F^n$ and $\F^m$.
+\end{propbox}
+
+\begin{proofbox}[Proof --- Matrix of a Linear Map $\F^n\to\F^m$]
+Every $x\in\F^n$ satisfies $x=\sum_{j=1}^n x_j e_j$, so by linearity
+$T(x)=\sum_j x_j T(e_j)$.  Writing $T(e_j)$ as the $j$-th column of $A$
+gives $T(x)=Ax$.  Uniqueness follows because $A$'s $j$-th column must equal
+$T(e_j)$.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Example: rotation -------------------------------------
+\begin{exbox}[Example --- Counterclockwise Rotation in $\R^2$]
+The counterclockwise rotation by angle $\theta$ is linear with
+$T(e_1)=(\cos\theta,\sin\theta)$ and $T(e_2)=(-\sin\theta,\cos\theta)$.
+Its matrix is
+\[
+    A = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix},
+    \qquad T(x,y) = A\begin{pmatrix}x\\y\end{pmatrix}.
+\]
+\end{exbox}
+
+% ---- Unique extension from basis ---------------------------
+\begin{thmbox}[Theorem --- Unique Linear Extension from a Basis]
+\label{thm:unique-lt}
+Let $V$ be a finite-dimensional vector space over $\F$ with ordered basis
+$\{v_1,\ldots,v_n\}$, and let $W$ be any vector space over $\F$.  For every
+choice of $w_1,\ldots,w_n\in W$ there exists a \emph{unique} linear map
+$T:V\to W$ satisfying $T(v_i)=w_i$ for all $i=1,\ldots,n$.
+\end{thmbox}
+
+\begin{proofbox}[Proof --- Unique Linear Extension from a Basis]
+\textbf{Existence.}  Every $v\in V$ has a unique expansion
+$v=\sum\alpha_i v_i$.  Define $T(v)=\sum\alpha_i w_i$.  One checks $T$ is
+linear using the uniqueness of basis representations.
+
+\textbf{Uniqueness.}  If $T'$ also satisfies $T'(v_i)=w_i$, then for any
+$v=\sum\alpha_i v_i$, $T'(v)=\sum\alpha_i T'(v_i)=\sum\alpha_i w_i=T(v)$.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Algebra of linear maps --------------------------------
+\begin{thmbox}[Theorem --- Algebra of Linear Transformations]
+\label{thm:lt-algebra}
+Let $T_1,T_2:V\to W$ be linear transformations over $\F$ and $\alpha\in\F$.
+\begin{enumerate}[label=(\roman*)]
+    \item $(T_1+T_2)(v) := T_1(v)+T_2(v)$ defines a linear map $V\to W$.
+    \item $(\alpha T_1)(v) := \alpha T_1(v)$ defines a linear map $V\to W$.
+    \item Under these operations $\Hom_\F(V,W)$ is an $\F$-vector space.
+    \item For $A,B\in\Mmn{m}{n}$: $T_A+T_B=T_{A+B}$ and $\alpha T_A=T_{\alpha A}$.
+\end{enumerate}
+The \textbf{zero} linear transformation is $O(v)=\mathbf{0}_W$ for all $v$.
+\end{thmbox}
+
+% ---- Composition -------------------------------------------
+\begin{propbox}[Proposition --- Composition of Linear Transformations]
+\label{prop:lt-composition}
+If $T_1:V\to W$ and $T_2:W\to Z$ are linear transformations, then the
+composition $T_2\circ T_1:V\to Z$ is also linear.  If $T_1$ has matrix $A$
+and $T_2$ has matrix $B$ (relative to standard bases), then $T_2\circ T_1$
+has matrix $BA$.
+\end{propbox}
+
+\begin{tipbox}[Remark --- Powers of an Endomorphism]
+For a linear map $T:V\to V$ (an endomorphism), define $T^0=\Id_V$,
+$T^1=T$, $T^k=T\circ T^{k-1}$ for $k\ge 1$.
+\end{tipbox}
+
+% ---- Hom spaces --------------------------------------------
+\begin{defbox}[Definition --- Space of Linear Maps and Endomorphisms]
+\label{def:hom-end}
+\[
+    \Hom_\F(V,W) = \{T:V\to W \mid T \text{ is a linear transformation}\}.
+\]
+When $W=V$ we write $\End_\F(V)=\Hom_\F(V,V)$.  The elements of $\End_\F(V)$
+are called \textbf{endomorphisms} of $V$.
+\end{defbox}
+
+% ---- Special morphisms -------------------------------------
+\begin{defbox}[Definition --- Monomorphism, Epimorphism, Isomorphism]
+\label{def:morphism-types}
+Let $T:V\to W$ be a linear transformation.
+\begin{itemize}
+    \item $T$ is a \textbf{monomorphism} if $T$ is injective.
+    \item $T$ is an \textbf{epimorphism} if $T$ is surjective.
+    \item $T$ is an \textbf{isomorphism} if $T$ is bijective.
+\end{itemize}
+We write $V\cong W$ if there exists an isomorphism $T:V\to W$.
+\end{defbox}
+
+% ---- Examples of morphism types ----------------------------
+\begin{exbox}[Example --- Monomorphism, Epimorphism, Isomorphism]
+\begin{enumerate}
+    \item \textbf{Monomorphism:} $T:\F^m\to\F^{m+1}$,\; $x\mapsto(x,0)$
+          (injective, not surjective).
+    \item \textbf{Epimorphism:} $T:\F^m\to\F^{m-1}$,\;
+          $(x_1,\ldots,x_m)\mapsto(x_1,\ldots,x_{m-1})$
+          (surjective, not injective).
+    \item \textbf{Isomorphism:} $T:\F_n[x]\to\F^{n+1}$,\;
+          $p(x)=\sum_{k=0}^n a_k x^k\mapsto(a_0,a_1,\ldots,a_n)$ (bijective).
+\end{enumerate}
+\end{exbox}
+
+% ---- Isomorphisms preserve structure -----------------------
+\begin{propbox}[Proposition --- Isomorphisms Preserve Linear Structure]
+\label{prop:iso-preserves}
+Let $T:V\to W$ be an isomorphism and $v_1,\ldots,v_n\in V$.
+\begin{enumerate}[label=(\roman*)]
+    \item $v_1,\ldots,v_n$ are l.i.\ $\iff$ $T(v_1),\ldots,T(v_n)$ are l.i.
+    \item $\spn\{v_1,\ldots,v_n\}=V$ $\iff$ $\spn\{T(v_1),\ldots,T(v_n)\}=W$.
+    \item $\{v_1,\ldots,v_n\}$ is a basis for $V$ $\iff$
+          $\{T(v_1),\ldots,T(v_n)\}$ is a basis for $W$.
+\end{enumerate}
+\end{propbox}
+
+\begin{proofbox}[Proof --- Isomorphisms Preserve Linear Structure]
+(i) $(\Rightarrow)$: If $\sum\alpha_i T(v_i)=\mathbf{0}$, then
+$T(\sum\alpha_i v_i)=\mathbf{0}$, so $\sum\alpha_i v_i\in\Ker T=\{\mathbf{0}\}$
+(since $T$ is injective), giving all $\alpha_i=0$.
+$(\Leftarrow)$: Apply the same argument to $T^{-1}$.
+Parts (ii) and (iii) follow immediately from (i) and bijectivity.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Isomorphic implies equal dimension --------------------
+\begin{propbox}[Proposition --- Isomorphic Spaces Have Equal Dimension]
+\label{prop:iso-same-dim}
+If $V\cong W$ and both are finite-dimensional, then $\dime_\F V=\dime_\F W$.
+\end{propbox}
+
+\begin{proofbox}[Proof --- Isomorphic Spaces Have Equal Dimension]
+Let $T:V\to W$ be an isomorphism and $\{v_1,\ldots,v_n\}$ a basis for $V$.
+By Proposition~\ref{prop:iso-preserves}(iii), $\{T(v_1),\ldots,T(v_n)\}$ is a
+basis for $W$, so $\dime W=n=\dime V$.
+\hfill$\blacksquare$
+\end{proofbox}
+
+\begin{corbox}[Corollary --- $\F^m\not\cong\F^n$ when $m\ne n$]
+\label{cor:Fm-Fn-not-iso}
+If $m\ne n$ then $\F^m\not\cong\F^n$.
+\end{corbox}
+
+% ---- Isomorphism theorem -----------------------------------
+\begin{thmbox}[Theorem --- Isomorphism to $\F^n$]
+\label{thm:iso-Fn}
+Every $n$-dimensional vector space $V$ over $\F$ is isomorphic to $\F^n$.
+Consequently two finite-dimensional vector spaces over $\F$ are isomorphic if
+and only if they have the same dimension.
+\end{thmbox}
+
+\begin{proofbox}[Proof --- Isomorphism to $\F^n$]
+Let $\{v_1,\ldots,v_n\}$ be a basis for $V$.  Define
+$T:V\to\F^n$ by $T(\sum\alpha_i v_i)=(\alpha_1,\ldots,\alpha_n)$.  By
+Theorem~\ref{thm:unique-lt}, $T$ is the unique linear map with
+$T(v_i)=e_i$; it is bijective because every $(\alpha_1,\ldots,\alpha_n)$ is
+hit and $\Ker T=\{\mathbf{0}\}$.
+
+For the "if and only if": ($\Rightarrow$) is Proposition~\ref{prop:iso-same-dim}.
+($\Leftarrow$) If $\dime V=\dime W=n$, compose the isomorphisms $V\cong\F^n\cong W$.
+\hfill$\blacksquare$
+\end{proofbox}
+
+\begin{exbox}[Example --- Isomorphisms Between Standard Spaces]
+\begin{enumerate}
+    \item $\F_n[x]\cong\F^{n+1}$ via $p\mapsto(a_0,\ldots,a_n)$ (both have
+          dimension $n+1$).
+    \item $\Mmn{m}{n}\cong\F^{mn}$ via column-stacking (both have dimension $mn$).
+\end{enumerate}
+\end{exbox}
+
+\begin{tipbox}[Remark --- Properties of Isomorphisms]
+\begin{enumerate}[label=(\roman*)]
+    \item $\Id:V\to V$ is an isomorphism.
+    \item If $T:V\to W$ is an isomorphism, then $T^{-1}:W\to V$ is also an
+          isomorphism.
+    \item If $T_1:V\to W$ and $T_2:W\to Z$ are isomorphisms, then $T_2\circ T_1$
+          is an isomorphism.
+\end{enumerate}
+\end{tipbox}
+
+% ---- Kernel and image of a linear map ----------------------
+\begin{defbox}[Definition --- Kernel and Image of a Linear Transformation]
+\label{def:lt-ker-img}
+For a linear transformation $T:V\to W$:
+\[
+    \Ker T = \{v\in V \mid T(v)=\mathbf{0}_W\}, \qquad
+    \Img T  = \{T(v) \mid v\in V\} \subseteq W.
+\]
+$\Ker T$ is also called the \emph{null space} of $T$.  Its dimension is the
+\textbf{nullity} of $T$, and $\dime(\Img T)$ is the \textbf{rank} of $T$.
+\end{defbox}
+
+% ---- Example of kernel and image ---------------------------
+\begin{exbox}[Example --- Kernel and Image of a Projection]
+Let $T:\R^3\to\R^2$, $T(x_1,x_2,x_3)=(x_1,x_2)$.  Then:
+\[
+    \Ker T = \{(0,0,x_3)\mid x_3\in\R\} = \spn\{e_3\},
+    \quad \operatorname{nullity}(T)=1,
+\]
+\[
+    \Img T = \R^2, \quad \rk(T)=2.
+\]
+Indeed $\operatorname{nullity}(T)+\rk(T)=1+2=3=\dime\R^3$. $\checkmark$
+\end{exbox}
+
+% ---- Rank-Nullity Theorem (l.t. version) -------------------
+\begin{thmbox}[Theorem --- Rank-Nullity Theorem for Linear Transformations]
+\label{thm:rank-nullity-lt}
+For any linear transformation $T:V\to W$ with $V$ finite-dimensional:
+\[
+    \dime V = \dime(\Ker T) + \dime(\Img T)
+            = \operatorname{nullity}(T) + \rk(T).
+\]
+\end{thmbox}
+
+\begin{proofbox}[Proof --- Rank-Nullity Theorem for Linear Transformations]
+Let $k=\dime\Ker T$ and choose a basis $\{u_1,\ldots,u_k\}$ for $\Ker T$.
+Extend to a basis $\{u_1,\ldots,u_k,v_1,\ldots,v_r\}$ for $V$, so
+$\dime V=k+r$.  We claim $\{T(v_1),\ldots,T(v_r)\}$ is a basis for $\Img T$.
+
+\textit{Spanning:} For any $T(v)\in\Img T$, write $v=\sum\alpha_i u_i+\sum\beta_j v_j$;
+then $T(v)=\sum\beta_j T(v_j)$.
+
+\textit{Linear independence:} If $\sum\beta_j T(v_j)=\mathbf{0}$, then
+$T(\sum\beta_j v_j)=\mathbf{0}$, so $\sum\beta_j v_j\in\Ker T$, hence
+$\sum\beta_j v_j=\sum\gamma_i u_i$.  But $\{u_1,\ldots,u_k,v_1,\ldots,v_r\}$ is a
+basis, so all $\beta_j=0$.
+
+Thus $\dime(\Img T)=r$ and $\dime V=k+r=\dime\Ker T+\dime\Img T$.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Corollary: mono/epi/iso equivalence -------------------
+\begin{corbox}[Corollary --- Equivalence of Mono-, Epi-, and Isomorphism for Equal Dimensions]
+\label{cor:mono-epi-iso}
+If $V$ and $W$ are both $n$-dimensional and $T:V\to W$ is linear, then
+\[
+    T \text{ is an isomorphism}
+    \iff T \text{ is a monomorphism}
+    \iff T \text{ is an epimorphism}.
+\]
+\end{corbox}
+
+\begin{proofbox}[Proof --- Equivalence of Mono-, Epi-, and Isomorphism for Equal Dimensions]
+By the Rank-Nullity Theorem, $\dime\Ker T + \rk T = n$.
+
+$T$ is a monomorphism iff $\Ker T=\{\mathbf{0}\}$ iff $\dime\Ker T=0$ iff
+$\rk T=n$ iff $\dime\Img T=n$.  Since $\Img T\le W$ and $\dime W=n$, this
+gives $\Img T=W$, i.e.\ $T$ is an epimorphism.  The reverse implication is
+symmetric.  Either condition makes $T$ bijective, hence an isomorphism.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Images and preimages of subspaces ---------------------
+\begin{tipbox}[Remark --- Images and Pre-Images]
+For a function $f:A\to B$, $A'\subseteq A$, $B'\subseteq B$:
+\[
+    f(A') = \{b\in B \mid b=f(a) \text{ for some } a\in A'\},
+    \qquad
+    f^{-1}(B') = \{a\in A \mid f(a)\in B'\}.
+\]
+Note $f^{-1}(B')$ is defined even when $f$ is not invertible.
+\end{tipbox}
+
+% ---- Subspaces preserved under maps ------------------------
+\begin{propbox}[Proposition --- Linear Maps Preserve Subspaces]
+\label{prop:lt-subspace-preserved}
+Let $T:V\to W$ be a linear transformation.
+\begin{enumerate}[label=(\roman*)]
+    \item If $S\leq V$, then $T(S)\leq W$.  Moreover, if
+          $S=\spn\{v_1,\ldots,v_n\}$ then $T(S)=\spn\{T(v_1),\ldots,T(v_n)\}$.
+    \item If $U\leq W$, then $T^{-1}(U)\leq V$.
+\end{enumerate}
+\end{propbox}
+
+\begin{proofbox}[Proof --- Linear Maps Preserve Subspaces]
+(i) $\mathbf{0}_W=T(\mathbf{0}_V)\in T(S)$.  If $T(u),T(v)\in T(S)$ then
+$T(u)+T(v)=T(u+v)\in T(S)$ and $\alpha T(v)=T(\alpha v)\in T(S)$.  Since
+$T$ is linear, $T(\sum\alpha_i v_i)=\sum\alpha_i T(v_i)$, giving the span
+statement.
+
+(ii) $\mathbf{0}_V\in T^{-1}(U)$ since $T(\mathbf{0}_V)=\mathbf{0}_W\in U$.
+If $v,w\in T^{-1}(U)$ then $T(v+w)=T(v)+T(w)\in U$ (as $U\le W$), so
+$v+w\in T^{-1}(U)$.  Scalar multiplication is similar.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Summary of key formulas --------------------------------
+\begin{flowbox}[Key Formula --- Rank-Nullity Summary]
+For $T:V\to W$ linear with $\dime V=n$:
+\[
+    \boxed{\operatorname{nullity}(T) + \rk(T) = n.}
+\]
+\begin{itemize}
+    \item $\rk(T) = \dime(\Img T)$.
+    \item $\operatorname{nullity}(T) = \dime(\Ker T)$.
+    \item When $\dime V=\dime W$: mono $\Leftrightarrow$ epi $\Leftrightarrow$ iso.
+\end{itemize}
+\end{flowbox}
