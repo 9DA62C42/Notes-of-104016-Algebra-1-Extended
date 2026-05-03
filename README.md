@@ -4,11 +4,19 @@
 
 ## English
 
-This repository contains lecture notes for the course **104016 Algebra 1/Extended**.
+This repository contains lecture and tutorial notes for the course **104016 Algebra 1/Extended** at **Guangdong Technion – Israel Institute of Technology**.
 
 ### Author
 
-Xiangjun Liu
+Xiangjun (Samuel) Liu
+
+### Repository Structure
+
+| Path | Description |
+|------|-------------|
+| `Notes of 104016 Algebra 1E.tex` / `.pdf` | Original edition (V5.1) |
+| `tcolorbox/` | Restructured tcolorbox edition (V1.0) — recommended |
+| `reference/` | Reference materials and prompt templates |
 
 ### Topics Covered
 
@@ -29,12 +37,12 @@ Xiangjun Liu
 15. Coordinate and Matrix Representation of Linear Transformation
 16. Determinant
 17. Diagonalization and Eigenvalues
-18. Annihilating Polynomial
+18. Annihilating Polynomials
 19. Proofs
 
 ### License
 
-Notes of 104016 Algebra 1/Extended © 2026 by Xiangjun Liu is licensed under [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/).
+Notes of 104016 Algebra 1/Extended © 2026 by Xiangjun (Samuel) Liu is licensed under [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/).
 
 ---
 
@@ -42,11 +50,19 @@ Notes of 104016 Algebra 1/Extended © 2026 by Xiangjun Liu is licensed under [Cr
 
 ## 中文
 
-本仓库包含课程 **104016 代数1延伸（Algebra 1/Extended）** 的讲义笔记。
+本仓库包含**广东以色列理工学院（Guangdong Technion – Israel Institute of Technology）** 课程 **104016 代数1延伸（Algebra 1/Extended）** 的讲义与习题课笔记。
 
 ### 作者
 
-Xiangjun Liu
+Xiangjun (Samuel) Liu
+
+### 仓库结构
+
+| 路径 | 说明 |
+|------|------|
+| `Notes of 104016 Algebra 1E.tex` / `.pdf` | 原始版本（V5.1） |
+| `tcolorbox/` | 重构 tcolorbox 版本（V1.0）——推荐使用 |
+| `reference/` | 参考资料与提示词模板 |
 
 ### 内容目录
 
@@ -72,4 +88,4 @@ Xiangjun Liu
 
 ### 许可证
 
-本笔记《104016 代数1延伸 课程笔记》© 2026 由 Xiangjun Liu 编写，采用 [知识共享 署名-相同方式共享 4.0 国际（CC BY-SA 4.0）](https://creativecommons.org/licenses/by-sa/4.0/deed.zh) 许可证授权。
+本笔记《104016 代数1延伸 课程笔记》© 2026 由 Xiangjun (Samuel) Liu 编写，采用 [知识共享 署名-相同方式共享 4.0 国际（CC BY-SA 4.0）](https://creativecommons.org/licenses/by-sa/4.0/deed.zh) 许可证授权。
