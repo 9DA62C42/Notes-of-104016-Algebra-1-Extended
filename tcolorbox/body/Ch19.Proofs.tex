@@ -1,0 +1,276 @@
+% ============================================================
+%  Chapter 19 — Appendix: Selected Proofs
+% ============================================================
+\newpage
+\section*{Appendix: Selected Proofs}
+\addcontentsline{toc}{section}{Appendix: Selected Proofs}
+
+This appendix collects the proofs that were deferred in the main text.
+Each proof is cross-referenced to the statement it establishes.
+
+% ---- GCD Lemma ----------------------------------------------
+\begin{proofbox}[Proof --- Lemma on Coprime Divisibility (Section~\ref{sec:polynomials})]
+We wish to show: if $f(x)\mid g(x)h(x)$ and $\gcd(f,g)=1$, then $f\mid h$.
+
+Since $\gcd(f,g)=1$, by the extended Euclidean algorithm there exist
+$r(x),t(x)\in\F[x]$ such that
+\[
+    1 = r(x)f(x) + t(x)g(x).
+\]
+Multiply both sides by $h(x)$:
+\[
+    h(x) = r(x)f(x)h(x) + t(x)g(x)h(x).
+\]
+Now $f\mid r(x)f(x)h(x)$ trivially, and $f\mid t(x)g(x)h(x)$ by
+hypothesis ($f\mid g(x)h(x)$ implies $f\mid t(x)g(x)h(x)$).
+Therefore $f\mid h(x)$. \hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Intersection of subspaces is a subspace ----------------
+\begin{proofbox}[Proof --- Intersection of Subspaces is a Subspace (Section~\ref{sec:span})]
+Let $S,T\le V$.  We verify the three subspace conditions for $S\cap T$:
+\begin{enumerate}[label=\textbf{(\roman*)}]
+    \item \emph{Zero vector:} $0\in S$ and $0\in T$, so $0\in S\cap T$.
+    \item \emph{Closure under addition:} If $u,v\in S\cap T$, then
+          $u,v\in S$ (so $u+v\in S$) and $u,v\in T$ (so $u+v\in T$),
+          hence $u+v\in S\cap T$.
+    \item \emph{Closure under scalar multiplication:} If $\alpha\in\F$
+          and $v\in S\cap T$, then $\alpha v\in S$ and $\alpha v\in T$,
+          so $\alpha v\in S\cap T$.
+\end{enumerate}
+Therefore $S\cap T\le V$. \hfill$\blacksquare$
+\end{proofbox}
+
+% ---- rank A = m implies generating set ----------------------
+\begin{proofbox}[Proof --- Rank Criterion for a Generating Set (Section~\ref{sec:span})]
+Let $R$ be the row-echelon form of $A=[v_1\mid\cdots\mid v_n]$ obtained
+by Gaussian elimination.  Then $Ax=b$ has a solution for every $b\in\F^m$
+if and only if $Rx=b'$ has a solution for every $b'\in\F^m$.
+
+If $R$ has a zero row, we can choose $b'$ so that the corresponding
+equation is $0=1$, giving an inconsistency.  If $R$ has no zero rows,
+every system $Rx=b'$ is consistent (each row has a pivot).  Having no zero
+rows is equivalent to $\operatorname{rank}(A)=m$.  In that case $m\le n$.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- rank A = n implies l.i. --------------------------------
+\begin{proofbox}[Proof --- Rank Criterion for Linear Independence (Section~\ref{sec:lindep})]
+The linear combination $\alpha_1 v_1+\cdots+\alpha_n v_n = Ax$.
+The set $\{v_1,\ldots,v_n\}$ is linearly independent if and only if
+$Ax=0$ has only the trivial solution $x=0$.  By the theory of row
+reduction, this occurs if and only if $\operatorname{rank}(A)=n$
+(every column is a pivot column), which requires $n\le m$.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Basis for F^m ------------------------------------------
+\begin{proofbox}[Proof --- Characterisation of a Basis for $\F^m$ (Section~\ref{sec:basis})]
+By the two preceding proofs:
+\begin{itemize}
+    \item $\{v_1,\ldots,v_n\}$ is linearly independent $\Leftrightarrow$
+          $\operatorname{rank}(A)=n\le m$.
+    \item $\operatorname{span}\{v_1,\ldots,v_n\}=\F^m$ $\Leftrightarrow$
+          $\operatorname{rank}(A)=m\le n$.
+\end{itemize}
+Both conditions hold simultaneously if and only if $n=m$ and
+$\operatorname{rank}(A)=n$. \hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Characterisation of basis in a general f.d.v.s. --------
+\begin{proofbox}[Proof --- Characterisation of Basis: $(1)\!\Leftrightarrow\!(2)\!\Leftrightarrow\!(3)$ (Section~\ref{sec:basis})]
+Let $\{v_1,\ldots,v_n\}\subseteq V$ with $\dime V=n$.
+
+\medskip\noindent
+\textbf{(1)$\Rightarrow$(2):} By definition of a basis.
+
+\medskip\noindent
+\textbf{(2)$\Rightarrow$(3):} Suppose the vectors are linearly dependent.
+Then there exists $j$ such that
+$v_j\in\operatorname{span}\{v_i\mid i\neq j\}$, so
+$\operatorname{span}\{v_1,\ldots,v_n\}\subseteq
+ \operatorname{span}\{v_i\mid i\neq j\}$,
+which has dimension at most $n-1<n=\dime V$, contradicting (2).
+
+\medskip\noindent
+\textbf{(3)$\Rightarrow$(1):} A linearly independent set of exactly
+$n=\dime V$ vectors can be extended to a basis; but it already has the
+correct size, so it is itself a basis. \hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Basis subset -------------------------------------------
+\begin{proofbox}[Proof --- Basis Contained in Any Spanning Set (Section~\ref{sec:basis})]
+Greedily choose a maximal subset $\{w_1,\ldots,w_r\}$ of
+$\{v_1,\ldots,v_n\}$ such that $w_i\notin\operatorname{span}\{w_1,\ldots,w_{i-1}\}$.
+This set is linearly independent by construction.
+
+If some $v_l\notin\operatorname{span}\{w_1,\ldots,w_r\}$, we could add $v_l$
+to the set, contradicting maximality.  Hence
+$\operatorname{span}\{v_1,\ldots,v_n\}\subseteq\operatorname{span}\{w_1,\ldots,w_r\}$,
+so $\{w_1,\ldots,w_r\}$ is a basis for
+$\operatorname{span}\{v_1,\ldots,v_n\}$. \hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Existence of basis from pivot columns ------------------
+\begin{proofbox}[Proof --- Pivot Columns Form a Basis (Section~\ref{sec:basis})]
+Let $A=[v_1\mid\cdots\mid v_n]$ with RREF $R=[w_1\mid\cdots\mid w_n]$ and
+pivot column positions $i_1<\cdots<i_r$.
+
+\textbf{Linear independence of $\{v_{i_1},\ldots,v_{i_r}\}$:}
+Suppose $x_{i_1}v_{i_1}+\cdots+x_{i_r}v_{i_r}=0$.  Define
+$x\in\F^n$ with $x_{i_j}$ in position $i_j$ and $0$ elsewhere.
+Then $Ax=0$, so $Rx=0$.  But $Rx=x_{i_1}e_1+\cdots+x_{i_r}e_r=0$
+(since $w_{i_j}=e_j$ in RREF), giving $x_{i_j}=0$ for all $j$.
+
+\textbf{Spanning:} For any non-pivot column $w_l$, the RREF relation
+$w_l=\sum_{k=1}^r R_{kl}\,e_k$ gives, by pre-multiplying by $A$,
+$v_l=\sum_{k=1}^r R_{kl}\,v_{i_k}$.
+Hence $\{v_{i_1},\ldots,v_{i_r}\}$ spans $\operatorname{span}\{v_1,\ldots,v_n\}$.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Extension of l.i. set ----------------------------------
+\begin{proofbox}[Proof --- Extending a Linearly Independent Set to a Basis (Section~\ref{sec:dimension})]
+Let $\{v_1,\ldots,v_k\}$ be a linearly independent set in $V$ with
+$k<n=\dime V$.  Since $V\neq\operatorname{span}\{v_1,\ldots,v_k\}$, there
+exists $v_{k+1}\in V\setminus\operatorname{span}\{v_1,\ldots,v_k\}$, and
+$\{v_1,\ldots,v_k,v_{k+1}\}$ is still linearly independent.  Repeating
+(at most $n-k$ times) yields a linearly independent set of size $n$, which
+is a basis for $V$. \hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Dimension is well-defined ------------------------------
+\begin{proofbox}[Proof --- Dimension is Well-Defined (Section~\ref{sec:dimension})]
+Let $\{v_1,\ldots,v_m\}$ and $\{w_1,\ldots,w_n\}$ be two bases of $V$.
+Every $w_j$ lies in $\operatorname{span}\{v_1,\ldots,v_m\}$.  By the
+Fundamental Lemma of Linear Independence, if $n>m$ then
+$\{w_1,\ldots,w_n\}$ would be linearly dependent, contradicting it being a
+basis.  Hence $n\le m$.  By symmetry $m\le n$, so $m=n$. \hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Dimension of a subspace --------------------------------
+\begin{proofbox}[Proof --- Dimension of a Subspace is at Most $\dim V$ (Section~\ref{sec:dimension})]
+Let $W\le V$ with $n=\dime V$ and $W\neq\{0\}$.  By the Fundamental
+Lemma, any linearly independent subset of $W$ has at most $n$ vectors.
+Build a maximal linearly independent subset $\{w_1,\ldots,w_d\}$ of $W$
+by adding $w_{i+1}\notin\operatorname{span}\{w_1,\ldots,w_i\}$ at each step;
+this terminates with $d\le n$.  If some $w\in W$ were outside
+$\operatorname{span}\{w_1,\ldots,w_d\}$, extending would contradict
+maximality; so $\{w_1,\ldots,w_d\}$ spans $W$, and $\dime W=d\le n$.
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Sum of subspaces is a subspace -------------------------
+\begin{proofbox}[Proof --- Sum of Subspaces is a Subspace (Section~\ref{sec:directsum})]
+Let $W=W_1+\cdots+W_k$ with each $W_i\le V$.
+\begin{enumerate}[label=\textbf{(\roman*)}]
+    \item $0=0+\cdots+0\in W$ since $0\in W_i$ for all $i$.
+    \item For $w=\sum w_i$ and $w'=\sum w'_i$:
+          $w+w'=\sum(w_i+w'_i)\in W$ since $w_i+w'_i\in W_i$.
+    \item For $\alpha\in\F$ and $w=\sum w_i$:
+          $\alpha w=\sum(\alpha w_i)\in W$ since $\alpha w_i\in W_i$.
+\end{enumerate}
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Rank-Nullity --------------------------------------------
+\begin{proofbox}[Proof --- Rank-Nullity Theorem (Section~\ref{sec:kernel})]
+Let $A\in\F^{m\times n}$ with RREF $R$ having $r$ non-zero rows
+(pivot rows).
+\begin{itemize}
+    \item $\operatorname{rank}(A)=r=\#\text{pivot columns}$.
+    \item $\dime\Ker(A)=n-r=\#\text{free variables (non-pivot columns)}$.
+\end{itemize}
+Hence $\operatorname{rank}(A)+\dime\Ker(A)=r+(n-r)=n$. \hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Unique linear transformation ---------------------------
+\begin{proofbox}[Proof --- Existence and Uniqueness of a Linear Map Defined on a Basis (Section~\ref{sec:lt})]
+\textbf{Existence.} Given a basis $\{v_1,\ldots,v_n\}$ of $V$ and
+targets $w_1,\ldots,w_n\in W$, define $T:V\to W$ by
+$T(\sum_{i=1}^n\alpha_i v_i)=\sum_{i=1}^n\alpha_i w_i$.  This is well-defined
+since representations in a basis are unique.
+
+\emph{Linearity:}
+$T(u+v)=T(\sum(\alpha_i+\beta_i)v_i)=\sum(\alpha_i+\beta_i)w_i=T(u)+T(v)$, and
+$T(\alpha v)=\alpha T(v)$.
+
+\textbf{Uniqueness.} If $T':V\to W$ also satisfies $T'(v_i)=w_i$ for
+all $i$, then for any $v=\sum\alpha_i v_i$:
+$T'(v)=\sum\alpha_i T'(v_i)=\sum\alpha_i w_i=T(v)$.
+Hence $T'=T$. \hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Algebra of linear transformations ----------------------
+\begin{proofbox}[Proof --- Algebra of Linear Transformations (Section~\ref{sec:lt})]
+\textbf{Addition.} For $u,v\in V$ and $\alpha\in\F$:
+\begin{align*}
+    (T_1+T_2)(\alpha u+v)
+    &= T_1(\alpha u+v)+T_2(\alpha u+v)\\
+    &= \alpha T_1(u)+T_1(v)+\alpha T_2(u)+T_2(v)\\
+    &= \alpha(T_1+T_2)(u)+(T_1+T_2)(v). \checkmark
+\end{align*}
+
+\textbf{Scalar multiplication.} For $\beta,\alpha\in\F$ and $v,v'\in V$:
+\begin{align*}
+    (\alpha T_1)(\beta v+v')
+    &= \alpha T_1(\beta v+v')
+     = \alpha\beta T_1(v)+\alpha T_1(v')
+     = \beta(\alpha T_1)(v)+(\alpha T_1)(v'). \checkmark
+\end{align*}
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Composition of l.t. ------------------------------------
+\begin{proofbox}[Proof --- Composition of Linear Transformations is Linear (Section~\ref{sec:lt})]
+For $\alpha\in\F$ and $u,v\in V$:
+\begin{align*}
+    (T_2\circ T_1)(\alpha u+v)
+    &= T_2(T_1(\alpha u+v))
+     = T_2(\alpha T_1(u)+T_1(v))\\
+    &= \alpha T_2(T_1(u))+T_2(T_1(v))
+     = \alpha(T_2\circ T_1)(u)+(T_2\circ T_1)(v).
+\end{align*}
+\hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Isomorphism preserves l.i. and basis -------------------
+\begin{proofbox}[Proof --- Isomorphism Preserves Linear Independence and Bases (Section~\ref{sec:lt})]
+Let $T:V\to W$ be an isomorphism and $\{v_1,\ldots,v_n\}$ a subset of
+$V$.
+
+\textbf{(i) L.i.\ is preserved:}
+$\sum\alpha_i v_i=0$ iff $T(\sum\alpha_i v_i)=0$ iff
+$\sum\alpha_i T(v_i)=0$ (using $T$ is injective and $T(0)=0$).
+
+\textbf{(ii) Generating set:}
+$(\Rightarrow)$ If $V=\operatorname{span}\{v_i\}$, then every $w\in W$
+equals $T(v)=T(\sum\alpha_i v_i)=\sum\alpha_i T(v_i)$.
+$(\Leftarrow)$ If $W=\operatorname{span}\{T(v_i)\}$, then for each $v\in V$,
+$T(v)=\sum\alpha_i T(v_i)=T(\sum\alpha_i v_i)$; injectivity of $T$ gives
+$v=\sum\alpha_i v_i$.
+
+\textbf{(iii) Basis:} follows immediately from (i) and (ii). \hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Isomorphic spaces have equal dimension -----------------
+\begin{proofbox}[Proof --- Isomorphic Spaces Have the Same Dimension (Section~\ref{sec:lt})]
+If $T:V\to W$ is an isomorphism and $\{v_1,\ldots,v_n\}$ is a basis for
+$V$, then $\{T(v_1),\ldots,T(v_n)\}$ is a basis for $W$ (by the previous
+proof, part (iii)).  Hence $\dime W=n=\dime V$. \hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Same dimension implies isomorphic ----------------------
+\begin{proofbox}[Proof --- Spaces of Equal Dimension are Isomorphic (Section~\ref{sec:lt})]
+If $\dime V=\dime W=n$, then $V\cong\F^n$ (via the coordinate isomorphism)
+and $\F^n\cong W$ (same reason), so $V\cong W$ by composition. \hfill$\blacksquare$
+\end{proofbox}
+
+% ---- Left-inverse equals right-inverse ----------------------
+\begin{proofbox}[Proof --- Left-Inverse Equals Right-Inverse for Matrices (Section~\ref{sec:matrices})]
+Suppose $BA=I$ and $AC=I$.  Then
+\[
+    B = BI = B(AC) = (BA)C = IC = C.
+\]
+\hfill$\blacksquare$
+\end{proofbox}
